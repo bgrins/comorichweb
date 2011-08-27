@@ -13,11 +13,19 @@ img {
 }
 
 #left { float:left; width: 200px; background: #4dd; }
-#right { float:left; width: 800px;height:100%; }
-#right textarea { margin:0 auto; width: 80%; height: 80%; }
-#slides { background: #ddd; }
+#right { position:absolute; left: 200px; right:0; top:35px; bottom:0;  }
+
+    #slide-content { 
+        margin: 0;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+    }
+#slides { background: #ddd; position:relative; }
 #slides-collection {  height: 400px; overflow-y:scroll; margin:0; padding:0; }
-#slides-collection li { width: 180px; margin:10px auto; padding:0; background: green; height:50px; }
+#slides-collection li { width: 180px; margin:10px auto; padding:0; background: green; height:50px; overflow:hidden; }
 
 strong {
 	font-weight: bold;
