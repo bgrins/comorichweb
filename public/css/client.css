@@ -21,10 +21,10 @@ img {
   padding-right: 20px;
 }
 #site-container{
-  border: 2px solid #ddd;
+  border-left: 2px solid #ddd;
   margin:0 auto;
-  
-  width: 95%;
+  width: 98%;
+  padding: 6px 4px;
   border-top:none;
 }
 #site-container #links ul { margin:0 20px; padding:0; }
