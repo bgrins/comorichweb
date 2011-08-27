@@ -8,6 +8,9 @@ var models = require("../models/slideshow.js");
                         slides : slides
                     });
                 }
+                else {
+                    res.send("ERR");
+                }
         }); 
     });
 

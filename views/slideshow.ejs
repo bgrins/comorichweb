@@ -15,9 +15,8 @@
 		</li>
 	</ol>
 </div>
-<div class="slide" id="how-to-overview">
-    <% for (var slide in slides) { %>
-        <%- slide.content %>
-    <% } %>
-	<h2>this is a second clide</h2>
-</div>
+<% for (var i in slides) { %>
+    <div class="slide" id="how-to-overview">
+        <%- slides[i].content %>
+    </div>
+<% } %>
