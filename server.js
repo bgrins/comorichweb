@@ -29,7 +29,7 @@ var RedisStore = require('connect-redis')(express);
 var sessionStore = new RedisStore;
 
 var app = module.exports = express.createServer();
-db.init(siteConf.db.url);
+db.init(siteConf.db.host, siteConf.db.name);
 
 
 app.listen(siteConf.port, null);
@@ -41,12 +41,15 @@ var authentication = new require('./lib/authentication.js')(app, siteConf);
 var assetsSettings = {
 	'js': {
 		'route': /\/static\/js\/[a-z0-9]+\/.*\.js/
-		, 'path': './public/js/'
+error: Your local changes to the following files would be overwritten by merge:
+, 'path': './public/js/'
 		,
         'dataType': 'javascript'
 		, 'files': [
 			'http://code.jquery.com/jquery-latest.js'
-			, siteConf.uri+'/socket.io/socket.io.js' // special case since the socket.io module serves its own js
+			r siteConf.uri+'/socket.io/socket.io.js' // special case since the socket.io module serves its own js
+r: Your local changes to the following files would be overwritten by merge:
+
 			, 'jquery.client.js'
 		]
 		, 'debug': true

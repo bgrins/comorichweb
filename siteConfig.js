@@ -2,6 +2,7 @@ var settings = {
 	'sessionSecret': 'sessionSecret',
     'port': 8080,
     'uri': 'http://localhost:8080', // Without trailing /
+    'tempDir': "/tmp/", // with trailing /
 
 	// You can add multiple recipiants for notifo notifications
     'notifoAuth': {
@@ -10,11 +11,14 @@ var settings = {
     },
 
     'db': {
-        'url': 'mongodb://localhost/sample-app',
-    }
+        'host': 'localhost',
+        'name': 'sample-app'
+    }, 
+
+    'zipExec': __dirname + "/zip.sh",
 
 	// Enter API keys to enable auth services, remove entire object if they aren't used.
-, 'external': {
+    'external': {
 		'facebook': {
 			appId: '199842220079212',
 			appSecret: '3c65d84b0793accabb2dc35015d1a067'
