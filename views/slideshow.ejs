@@ -1,8 +1,11 @@
 <% for (var i in slides) { %>
-    <div class="slide" id="<%= slides[i]._id %>">
-    
-    	<div class='slide-inner'>
-        <%- slides[i].content %>
+    <% var slide = slides[i]; %>
+    <% if (slide._id) { %>
+        <div class="slide" id="<%= slide._id %>">
+        
+            <div class='slide-inner'>
+                <%- slide.content %>
+            </div>
         </div>
-    </div>
+    <% } %>
 <% } %>

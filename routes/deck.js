@@ -10,11 +10,6 @@ module.exports = function(app){
         var title = req.param("title", "Deck");
         var deck = new deck_repo.model;
         deck.title = title;
-        deck.slides.push({
-            content: "TESTING HERE HERE HIII ",
-            sort: 0
-        });
-        
         deck.save(function() {
             res.redirect("/app");
         });

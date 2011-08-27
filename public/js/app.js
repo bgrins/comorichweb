@@ -11,7 +11,6 @@ var general = {
 		$("#save").button({icons: { primary: "ui-icon-check" } }).click(function() {
 			general.save();
 		});
-		
 	},
 	resize: function() {
 		var fullHeight = $(window).height();
@@ -24,25 +23,11 @@ var general = {
 	},
 	saving: false,
 	save: function() {
-        log("saving");
 		general.saving = true;
 		$("#save").addClass("ui-state-disabled");
-		$.ajax({
-			url:  '/slide/update', 
-			method: 'post',
-			data: {
-                deckid: deck.data._id,
-				slides: slides.collection
-			},
-			success: function() {
-				log("updated", arguments);
-			},
-			complete: function() {
-                log("complete");
-				general.saving = false;
-				$("#save").removeClass("ui-state-disabled");
-			}
-		});
+        $.post('/slide/update', { deckid: deck.data._id, slides: slides.collection }, function() {
+            log('updated', arguments);
+        });
 	}
 };
 
@@ -123,7 +108,7 @@ var slides = {
 	
 	},
 	add: function() {
-		$.post('/slide/create', { deckid : deck.data._id, content: "hey test here" },  function(data) {
+		$.post('/slide/create', { deckid : deck.data._id, content: "Enter Content" },  function(data) {
 			var newslide = data;
             slides.collection.push(newslide);
             slides.remap();
