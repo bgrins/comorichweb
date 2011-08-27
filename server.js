@@ -125,7 +125,6 @@ app.configure(function() {
     */
 });
 // ENV based configuration
-
 // Show all errors and keep search engines out using robots.txt
 app.configure('development', function(){
 	app.use(express.errorHandler({
@@ -166,6 +165,7 @@ app.error(function(err, req, res, next){
 		res.render('errors/500');
 	}
 });
+
 function NotFound(msg){
 	this.name = 'NotFound';
 	Error.call(this, msg);
@@ -175,7 +175,7 @@ function NotFound(msg){
 require("./routes")(app);
 
 // Initiate this after all other routing is done, otherwise wildcard will go crazy.
-var dummyHelpers = new DummyHelper(app);
+//var dummyHelpers = new DummyHelper(app);
 
 /*
 // If all fails, hit em with the 404
