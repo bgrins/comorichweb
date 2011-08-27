@@ -1,0 +1,6 @@
+<a href="/deck/create">add</a>
+	   
+<% for(var i in decks) { %> 
+    <% var deck = decks[i]; %>
+    <a href="/app/<%= deck._id %>"><%= deck.title %></a>
+<% } %>
