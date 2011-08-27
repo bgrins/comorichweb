@@ -24,19 +24,21 @@ var general = {
 	},
 	saving: false,
 	save: function() {
+        log("saving");
 		general.saving = true;
-		
 		$("#save").addClass("ui-state-disabled");
 		$.ajax({
 			url:  '/slide/update', 
 			method: 'post',
 			data: {
+                deckid: deck.data._id,
 				slides: slides.collection
 			},
 			success: function() {
 				log("updated", arguments);
 			},
 			complete: function() {
+                log("complete");
 				general.saving = false;
 				$("#save").removeClass("ui-state-disabled");
 			}
@@ -51,9 +53,6 @@ var slides = {
 	template: _.template("<% _.each(slides, function(s, i) { %> <li id='slide_<%= s._id %>' data-id='<%= s._id %>'><%= s.content %></li> <% }); %> </li>"),
 	obj: { },
 	init: function() {
-
-
-	
 		$("#add").button().click(function() {
 			slides.add();
 		});
@@ -124,15 +123,12 @@ var slides = {
 	
 	},
 	add: function() {
-		/*$.post('/slide/create', function(data) {
-			log(data);
-			
-		});*/
-		
-		var newslide = { content: 'slide content', _id: (new Date().getTime()), sort: slides.nextSort++ }
-		slides.collection.push(newslide);
-		slides.remap();
-		slides.activate(newslide);
+		$.post('/slide/create', { deckid : deck.data._id, content: "hey test here" },  function(data) {
+			var newslide = data;
+            slides.collection.push(newslide);
+            slides.remap();
+            slides.activate(newslide);
+		});
 	},
 	sync: function() {
 		alert(slides.template({ slides: slides.collection }))
