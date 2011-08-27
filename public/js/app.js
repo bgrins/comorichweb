@@ -3,10 +3,9 @@ var general = {
 	init: function() {
 		$(window).bind("resize", general.resize);
 		general.resize();
-		
 		$("#tabs").tabs();
-		
-		
+		slides.collection = _LOADED_SLIDES || [];
+		deck.data = _LOADED_DECK || { };
 	},
 	resize: function() {
 		var fullHeight = $(window).height();
@@ -43,7 +42,9 @@ var slides = {
 			
 		if (slides.collection.length == 0) {
 			slides.add();
-		}	
+		}
+		
+		slides.redraw();
 	},
 	activate: function(slide) {
 		slides.active = slide;
@@ -88,12 +89,13 @@ var slides = {
 };
 
 var deck = {
+	data: { title: 'Untitled' },
 	init: function() {
 		$("#rename").button({
             icons: { primary: "ui-icon-locked" },
             text: false
         }).click(function() {
-			deck.title = prompt("Enter a title", deck.title + "") || deck.title;
+			deck.title = prompt("Enter a title", deck.data.title + "") || deck.data.title;
 			deck.render();
 		});
 		deck.render();
@@ -103,9 +105,8 @@ var deck = {
 
 	},
 	render: function() {
-		$("#title h3").text(deck.title);
-	},
-	title: 'Untitled'
+		$("#title h3").text(deck.data.title);
+	}	
 };
 
 
