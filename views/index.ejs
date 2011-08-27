@@ -3,14 +3,9 @@
   <a href="/deck/create">Create Slideshow</a>
 </div>
 
-<div id="links">
-	<h2>What is SlideSpot?</h2>
-    <ul>
-      <li><a href="/how-it-works">How It Works</a></li>
-      <li><a href="/demo">Demo</a></li>
-      <li><a href="/dashboard">Your Slideshows</a></li>
-   	<ul>
-</div>	
+<% if (session.auth) { %>
+<a href='/dashboard'>Your Slideshows</a>
+<% } %>
 
 <div id="others">
   <h2>See the slideshows others are creating:</h2>
