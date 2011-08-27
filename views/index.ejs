@@ -1,22 +1,27 @@
-
-  <nav id="topnav">
-    <ul>
-      <li><a href="">Your Slideshows</a></li>
-      <li><a href="">How It Works</a></li>
-      <li><a href="">What Are Others Presenting On</a></li>
-   <ul>
-  </nav>
-  <div class="logins">
-	<ul class="padding">
+<div id="login">
 		<% if(!session.auth) {%>
+      <p>Login Using:</p>
+      <ul>
 			<li class="facebook"><a href="/auth/facebook"><img src="//facebook.com/favicon.ico" alt="">Facebook</a></li>
 			<li class="twitter"><a href="/auth/twitter"><img src="//twitter.com/favicon.ico" alt="">Twitter</a></li>
 			<li class="github"><a href="/auth/github"><img src="//github.com/favicon.ico" alt="">Github</a></li>
+      </ul>
 		<% } else { %>
-			<li class="logout"><a href="/logout">Logout</a></li>
+      <img class="avatar" src="<%= ((session.auth && session.user.image) ? session.user.image : '/img/default.png') %>">
+      <img class="service" src="<%= (session.auth && session.auth.github) ? '//github.com/favicon.ico' : '' %>
+      <%= (session.auth && session.auth.twitter) ? '//twitter.com/favicon.ico' : '' %>
+      <%= (session.auth && session.auth.facebook) ? '//facebook.com/favicon.ico' : '' %>"/>
+			<div class="logout"><a href="/logout">Logout</a></div>
 		<% } %>
-	</ul>
-</div>t
+</div>
+<br style="clear: both"/>
+  <nav id="topnav">
+    <ul>
+      <li><a href="/your-slides">Your Slideshows</a></li>
+      <li><a href="/how-it-works">How It Works</a></li>
+      <li><a href="/demo">Demo</a></li>
+   <ul>
+  </nav>
 <section id="header">
   <h1>Slidespot</h1>
   <p>The spot for slides.</p>

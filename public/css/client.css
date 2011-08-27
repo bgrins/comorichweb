@@ -11,6 +11,27 @@ body {
 img {
 	-ms-interpolation-mode:bicubic;
 }
+h1{
+  font-size: 3em;
+}
+#login {
+  width: 200px;
+  float: right;
+  height: 50px;
+}
+#login .logout{
+  float: right;
+  margin-right: 20px;
+}
+.service {
+	position: relative;
+	right: 15px;
+  top: 15px;
+	background: #fff;
+	border-radius: 20px;
+	padding: 2px;
+	box-shadow: 0 0 5px #000;
+}
 #topnav {
   width: 100%;
   text-align: center;
@@ -48,6 +69,10 @@ img {
 #template-controls { margin:0; padding:0; }
 #template-controls li { color: #666; margin:0; padding:10px; list-style-type:none;}
 #template-controls .container {  width: 80%; }
+.editor { float:left; width: 400px; min-height: 100px; margin:10px; vertical-align: top; }
+.editor:hover { outline: dashed 4px orange; }
+.editor.active { outline: solid 4px orange; }
+
 
 .logins {
 	position: fixed;

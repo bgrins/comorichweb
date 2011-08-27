@@ -16,17 +16,16 @@ module.exports = function(app){
         }); 
     });
 
-    app.all("/slide/create", function(req, res) {
+    app.all("/slide/create/:deckid", function(req, res) {
         var content = req.param("content", "welcome to slideshow.js!");
         var deckid = req.param("deckid", "4e591512259871c70e000001");
         var sort = req.param("sort", 0);
-
         var slide = {
             sort: sort,
             content: content
         };
 
-        deckRepo.model.findById(deckid, function(err, deck) {
+        deckRepo.model.findById(deckid , function(err, deck) {
             deck.slides.push(slide);
             deck.save(function(err) {
                 if (err) {

@@ -15,6 +15,7 @@ process.addListener('uncaughtException', function (err, stack) {
 });
 
 var connect = require('connect');
+var stylus  = require('stylus');
 var express = require('express');
 var assetManager = require('connect-assetmanager');
 var assetHandler = require('connect-assetmanager-handlers');
@@ -111,6 +112,14 @@ app.configure(function() {
 	app.use(authentication.middleware.normalizeUserData());
 	app.use(express['static'](__dirname+'/public', {maxAge: 86400000}));
 
+  stylus.middleware({
+    debug: true
+  , src: __dirname + "/views"
+  , dest: __dirname+"/public"
+  , compile: function(str, path){
+      stylus(str).set('filename', path).set('compress', true);
+    }
+  });
 	// Send notification to computer/phone @ visit. Good to use for specific events or low traffic sites.
     /*
 	if (siteConf.notifoAuth) {
