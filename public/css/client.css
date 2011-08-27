@@ -68,6 +68,7 @@ img {
 
 
 .colorpicker {
+	z-index: 1000000;
 	width: 356px;
 	height: 176px;
 	overflow: hidden;
