@@ -5,16 +5,18 @@
 </script>
 <style>html {overflow:hidden; }</style>
 <div id='slides-wrapper'>
-    <div id='top' class='clearfix'>
-
-        <div id='title'><h3></h3><button id='rename'>rename</button></div>
-        <div id='buttons'>
-            <button id='save'>Save</button>
-            <a href="/deck/<%= deck._id %>" target="_blank">Preview</a>
-        </div>
-    </div>
+	
+	<div id='controls-wrapper' class='clearfix'>
+    	<div id='deck-title'><h3></h3><button id='rename'>rename</button></div>
+    	<div id='deck-buttons'>
+    	    <button id='save'>Save</button>
+    	    <a href="/deck/<%= deck._id %>" target="_blank">Preview</a>
+    	</div>
+	</div>
+	
     <div id='slides-content'>
-        
+    	    
+
         <div id='slides-global'>
             <div id='slides-commands'>
                 <button id='add'>new slide</button>

@@ -17,8 +17,29 @@ img {
   text-align: center;
   font-size: 500%;
 }
+#title * { float:left; }
+#site-top { background:#300; color:#ddd; padding:5px 10px; padding-bottom: 2px; border-bottom: 3px solid #844; } 
 #site-top h1 { color: white; text-decoration: none; font-size: 2em; margin:0; padding: 0; margin-bottom:2px; }
 #site-top h1 a, #site-top h1 a:visited { color: white; text-decoration:none; }
+
+#site-top.small h1 { font-size:1.1em; }
+#site-top.small img { display:none; }
+
+#site-top #links ul li {  }
+
+#login {
+  float: right;
+  background: #333; 
+  padding: 2px 0;
+  margin-bottom:5px;
+}
+#login .using { float:left; margin-right:10px;  }
+#login li { float:left; list-style-type:none; padding-right: 10px; }
+#login a, #login a:visited { color:white; }
+#login ul { float:right; margin:0; padding:0; }
+#login .logout{ display:inline-block; margin-left:3px;  }
+
+
 #site-container{
   border-left: 2px solid #ddd;
   margin:0 auto;
@@ -27,14 +48,13 @@ img {
   border-top:none;
 }
 #site-container #links ul { margin:0 20px; padding:0; }
-#site-top #links ul li {  }
-
-#top, #site-top { background:#300; color:#ddd; padding:5px 10px; padding-bottom: 2px; border-bottom: 3px solid #844; } 
 #slides-wrapper { position:relative;  }
 #slides-content {  margin:0 10px; position:relative; margin-top:20px; }
-#title { float:left; }
-#title h3 { margin:0; padding:0; float:left; font-size:24px; font-weight: lighter; padding-right:10px;  }
-#buttons { float:right; }
+#title, #deck-title { float:left; }
+#title h3, #deck-title h3 { margin:0; padding:0; float:left; font-size:24px; font-weight: lighter; padding-right:10px;  }
+#buttons, #deck-buttons { float:right; }
+
+
 
 #slide-single { position:absolute; left: 160px; right:0; top:0; bottom:0;  }
 #slide-source-wrapper, #slider-source-design, #slide-source, #slide-design { margin: 0; position: absolute; top: 30px; bottom: 0; left: 0; right: 0; }
@@ -62,17 +82,6 @@ img {
 
 .decks li {float:left; width: 100px; height: 100px; margin:10px; border: 1px solid; list-style-type: none; }
 
-#login {
-  float: right;
-  background: #333; 
-  padding: 2px 0;
-  margin-bottom:5px;
-}
-#login .using { float:left; margin-right:10px;  }
-#login li { float:left; list-style-type:none; padding-right: 10px; }
-#login a, #login a:visited { color:white; }
-#login ul { float:right; margin:0; padding:0; }
-#login .logout{ display:inline-block; margin-left:3px;  }
 .service {
 	position: relative;
 	right: 15px;
