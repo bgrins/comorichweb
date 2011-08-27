@@ -604,11 +604,8 @@ function initialize() {
   socket.on('next', nextSlide);
   socket.on('prev', prevSlide);
   
-  socket.emit('deck-identify');
+  socket.emit('deck-identify', {id:$('body').data('id')});
   
-  var phone = prompt('Enter your cell phone number to get the remote');
-  socket.emit('phone', phone);
-
   getCurSlideFromHash();
 
   if (window['_DEBUG']) {
