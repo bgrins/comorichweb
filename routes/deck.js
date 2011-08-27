@@ -2,6 +2,18 @@ var fs = require("fs");
 var deck_repo = require("../models/deck");
 
 module.exports = function(app){
+
+    app.all("/deck/:id", function(req, res) {
+        var id = req.params.id;
+
+        var deck = deck_repo.model.findById(id, function(err, deck) {
+            res.render("slideshow", {
+                slides: deck.slides,
+                layout: "presentation-layout.ejs"
+            });
+        });
+    });
+    
     app.get("/deck/create", function(req, res) {
         res.render("createdeck", { layout: "layout.ejs" });
     });

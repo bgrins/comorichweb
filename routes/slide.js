@@ -3,17 +3,6 @@ var deckRepo = require("../models/deck");
 var slideRepo = require("../models/slide");
 
 module.exports = function(app){
-    app.all("/deck/:id", function(req, res) {
-        var id = req.params.id;
-        console.log(id);
-
-        var deck = deckRepo.model.findById(id, function(err, deck) {
-            res.render("slideshow", {
-                slides: deck.slides,
-                layout: "presentation-layout.ejs"
-            });
-        });
-    });
 
     app.post("/slide/create", function(req, res) {
         var content = req.param("content", "welcome to slideshow.js!");
