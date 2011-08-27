@@ -3,9 +3,8 @@
 
 var slides = {
 	collection: [],
-	template: _.template("<ul> <% _.each(slides, function(s) { %> <li><%= s.content %></li> <% }); %> </ul>"),
+	template: _.template("<% _.each(slides, function(s) { %> <li><%= s.content %></li> <% }); %> </li>"),
 	init: function() {
-		$().appendTo("body");
 
 		$("#add").click(function() {
 			slides.add();
@@ -13,9 +12,15 @@ var slides = {
 		$("#sync").click(function() {
 			slides.sync();
 		});
+		
+		$("#slides-collection").delegate("li", "click", function() {
+			//slides.activate()
+		});
 	},
 	add: function() {
 		slides.collection.push({ content: 'hi' });
+		
+		$("#slides-collection").html(slides.template({ slides: slides.collection })).sortable("destroy").sortable();
 		
 		
 	},
