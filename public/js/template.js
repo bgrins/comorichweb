@@ -74,6 +74,10 @@ var template = {
 			template.activeselector = $(this).data("selector");
 		}).first().click();
 		
+		$("#template-controls-container").draggable({
+			handle: ".ui-widget-header"
+		});
+		
 		for (var i = 0; i < template.fields.length; i++) {
 			var field = template.fields[i];
 			

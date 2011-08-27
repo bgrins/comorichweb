@@ -53,6 +53,7 @@
  * To view and modify this theme, visit http://jqueryui.com/themeroller/?ctl=themeroller
  */
 
+.ui-draggable .ui-widget-header  {cursor:move; }
 
 /* Component containers
 ----------------------------------*/

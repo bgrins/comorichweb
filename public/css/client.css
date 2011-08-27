@@ -66,9 +66,13 @@ h1{
 #slides-collection li.active { outline: solid 2px orange; }
 
 
+#template-controls-container { position:absolute; height:400px; width: 150px; border:solid 3px #111; background: #777; color: #eee; z-index: 101;  }
+#template-controls-container.ui-draggable-dragging { opacity:.5; }
 #template-controls { margin:0; padding:0; }
-#template-controls li { color: #666; margin:0; padding:10px; list-style-type:none;}
+#template-controls li { margin:0; padding:10px; list-style-type:none;}
 #template-controls .container {  width: 80%; }
+
+
 .editor { float:left; width: 400px; min-height: 100px; margin:10px; vertical-align: top; }
 .editor:hover { outline: dashed 4px orange; }
 .editor.active { outline: solid 4px orange; }
@@ -111,7 +115,7 @@ h1{
 
 
 .colorpicker {
-	z-index: 1000000;
+	z-index: 100;
 	width: 356px;
 	height: 176px;
 	overflow: hidden;
