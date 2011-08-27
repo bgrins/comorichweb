@@ -4,14 +4,14 @@
 	<%= (session.auth && session.auth.twitter) ? '//twitter.com/favicon.ico' : '' %>
 	<%= (session.auth && session.auth.facebook) ? '//facebook.com/favicon.ico' : '' %>
 ">
-<div id="bubble">
+<div id="bubble hide">
 	<ul></ul>
 </div>
-<div id="connected">
+<div id="connected hide">
 	<strong>Online</strong>
 	<div class="overlay"></div>
 </div>
-<div class="logins">
+<div class="logins hide">
 	<ul class="padding">
 		<% if(!session.auth) {%>
 			<li class="facebook"><a href="/auth/facebook"><img src="//facebook.com/favicon.ico" alt="">Facebook</a></li>
@@ -21,4 +21,11 @@
 			<li class="logout"><a href="/logout">Logout</a></li>
 		<% } %>
 	</ul>
+</div>
+
+
+<div id='slides'>
+	<a href='#' id='add'>add</a>
+	<a href='#' id='sync'>sync</a>
+	<textarea id='slide-content'></textarea>
 </div>
