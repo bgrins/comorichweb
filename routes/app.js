@@ -10,16 +10,18 @@ var deck_repo = require("../models/deck.js");
             deck_repo.model.findById(id, function(err, deck) {
                 res.render("app", { deck : deck });
             });
-        } else {
-            deck_repo.model.find({}, function(err, decks) {
-                res.render("decklist", { 
-                	decks: decks,
-                	layout: "site.ejs"
-                });
-            });
         }
     });
     
+    app.get("/dashboard", function(req, res) {
+    	deck_repo.model.find({}, function(err, decks) {
+    	    res.render("dashboard", { 
+    	    	decks: decks,
+    	    	layout: "site.ejs"
+    	    });
+    	});
+    });
+        
     app.get("/template", function(req, res) {
         var content = req.param("content", "welcome to slideshow.js!");
         res.render("templateeditor");
