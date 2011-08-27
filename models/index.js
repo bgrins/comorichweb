@@ -35,7 +35,7 @@ var deck = mongoose.model("Deck", DeckSchema);
 
 /* Static Deck Methods */
 deck.findById = function(id, callback) {
-    deck.find({ _id: id }, function(err, deck) {
+    deck.findById({ _id: id }, function(err, deck) {
             callback(deck);
     });
 };

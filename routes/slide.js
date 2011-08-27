@@ -21,26 +21,20 @@ module.exports = function(app){
         var deckid = req.param("deckid", null);
         var sort = req.param("sort", 0);
 
-        if (deckid) {
-            models.Deck.findById(deckid, function(deck) {
-                console.log(deckid, deck);
-                var slide = new models.Slide();
+        models.Deck.find({}, function(err, decks) {
+            var deck = decks[0];
+            var slide = new models.Slide();
+            slide.sort = sort;
+            slide.content = content;
+            slide.save(function(err) {
+                console.log(deck.slides);
+                deck.slides.push(slide);
+                console.log(deck.slides);
+                deck.save();
 
-                slide.sort = sort;
-                slide.content = content;
-
-                slide.save(function(err) {
-                    if (!err) {
-                        deck.add(slide);
-                        deck.save(function() {
-                            res.send(slide);
-                        });
-                    }
-                });
+                res.send(slide);
             });
-        }
-
-        res.send("fail");
+        });
     });
 
     app.all("/slide/update", function(req, res) {
