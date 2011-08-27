@@ -10,6 +10,7 @@ module.exports = function(app){
         var title = req.param("title", "Deck");
         var deck = new deck_repo.model;
         deck.title = title;
+        deck.author = req.session.user
         deck.save(function() {
             res.redirect("/app");
         });

@@ -4,6 +4,7 @@ var slide_repo = require('./slide');
 
 var schema = new mongoose.Schema({
         name: String,
+        author: mongoose.SchemaTypes.Mixed,
         title: String,
         slides: [slide_repo.schema]
 });
