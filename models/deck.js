@@ -10,7 +10,6 @@ var schema = new mongoose.Schema({
 });
 
 schema.statics.findByUser = function(user, cb){
-  console.log(user.id);
   model.find({'author.id':user.id}, cb);
 };
 var model = mongoose.model("Deck", schema);
