@@ -20,9 +20,9 @@
   <div id="site-top" class="clearfix">
 	<div id="title"><h1><a href='/'>Slide Spot</a></h1></div>
 	
-	<div id="login">
+	<div id="login" class="clearfix">
 			<% if(!session.auth) {%>
-	      <p>Login Using:</p>
+	      <span class='using'>Login Using:</span>
 	      <ul>
 				<li class="facebook"><a href="/auth/facebook"><img src="//facebook.com/favicon.ico" alt="">Facebook</a></li>
 				<li class="twitter"><a href="/auth/twitter"><img src="//twitter.com/favicon.ico" alt="">Twitter</a></li>
