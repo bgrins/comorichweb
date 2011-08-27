@@ -24,7 +24,7 @@ var general = {
 	saving: false,
 	save: function() {
 		general.saving = true;
-		/*
+		
 		$("#save").addClass("ui-state-disabled");
 		$.ajax({
 			url:  '/slide/update', 
@@ -39,7 +39,7 @@ var general = {
 				general.saving = false;
 				$("#save").removeClass("ui-state-disabled");
 			}
-		});*/
+		});
 	}
 };
 
@@ -150,7 +150,7 @@ var deck = {
 var viewsource = {
 	editor: null,
 	init: function() {
-		viewsource.editor = ace.edit("slide-content");
+		viewsource.editor = ace.edit("slide-source");
     	viewsource.editor.setTheme("ace/theme/textmate");
     	var HtmlMode = require("ace/mode/html").Mode;
     	viewsource.editor.getSession().setMode(new HtmlMode());

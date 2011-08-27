@@ -1,10 +1,4 @@
 <!--
-<div id="tabs">
-	<ul>
-		<li><a href="#slide-content">View Source</a></li>
-		<li><a href="#slide-design">Design (alpha)</a></li>
-	</ul>
-</div>
 
 	<div id="slide-design">
 		this doesn't work
@@ -20,6 +14,7 @@ _LOADED_DECK = { '_id': '345345', 'name': 'name', 'title': 'title'  };
 
 		<div id='title'><h3></h3><button id='rename'>rename</button></div>
 		<div id='buttons'>
+
 		<button id='save'>Save</button>
 		</div>
 	</div>
@@ -31,11 +26,17 @@ _LOADED_DECK = { '_id': '345345', 'name': 'name', 'title': 'title'  };
 		
 		<ul id='slides-collection'></ul>
 	</div>
-	<div id='right'>
-	
-	
-
-	<pre id='slide-content'></pre>
+	<div id='slide-single'>
+		<div id="tabs">
+			<ul>
+				<li><a href="#slide-source-wrapper">View Source</a></li>
+				<li><a href="#slide-design">Design (alpha)</a></li>	
+			</ul>
+		</div>
+		<div id='slide-design'><iframe src='javascript:void(0);'></iframe></div>
+		<div id='slide-source-wrapper'>
+			<pre id='slide-source'></pre>
+		</div>
 	</div>
 </div>
 
