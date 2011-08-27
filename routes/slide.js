@@ -31,7 +31,6 @@ module.exports = function(app){
                 deck.slides.push(slide);
                 console.log(deck.slides);
                 deck.save();
-
                 res.send(slide);
             });
         });
