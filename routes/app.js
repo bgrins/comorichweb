@@ -27,6 +27,7 @@ var deck_repo = require("../models/deck.js");
       if(req.session.user){
         deck_repo.model.findByUser(req.session.user, function(err, decks){
           res.render('your-slides', {decks:decks});
+          console.log(decks)
         });
       }else{
         res.render('your-slides', {decks:decks});
