@@ -12,7 +12,11 @@ img {
 	-ms-interpolation-mode:bicubic;
 }
 
-#slides-collection { float:left; border: solid 2px; width: 200px; height: 400px; overflow-y:scroll; margin:0; padding:0;}
+#left { float:left; width: 200px; background: #4dd; }
+#right { float:left; width: 800px;height:100%; }
+#right textarea { margin:0 auto; width: 80%; height: 80%; }
+#slides { background: #ddd; }
+#slides-collection {  height: 400px; overflow-y:scroll; margin:0; padding:0; }
 #slides-collection li { width: 180px; margin:10px auto; padding:0; background: green; height:50px; }
 
 strong {

@@ -1,16 +1,25 @@
+
+
+<div id='slides'>
+	<div id='left'>
+	<a href='#' id='add'>add</a>
+	<a href='#' id='sync'>sync</a>
+	<ul id='slides-collection'>
+	
+	</ul>
+	</div>
+	<div id='right'>
+	
+	<textarea id='slide-content'></textarea>
+	</div>
+</div>
+
 <input type="hidden" id="image" value="<%= ((session.auth && session.user.image) ? session.user.image : '/img/default.png') %>">
 <input type="hidden" id="service" value="
 	<%= (session.auth && session.auth.github) ? '//github.com/favicon.ico' : '' %>
 	<%= (session.auth && session.auth.twitter) ? '//twitter.com/favicon.ico' : '' %>
 	<%= (session.auth && session.auth.facebook) ? '//facebook.com/favicon.ico' : '' %>
 ">
-<div id="bubble hide">
-	<ul></ul>
-</div>
-<div id="connected hide">
-	<strong>Online</strong>
-	<div class="overlay"></div>
-</div>
 <div class="logins hide">
 	<ul class="padding">
 		<% if(!session.auth) {%>
@@ -20,15 +29,5 @@
 		<% } else { %>
 			<li class="logout"><a href="/logout">Logout</a></li>
 		<% } %>
-	</ul>
-</div>
-
-
-<div id='slides'>
-	<a href='#' id='add'>add</a>
-	<a href='#' id='sync'>sync</a>
-	<textarea id='slide-content'></textarea>
-	<ul id='slides-collection'>
-	
 	</ul>
 </div>

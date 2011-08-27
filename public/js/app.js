@@ -1,5 +1,13 @@
 
-
+var general = {
+	init: function() {
+		$(window).bind("resize", general.resize);
+		general.resize();
+	},
+	resize: function() {
+		$("#slides").height($(document).height())
+	}
+};
 
 var slides = {
 	collection: [],
@@ -32,4 +40,5 @@ var slides = {
 
 $(function() {
 	slides.init();
+	general.init();
 });
