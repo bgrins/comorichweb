@@ -11,7 +11,7 @@ var general = {
 
 var slides = {
 	collection: [],
-	template: _.template("<% _.each(slides, function(s) { %> <li><%= s.content %></li> <% }); %> </li>"),
+	template: _.template("<% _.each(slides, function(s, i) { %> <li data-id='<%= s.id %>'><%= s.content %></li> <% }); %> </li>"),
 	init: function() {
 
 		$("#add").click(function() {
@@ -22,23 +22,39 @@ var slides = {
 		});
 		
 		$("#slides-collection").delegate("li", "click", function() {
-			slides.activate(slides.collection[0]);
+			var id = $(this).data("id");
+			for (var i = 0; i < slides.collection.length; i++) {
+				if (slides.collection[i].id == id) {
+					slides.activate(slides.collection[i]);
+				}	
+			}
 		});
 		
 		$("#slide-content").change(function() {
 			slides.active.content = $(this).val();
+			slides.redraw();
 		});
+		
+		$("#top button").button();
+	
+		if (slides.collection.length == 0) {
+			slides.add();
+		}	
 	},
 	activate: function(slide) {
 		slides.active = slide;
+		$("#right").addClass("editing");
 		$("#slide-content").val(slide.content);
 	},
-	add: function() {
-		slides.collection.push({ content: 'hi' });
-		
+	redraw: function() {
 		$("#slides-collection").
 			html(slides.template({ slides: slides.collection })).
 			sortable("destroy").sortable();
+	
+	},
+	add: function() {
+		slides.collection.push({ content: 'slide content', id: (new Date().getTime()) });
+		slides.redraw();
 	},
 	sync: function() {
 		alert(slides.template({ slides: slides.collection }))
