@@ -12,6 +12,11 @@ img {
 	-ms-interpolation-mode:bicubic;
 }
 
+#create {
+  display: block;
+  text-align: 'center';
+  font-size: 500%;
+}
 #site-top h1 { color: white; text-decoration: none; font-size: 2em; margin:0; padding: 0; margin-bottom:2px; }
 #site-top h1 a, #site-top h1 a:visited { color: white; text-decoration:none; }
 #site-container{
