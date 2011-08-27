@@ -21,12 +21,15 @@ var assetHandler = require('connect-assetmanager-handlers');
 var notifoMiddleware = require('connect-notifo');
 var DummyHelper = require('./lib/dummy-helper');
 require('nko')('Ixo1ZxbTYSyP2lAu');
+var db = require("./models/db");
 
 // Session store
 var RedisStore = require('connect-redis')(express);
 var sessionStore = new RedisStore;
 
 var app = module.exports = express.createServer();
+db.init(siteConf.db.host, siteConf.db.name);
+
 
 app.listen(siteConf.port, null);
 // Setup socket.io server
@@ -38,7 +41,8 @@ var assetsSettings = {
 	'js': {
 		'route': /\/static\/js\/[a-z0-9]+\/.*\.js/
 		, 'path': './public/js/'
-		, 'dataType': 'javascript'
+		,
+        'dataType': 'javascript'
 		, 'files': [
 			'http://code.jquery.com/jquery-latest.js'
 			, siteConf.uri+'/socket.io/socket.io.js' // special case since the socket.io module serves its own js
@@ -154,6 +158,7 @@ app.dynamicHelpers({
 });
 */
 // Error handling
+/*
 app.error(function(err, req, res, next){
 	// Log the error to Airbreak if available, good for backtracking.
 	console.log(err);
@@ -165,7 +170,7 @@ app.error(function(err, req, res, next){
 		res.render('errors/500');
 	}
 });
-
+*/
 function NotFound(msg){
 	this.name = 'NotFound';
 	Error.call(this, msg);
