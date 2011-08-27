@@ -6,9 +6,11 @@ var GridStore = require('mongodb').GridStore;
 mongoose.connect('localhost', 'sample-app');
 
 var SlideSchema = new Schema({
+    _id: String,
     content: String
 });
 var PresentationSchema = new Schema( {
+    _id: String,
     title: String,
     slides: [SlideSchema]
 });
