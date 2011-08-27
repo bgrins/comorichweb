@@ -3,6 +3,9 @@ var Deck = require("../models/deck.js").model;
 module.exports = function(app){
     app.get('/', function(req, res) {
       Deck.find({}, function(err, result){
+        console.log(err);
+        console.log(result);
+        console.log ('that is it');
         res.render('index', {layout: "site.ejs", decks:result });
       });
     });
