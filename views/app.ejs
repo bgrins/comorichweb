@@ -11,17 +11,25 @@
 	</div>
 	
 -->
+<script type='text/javascript'>
+_LOADED_SLIDES = [{'content': 'hi', '_id': '213', 'sort': 1},{'content': 'asdfladks', '_id': '2132', 'sort': 0}];
+_LOADED_DECK = { '_id': '345345', 'name': 'name', 'title': 'title'  };
+</script>
 <div id='slides'>
-	<div id='top'>
-		<button>Save</button>
+	<div id='top' class='clearfix'>
+
+		<div id='title'><h3></h3><button id='rename'>rename</button></div>
+		<div id='buttons'>
+		<button id='save'>Save</button>
+		</div>
 	</div>
-	<div id='left'>
 	
-	<a href='#' id='add'>add</a>
-	<a href='#' id='sync'>sync</a>
-	<ul id='slides-collection'>
-	
-	</ul>
+	<div id='slides-global'>
+		<div id='slides-commands'>
+			<button id='add'>new slide</button>
+		</div>
+		
+		<ul id='slides-collection'></ul>
 	</div>
 	<div id='right'>
 	
