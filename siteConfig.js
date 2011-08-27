@@ -2,6 +2,7 @@ var settings = {
 	'sessionSecret': 'sessionSecret',
     'port': 8080,
     'uri': 'http://localhost:8080', // Without trailing /
+    'tempDir': "/tmp/", // with trailing /
 
 	// You can add multiple recipiants for notifo notifications
     'notifoAuth': {
@@ -12,7 +13,9 @@ var settings = {
     'db': {
         'host': 'localhost',
         'name': 'sample-app'
-    }
+    }, 
+
+    'zipExec': __dirname + "/zip.sh"
 
 	// Enter API keys to enable auth services, remove entire object if they aren't used.
 , 'external': {
