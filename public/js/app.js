@@ -15,7 +15,7 @@ var general = {
 	},
 	resize: function() {
 		var fullHeight = $(window).height();
-		var slides = $("#slides");
+		var slides = $("#slides-content");
 		slides.height(fullHeight - slides.offset().top);
 		
 		var collection = $("#slides-collection");
@@ -144,7 +144,7 @@ var deck = {
 	init: function() {
 	
 		$("#rename").button({
-            icons: { primary: "ui-icon-locked" },
+            icons: { primary: "ui-icon-pencil" },
             text: false
         }).click(function() {
 			deck.title = prompt("Enter a title", deck.data.title + "") || deck.data.title;
@@ -186,5 +186,5 @@ $(function() {
 	general.init();
 	viewsource.init();
 	slides.init();
-	deck.init();	
+	deck.init();
 });
