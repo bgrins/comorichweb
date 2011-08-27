@@ -25,11 +25,14 @@ module.exports = function(app){
     		return;
     	}
     	
-    	// TODO: Check use permissions on slide edit
         var id = req.params.id;
-    	
     	deck_repo.model.findById(id, function(err, deck) {
-    	    res.render("editdeck", { deck : deck });
+    		if (deck.author.id != req.session.user.id) {
+    			res.render('errors/404');
+    		}
+    		else {
+    	    	res.render("editdeck", { deck : deck });
+    	    }
     	});
     });
 };
