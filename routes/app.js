@@ -5,13 +5,14 @@ var deck_repo = require("../models/deck.js");
     
     app.get("/app/:id?", function(req, res) {
         var id = req.params.id;
+        
         if (id ) {
             deck_repo.model.findById(id, function(err, deck) {
-                res.render("app", { decks: {}, deck : deck });
+                res.render("app", { deck : deck });
             });
         } else {
             deck_repo.model.find({}, function(err, decks) {
-                res.render("app", { decks: decks, deck: [] });
+                res.render("decklist", { decks: decks });
             });
         }
     });
