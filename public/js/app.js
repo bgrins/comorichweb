@@ -133,15 +133,15 @@ var deck = {
             icons: { primary: "ui-icon-pencil" },
             text: false
         }).click(function() {
-			deck.title = prompt("Enter a title", deck.data.title + "") || deck.data.title;
+			deck.data.title = prompt("Enter a title", deck.data.title + "") || deck.data.title;
 			deck.render();
 		});
-		deck.render();
 		
-
+		deck.render();
 	},
 	render: function() {
-		$("#title h3").text(deck.data.title);
+		log("here", deck.data.title)
+		$("#deck-title h3").text(deck.data.title);
 	}	
 };
 
