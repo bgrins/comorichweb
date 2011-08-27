@@ -1,41 +1,52 @@
-<script type='text/javascript'>
-_LOADED_SLIDES = [{'content': 'hi', '_id': '213', 'sort': 1},{'content': 'asdfladks', '_id': '2132', 'sort': 0}];
-_LOADED_DECK = { '_id': '345345', 'name': 'name', 'title': 'title'  };
-</script>
-<style>html {overflow:hidden; }</style>
-<div id='slides-wrapper'>
-	<div id='top' class='clearfix'>
 
-		<div id='title'><h3></h3><button id='rename'>rename</button></div>
-		<div id='buttons'>
-			<button id='save'>Save</button>
-		</div>
-	</div>
-	<div id='slides-content'>
-		
-		<div id='slides-global'>
-			<div id='slides-commands'>
-				<button id='add'>new slide</button>
-				<button id='remove'>new slide</button>
-			</div>
-			
-			<ul id='slides-collection'></ul>
-		</div>
-		<div id='slide-single'>
-			<div id="tabs">
-				<ul>
-					<li><a href="#slide-source-wrapper">View Source</a></li>
-					<li><a href="#slide-design">Design (alpha)</a></li>	
-				</ul>
-			</div>
-			<div id='slide-design'><iframe src='javascript:void(0);'></iframe></div>
-			<div id='slide-source-wrapper'>
-				<pre id='slide-source'></pre>
-			</div>
-		</div>
-		
-	</div>
-</div>
+<% if (decks.length > 0 ) { %>
+    <a href="/deck/create">add</a>
+    
+    <% for(var i in decks) { %> 
+        <% var deck = decks[i]; %>
+        <a href="/app/<%= deck._id %>"><%= deck.title %></a>
+    <% } %>
+<% }  else { %>
+    <script type='text/javascript'>
+        _LOADED_DECK = <%- JSON.stringify(deck) %>
+        _LOADED_SLIDES = <%- JSON.stringify(deck.slides) %>
+    </script>
+    <style>html {overflow:hidden; }</style>
+    <div id='slides-wrapper'>
+        <div id='top' class='clearfix'>
 
+            <div id='title'><h3></h3><button id='rename'>rename</button></div>
+            <div id='buttons'>
+                <button id='save'>Save</button>
+            </div>
+        </div>
+        <div id='slides-content'>
+            
+            <div id='slides-global'>
+                <div id='slides-commands'>
+                    <button id='add'>new slide</button>
+                    <button id='remove'>new slide</button>
+                </div>
+                
+                <ul id='slides-collection'></ul>
+            </div>
+            <div id='slide-single'>
+                <div id="tabs">
+                    <ul>
+                        <li><a href="#slide-source-wrapper">View Source</a></li>
+                        <li><a href="#slide-design">Design (alpha)</a></li>	
+                    </ul>
+                </div>
+                <div id='slide-design'><iframe src='javascript:void(0);'></iframe></div>
+                <div id='slide-source-wrapper'>
+                    <pre id='slide-source'></pre>
+                </div>
+            </div>
+            
+        </div>
+    </div>
 
 <script>$(app.init);</script>
+
+<% } %>
+
