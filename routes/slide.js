@@ -50,10 +50,11 @@ module.exports = function(app){
                         dbslide.sort = slide.sort;
                     }
                 });
-
-                deck.save(function(err) {
-                    res.send(deck);
-                });;
+				
+            });
+            
+            deck.save(function(err) {
+                res.send(deck);
             });
 
         });
