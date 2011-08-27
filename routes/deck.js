@@ -3,7 +3,7 @@ var deck_repo = require("../models/deck");
 
 module.exports = function(app){
     app.get("/deck/create", function(req, res) {
-        res.render("createdeck");
+        res.render("createdeck", { layout: "layout.ejs" });
     });
 
     app.post("/deck/create", function(req, res) {
@@ -11,8 +11,8 @@ module.exports = function(app){
         var deck = new deck_repo.model;
         deck.title = title;
         deck.author = req.session.user
-        deck.save(function() {
-            res.redirect("/app");
+        deck.save(function(err, deck) {
+            res.redirect("/app/" + deck._id);
         });
     });
 
