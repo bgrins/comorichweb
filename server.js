@@ -170,6 +170,8 @@ function NotFound(msg){
 	Error.captureStackTrace(this, arguments.callee);
 }
 
+require("./routes")(app);
+
 
 // Initiate this after all other routing is done, otherwise wildcard will go crazy.
 var dummyHelpers = new DummyHelper(app);
