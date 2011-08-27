@@ -1,0 +1,7 @@
+	  
+<li class='deckpreview'>
+<h4><a href="/deck/<%=deckthumb._id%>"><%= deckthumb.title %></a></h4>
+<span class='author'>by <%= deckthumb.author? deckthumb.author.name  : 'Unknown' %></span>
+<p>Slides: <%= deckthumb.slides? deckthumb.slides.length : 0 %></p>
+
+</li>
