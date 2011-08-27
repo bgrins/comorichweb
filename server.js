@@ -29,7 +29,7 @@ var RedisStore = require('connect-redis')(express);
 var sessionStore = new RedisStore;
 
 var app = module.exports = express.createServer();
-db.init(siteConf.db.host, siteConf.db.name);
+db.init(siteConf.db.url);
 
 
 app.listen(siteConf.port, null);
