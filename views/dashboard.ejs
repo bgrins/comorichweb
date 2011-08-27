@@ -4,19 +4,31 @@
     h3 a { color: black; text-decoration: none; }
     h3 a:visited { color: black; }
     h3 a:hover { text-decoration: underline; }
-
-
 </style>
 
+<% if (session.auth) {%>
+  <h1><%= session.user.name %>'s Slideshows</h1>
+  
 <div class="deck-list">
     <div>
-        <a class="create-button" href="/deck/create">Add Presentation</a>
+        <a class="create-button" href="/deck/create">Create a deck</a>
     </div>
-           
-    <% for(var i in decks) { %> 
-        <% var deck = decks[i]; %>
-        <div>
-            <h3><a href="/app/<%= deck._id %>"><%= deck.title %></a></h3>
-        </div>
-    <% } %>
+	<ul>
+		<% for (var i in decks) { %>
+		  <li class="deck-preview">
+		    <h4><a href="/app/<%= decks[i]._id%>"><%= decks[i].title %></a></h4>
+		    <p>Slides: <%= decks[i].slides? decks[i].slides.length : 0 %></p>
+		  </li>
+		<% } %>
+	</ul>
 </div>
+<% } else { %>
+      <p>Please Login:</p>
+      <ul>
+			<li class="facebook"><a href="/auth/facebook"><img src="//facebook.com/favicon.ico" alt="">Facebook</a></li>
+			<li class="twitter"><a href="/auth/twitter"><img src="//twitter.com/favicon.ico" alt="">Twitter</a></li>
+			<li class="github"><a href="/auth/github"><img src="//github.com/favicon.ico" alt="">Github</a></li>
+      </ul>
+<% } %>
+
+
