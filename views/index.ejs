@@ -1,3 +1,23 @@
-<h1>Presenter</h1>
-<p>See a <a href="/demo">demo</a> of what it will eventually look like.</p>
 
+  <nav id="topnav">
+    <ul>
+      <li><a href="">Your Slideshows</a></li>
+      <li><a href="">How It Works</a></li>
+      <li><a href="">What Are Others Presenting On</a></li>
+   <ul>
+  </nav>
+  <div class="logins">
+	<ul class="padding">
+		<% if(!session.auth) {%>
+			<li class="facebook"><a href="/auth/facebook"><img src="//facebook.com/favicon.ico" alt="">Facebook</a></li>
+			<li class="twitter"><a href="/auth/twitter"><img src="//twitter.com/favicon.ico" alt="">Twitter</a></li>
+			<li class="github"><a href="/auth/github"><img src="//github.com/favicon.ico" alt="">Github</a></li>
+		<% } else { %>
+			<li class="logout"><a href="/logout">Logout</a></li>
+		<% } %>
+	</ul>
+</div>t
+<section id="header">
+  <h1>Slidespot</h1>
+  <p>The spot for slides.</p>
+</section>
