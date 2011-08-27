@@ -1,5 +1,5 @@
 var fs = require("fs");
-var deck_repo = require("../models/deck.js");
+var Deck = require("../models/deck.js").model;
 
     module.exports = function(app){
     
@@ -9,7 +9,7 @@ var deck_repo = require("../models/deck.js");
     		return;
     	}
     	
-	    deck_repo.model.findByUser(req.session.user, function(err, decks) {
+	    Deck.findByUser(req.session.user, function(err, decks) {
 	        res.render("dashboard", { 
 	        	decks: decks,
 	        	layout: "site.ejs"

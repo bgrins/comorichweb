@@ -7,6 +7,8 @@ var UserSchema = new mongoose.Schema({
   id: String
   , name: String
   , image: String
+  , bio: String
+  , web: String
   , following: [UserSchema]  
   , followers: [UserSchema]  
 });
