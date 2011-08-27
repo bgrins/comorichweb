@@ -11,12 +11,7 @@
     <div>
         <a class="create-button" href="/deck/create">Create a deck</a>
     </div>
-	<ul>
-		<% for (var i in decks) { %>
-		  <li class="deck-preview">
-		    <h4><a href="/deck/edit/<%= decks[i]._id%>"><%= decks[i].title %></a></h4>
-		    <p>Slides: <%= decks[i].slides? decks[i].slides.length : 0 %></p>
-		  </li>
-		<% } %>
+	<ul class='decks clearfix'>
+	<%- partial('deckthumb', decks) %>
 	</ul>
 </div>
