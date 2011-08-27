@@ -1,6 +1,8 @@
 var fs = require("fs");
 var deck_repo = require("../models/deck");
 var siteConf = require('../lib/getConfig');
+var sys = require("sys");
+var exec = require("child_process").exec;
 
 module.exports = function(app){
 

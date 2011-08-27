@@ -1,8 +1,6 @@
 var fs = require("fs");
 var deckRepo = require("../models/deck");
 var slideRepo = require("../models/slide");
-var sys = require("sys");
-var exec = require("child_process").exec;
 
 module.exports = function(app){
     app.post("/slide/create", function(req, res) {
