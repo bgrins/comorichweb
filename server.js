@@ -186,6 +186,18 @@ function NotFound(msg){
 	Error.captureStackTrace(this, arguments.callee);
 }
 
+app.all('*', function(req, res, next) {
+	var s = req.session;
+	if (s.auth) {
+		if (s.auth.github) { s.serviceIcon = "//github.com/favicon.ico"; }
+		if (s.auth.twitter) { s.serviceIcon = "//twitter.com/favicon.ico"; }
+		if (s.auth.facebook) { s.serviceIcon = "//facebook.com/favicon.ico"; }
+		
+		s.userIcon = s.user.image || '/img/default.png';
+	}
+	
+	next();
+});
 require("./routes")(app);
 
 // Initiate this after all other routing is done, otherwise wildcard will go crazy.
