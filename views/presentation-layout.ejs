@@ -30,9 +30,11 @@
 	<script src="js/modernizr.custom.js"></script>
 </head>
 
-<body class="deck-container">
+<body>
 
+<div class="deck-container">
 <%- body %>
+
 
 <a href="#" class="deck-prev-link" title="Previous">&#8592;</a>
 <a href="#" class="deck-next-link" title="Next">&#8594;</a>
@@ -51,6 +53,9 @@
 
 <a href="." title="Permalink to this slide" class="deck-permalink">#</a>
 
+</div>
+
+
 <!-- Deck Core and extensions -->
 <script src="js/jquery-1.6.1.js"></script>
 <script src="js/deck.core.js"></script>
@@ -59,8 +64,9 @@
 <script src="extensions/status/deck.status.js"></script>
 <script src="extensions/navigation/deck.navigation.js"></script>
 <script src="extensions/hash/deck.hash.js"></script>
-
-<!-- Specific to this page -->
+<script>
+$.deck('.slide', {	});
+</script>
 
 </body>
 </html>
