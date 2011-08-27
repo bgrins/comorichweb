@@ -34,9 +34,9 @@ db.init(siteConf.db.host, siteConf.db.name);
 app.listen(siteConf.port, null);
 // Setup socket.io server
 var socketIo = new require('./lib/socket-io-server.js')(app, sessionStore);
-/*
 var authentication = new require('./lib/authentication.js')(app, siteConf);
 // Setup groups for CSS / JS assets
+/*
 var assetsSettings = {
 	'js': {
 		'route': /\/static\/js\/[a-z0-9]+\/.*\.js/
@@ -102,13 +102,13 @@ app.configure(function() {
 	app.use(express.bodyParser());
 	app.use(express.cookieParser());
 //	app.use(assetsMiddleware);
-/*	app.use(express.session({
+	app.use(express.session({
 		'store': sessionStore
 		, 'secret': siteConf.sessionSecret
-	}));*/
+	}));
 	app.use(express.logger({format: ':response-time ms - :date - :req[x-real-ip] - :method :url :user-agent / :referrer'}));
-//	app.use(authentication.middleware.auth());
-//	app.use(authentication.middleware.normalizeUserData());
+	app.use(authentication.middleware.auth());
+	app.use(authentication.middleware.normalizeUserData());
 	app.use(express['static'](__dirname+'/public', {maxAge: 86400000}));
 
 	// Send notification to computer/phone @ visit. Good to use for specific events or low traffic sites.
@@ -146,17 +146,17 @@ app.configure('production', function(){
 		res.send('User-agent: *', {'Content-Type': 'text/plain'});
 	});
 });
-/*
+
 // Template helpers
 app.dynamicHelpers({
-	'assetsCacheHashes': function(req, res) {
-		return assetsMiddleware.cacheHashes;
-	}
-	, 'session': function(req, res) {
+	//'assetsCacheHashes': function(req, res) {
+	//	return assetsMiddleware.cacheHashes;
+	//}
+	 'session': function(req, res) {
 		return req.session;
 	}
 });
-*/
+
 // Error handling
 /*
 app.error(function(err, req, res, next){
