@@ -3,14 +3,12 @@ var deck_repo = require("../models/deck.js");
 
     module.exports = function(app){
     
-    app.get("/app/:id?", function(req, res) {
+    app.get("/app/:id", function(req, res) {
         var id = req.params.id;
-        
-        if (id ) {
-            deck_repo.model.findById(id, function(err, deck) {
-                res.render("app", { deck : deck });
-            });
-        }
+    	
+    	deck_repo.model.findById(id, function(err, deck) {
+    	    res.render("app", { deck : deck });
+    	});
     });
     
     app.get("/dashboard", function(req, res) {
