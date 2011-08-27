@@ -1,7 +1,4 @@
 
-<div id="create">
-  <a href="/app/create">Create Slideshow</a>
-</div>
 
 <div id="links">
 	<h2>What is SlideSpot?</h2>
@@ -14,10 +11,8 @@
 
 <div id="others">
   <h2>See the slideshows others are creating:</h2>
-  <ul>
-    <% decks.forEach(function(deck){ %>
-      <li><a href="/deck/<%=deck._id%>"><%= deck.title %></a> by <%= deck.author? deck.author.name  : 'Unknown'%></li>
-    <% }); %>
+  <ul class='decks clearfix'>
+  <%- partial('deckthumb', decks) %>
   </ul>
 </div>
 

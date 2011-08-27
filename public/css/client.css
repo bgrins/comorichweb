@@ -60,6 +60,8 @@ img {
 .editor.active { outline: solid 4px orange; }
 
 
+.decks li {float:left; width: 100px; height: 100px; margin:10px; border: 1px solid; list-style-type: none; }
+
 #login {
   float: right;
   background: #333; 
