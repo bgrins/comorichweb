@@ -1,4 +1,10 @@
-var CSS_SKELETOR = 'h1 { padding: @h1Padding; border-radius: @h1BorderRadius; background-color: @h1BackgroundColor; color: @h1Color; border-color: @h1BorderColor; border-width: @h1BorderWidth; border-style: solid; font-size: @h1FontSize;  } ';
+var CSS_SKELETOR = 'h1 { padding: @h1Padding; border-radius: @h1BorderRadius; background-color: @h1BackgroundColor; color: @h1Color; border-color: @h1BorderColor; border-width: @h1BorderWidth; border-style: solid; font-size: @h1FontSize;  } ' + 
+'h2 { padding: @h2Padding; border-radius: @h2BorderRadius; background-color: @h2BackgroundColor; color: @h2Color; border-color: @h2BorderColor; border-width: @h2BorderWidth; border-style: solid; font-size: @h2FontSize;  } ' + 
+'h3 { padding: @h3Padding; border-radius: @h3BorderRadius; background-color: @h3BackgroundColor; color: @h3Color; border-color: @h3BorderColor; border-width: @h3BorderWidth; border-style: solid; font-size: @h3FontSize;  } ' +
+'pre { padding: @prePadding; border-radius: @preBorderRadius; background-color: @preBackgroundColor; color: @preColor; border-color: @preBorderColor; border-width: @preBorderWidth; border-style: solid; font-size: @preFontSize;  } ' +
+'code { padding: @codePadding; border-radius: @codeBorderRadius; background-color: @codeBackgroundColor; color: @codeColor; border-color: @codeBorderColor; border-width: @codeBorderWidth; border-style: solid; font-size: @codeFontSize;  } ' +
+'cite { padding: @citePadding; border-radius: @citeBorderRadius; background-color: @citeBackgroundColor; color: @citeColor; border-color: @citeBorderColor; border-width: @citeBorderWidth; border-style: solid; font-size: @citeFontSize;  } '
+;
 
 
 var template = {
@@ -11,7 +17,8 @@ var template = {
 		{ prop: 'Padding', name: 'Padding', type:'slider', min: 0, max: 20, 'unit': '%' },
 		{ prop: 'FontSize', name: 'Font Size', type:'slider', min: 50, max: 800, 'unit': 'em', 'divide': 100 },
 	],
-	selectors: ['h1', 'h2'],
+	activeselector: null,
+	selectors: [],
 	selectorFields: { },
 	redraw: function() {
 		var colors = { }
@@ -38,7 +45,7 @@ var template = {
 			
 			var fieldInd = parseInt($(el).data("field"));
 			var field = template.fields[fieldInd];
-			template.selectorFields[template.selectors[0] + "" + field.prop] = '#' + hex;
+			template.selectorFields[template.activeselector + "" + field.prop] = '#' + hex;
 			template.redraw();
 		},
 		onBeforeShow: function () {
@@ -50,12 +57,23 @@ var template = {
 			var fieldInd = parseInt($(e.target).data("field"));
 			var field = template.fields[fieldInd];
 			
-			template.selectorFields[template.selectors[0] + "" + field.prop] = (ui.value / field.divide) + field.unit;
+			template.selectorFields[template.activeselector + "" + field.prop] = (ui.value / field.divide) + field.unit;
 			template.redraw();
 		}
 	},
 	init: function() {
 		var container = $("#template-controls");
+		
+		template.selectors = $(".editor").map(function() {
+			return $(this).data("selector");
+		}).toArray();
+		
+		$(".editor").click(function() {
+			$(".editor.active").removeClass("active");
+			$(this).addClass('active');
+			template.activeselector = $(this).data("selector");
+		}).first().click();
+		
 		for (var i = 0; i < template.fields.length; i++) {
 			var field = template.fields[i];
 			
