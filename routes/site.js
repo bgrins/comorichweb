@@ -9,7 +9,7 @@ var deck_repo = require("../models/deck.js");
     		return;
     	}
     	
-	    deck_repo.model.find({}, function(err, decks) {
+	    deck_repo.model.findByUser(req.session.user, function(err, decks) {
 	        res.render("dashboard", { 
 	        	decks: decks,
 	        	layout: "site.ejs"
