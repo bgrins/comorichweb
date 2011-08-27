@@ -11,6 +11,27 @@ body {
 img {
 	-ms-interpolation-mode:bicubic;
 }
+h1{
+  font-size: 3em;
+}
+#login {
+  width: 200px;
+  float: right;
+  height: 50px;
+}
+#login .logout{
+  float: right;
+  margin-right: 20px;
+}
+.service {
+	position: relative;
+	right: 15px;
+  top: 15px;
+	background: #fff;
+	border-radius: 20px;
+	padding: 2px;
+	box-shadow: 0 0 5px #000;
+}
 #topnav {
   width: 100%;
   text-align: center;
