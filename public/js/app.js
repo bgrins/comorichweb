@@ -30,10 +30,10 @@ var slides = {
 			}
 		});
 		
-		$("#slide-content").change(function() {
-			slides.active.content = $(this).val();
+		viewsource.onchange = function(val) {
+			slides.active.content = val;
 			slides.redraw();
-		});
+		};
 		
 		$("#top button").button();
 	
@@ -44,7 +44,7 @@ var slides = {
 	activate: function(slide) {
 		slides.active = slide;
 		$("#right").addClass("editing");
-		$("#slide-content").val(slide.content);
+		viewsource.set(slide.content);
 	},
 	redraw: function() {
 		$("#slides-collection").
@@ -53,8 +53,9 @@ var slides = {
 	
 	},
 	add: function() {
-		slides.collection.push({ content: 'slide content', id: (new Date().getTime()) });
-		slides.redraw();
+		var newslide = { content: 'slide content', id: (new Date().getTime()) }
+		slides.collection.push(newslide);
+		slides.activate(newslide);
 	},
 	sync: function() {
 		alert(slides.template({ slides: slides.collection }))
@@ -62,7 +63,31 @@ var slides = {
 	
 };
 
+var viewsource = {
+	editor: null,
+	init: function() {
+		viewsource.editor = ace.edit("slide-content");
+    	viewsource.editor.setTheme("ace/theme/textmate");
+    	var HtmlMode = require("ace/mode/html").Mode;
+    	viewsource.editor.getSession().setMode(new HtmlMode());
+    	
+    	viewsource.editor.getSession().on('change', function(val) {
+    		if (viewsource.onchange) {
+    			viewsource.onchange(viewsource.get());
+    		}		
+    	});
+	},
+	set: function(val) {
+		viewsource.editor.getSession().setValue(val);
+	},
+	get: function(val) {
+		return viewsource.editor.getSession().getValue();
+	}
+};
+
 $(function() {
-	slides.init();
 	general.init();
+	viewsource.init();
+	slides.init();
+	
 });
