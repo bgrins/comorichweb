@@ -1,5 +1,6 @@
 var fs = require("fs");
 var deckRepo = require("../models/deck");
+var slideRepo = require("../models/slide");
 
 module.exports = function(app){
     app.all("/deck/:id", function(req, res) {
@@ -24,14 +25,14 @@ module.exports = function(app){
         };
 
         deckRepo.model.findById(deckid , function(err, deck) {
-            deck.slides.push(slide);
-            deck.save(function(err) {
+            var ind = deck.slides.push(slide) - 1;
+            
+            deck.save(function(err, deck) {
                 if (err) {
                     throw err;
                 }
-                else {
-                    res.send(deck);
-                }
+                
+                res.send(deck.slides[ind]);
             });
         });
     });
