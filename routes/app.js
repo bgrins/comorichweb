@@ -28,7 +28,15 @@ var deck_repo = require("../models/deck.js");
     });
 
     app.get('/your-slides', function(req, res){
-      res.render('your-slides');
+      var decks = [];
+      if(req.session.user){
+        deck_repo.model.findByUser(req.session.user, function(err, decks){
+          res.render('your-slides', {decks:decks});
+          console.log(decks)
+        });
+      }else{
+        res.render('your-slides', {decks:decks});
+      }
     });
 };
 
