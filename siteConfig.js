@@ -15,7 +15,6 @@ var settings = {
     }
 
 	// Enter API keys to enable auth services, remove entire object if they aren't used.
-/*
 , 'external': {
 		'facebook': {
 			appId: '199842220079212',
@@ -30,7 +29,6 @@ var settings = {
 			appSecret: '2157d161835ef3ba8fab9d6678f185abfbf6dc46'
 		}
 	}
-    */
 	, 'debug': (process.env.NODE_ENV !== 'production')
 };
 
