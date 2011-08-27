@@ -13,5 +13,5 @@ var PresentationSchema = new Schema( {
     slides: [SlideSchema]
 });
 
-exports.Slides = mongoose.model("Slide", SlideSchema);
+exports.Slide = mongoose.model("Slide", SlideSchema);
 exports.Presentation = mongoose.model("Presentation", PresentationSchema);
