@@ -20,6 +20,7 @@
     "nodemon" : "*",
     "mongodb" : "*",
     "mongoose" : "*",
-    "smsified" : "*"
+    "smsified" : "*",
+    "stylus" : "*"
   }
 }
