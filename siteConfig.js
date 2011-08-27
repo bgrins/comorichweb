@@ -26,7 +26,7 @@ var settings = {
 		}
 		, 'github': {
 			appId: 'cf3f3e6a96feb580afbc',
-			appSecret: '2157d161835ef3ba8fab9d6678f185abfbf6dc46
+			appSecret: '2157d161835ef3ba8fab9d6678f185abfbf6dc46'
 		}
 	}
 	, 'debug': (process.env.NODE_ENV !== 'production')
