@@ -20,7 +20,10 @@ var general = {
 
 var slides = {
 	collection: [],
-	template: _.template("<% _.each(slides, function(s, i) { %> <li data-id='<%= s.id %>'><%= s.content %></li> <% }); %> </li>"),
+	active: {},
+	nextSort: 0,
+	template: _.template("<% _.each(slides, function(s, i) { %> <li id='slide_<%= s.id %>' data-id='<%= s.id %>'><%= s.content %></li> <% }); %> </li>"),
+	obj: { },
 	init: function() {
 
 		$("#add").button().click(function() {
@@ -29,16 +32,13 @@ var slides = {
 		
 		$("#slides-collection").delegate("li", "click", function() {
 			var id = $(this).data("id");
-			for (var i = 0; i < slides.collection.length; i++) {
-				if (slides.collection[i].id == id) {
-					slides.activate(slides.collection[i]);
-				}	
-			}
+			slides.activate(slides.obj[id]);
 		});
 		
 		viewsource.onchange = function(val) {
 			slides.active.content = val;
 			slides.redraw();
+			
 		};
 			
 		if (slides.collection.length == 0) {
@@ -50,15 +50,35 @@ var slides = {
 		$("#right").addClass("editing");
 		viewsource.set(slide.content);
 	},
+	orderSort: function(a, b) {
+		return a.sort - b.sort;
+	},
 	redraw: function() {
 		$("#slides-collection").
-			html(slides.template({ slides: slides.collection })).
-			sortable("destroy").sortable();
+			html(slides.template({ slides: slides.collection.sort(slides.orderSort) })).
+			sortable("destroy").sortable({
+				stop: function() {
+					log("stop");
+					var allslides = $("#slides-collection li");
+					allslides.each(function(i) {
+						slides.obj[$(this).data("id")].sort = i;
+					});
+					
+					slides.nextSort = allslides.length;
+				}
+			});
+			
+		$("#slides-collection li.active").removeClass("active");
+		$("#slide_" + slides.active.id).addClass("active");
 	
 	},
 	add: function() {
-		var newslide = { content: 'slide content', id: (new Date().getTime()) }
+		var newslide = { content: 'slide content', id: (new Date().getTime()), sort: slides.nextSort++ }
 		slides.collection.push(newslide);
+		slides.obj = { };
+		for (var i = 0; i < slides.collection.length; i++) {
+			slides.obj[slides.collection[i].id] = slides.collection[i];
+		}
 		slides.activate(newslide);
 	},
 	sync: function() {
