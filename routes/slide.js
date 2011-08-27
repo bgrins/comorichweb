@@ -27,12 +27,9 @@ module.exports = function(app){
         };
 
         deckRepo.model.find({ _id: deckid }, function(err, deck) {
-
             if (!deck) {
                 throw "HEY";
             }
-
-
             deck.slides.push(slide);
             deck.save(function(err) {
                 if (err) {
