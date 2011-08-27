@@ -1,5 +1,6 @@
 var fs = require("fs");
 var deck_repo = require("../models/deck");
+var siteConf = require('../lib/getConfig');
 
 module.exports = function(app){
 
