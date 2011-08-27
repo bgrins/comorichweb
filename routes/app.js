@@ -12,7 +12,10 @@ var deck_repo = require("../models/deck.js");
             });
         } else {
             deck_repo.model.find({}, function(err, decks) {
-                res.render("decklist", { decks: decks });
+                res.render("decklist", { 
+                	decks: decks,
+                	layout: "site.ejs"
+                });
             });
         }
     });

@@ -1,7 +1,7 @@
 var fs = require("fs");
 module.exports = function(app){
     app.all('/', function(req, res) {
-        res.render('index');
+        res.render('index', {layout: "site.ejs"});
     });
 
     fs.readdir(__dirname, function(err, files){
