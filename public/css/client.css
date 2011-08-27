@@ -20,10 +20,15 @@ img {
   list-style-type: none;
   padding-right: 20px;
 }
-#header{
-  height: 200px;
-  border: 2px solid #000;
+#site-container{
+  border: 2px solid #ddd;
+  margin:0 auto;
+  
+  width: 95%;
+  border-top:none;
 }
+#site-container #links ul { margin:0 20px; padding:0; }
+#site-top #links ul li {  }
 
 #top, #site-top { background:#300; color:#ddd; padding:5px 10px; padding-bottom: 2px; border-bottom: 3px solid #844; } 
 #slides-wrapper { position:relative;  }
