@@ -124,7 +124,6 @@ app.configure(function() {
 	}
     */
 });
-/*
 // ENV based configuration
 
 // Show all errors and keep search engines out using robots.txt
@@ -144,7 +143,7 @@ app.configure('production', function(){
 		res.send('User-agent: *', {'Content-Type': 'text/plain'});
 	});
 });
-
+/*
 // Template helpers
 app.dynamicHelpers({
 	'assetsCacheHashes': function(req, res) {
@@ -154,7 +153,7 @@ app.dynamicHelpers({
 		return req.session;
 	}
 });
-
+*/
 // Error handling
 app.error(function(err, req, res, next){
 	// Log the error to Airbreak if available, good for backtracking.
@@ -172,18 +171,16 @@ function NotFound(msg){
 	Error.call(this, msg);
 	Error.captureStackTrace(this, arguments.callee);
 }
-*/
 
 require("./routes")(app);
 
-/*
 // Initiate this after all other routing is done, otherwise wildcard will go crazy.
 var dummyHelpers = new DummyHelper(app);
 
+/*
 // If all fails, hit em with the 404
 app.all('*', function(req, res){
 	throw new NotFound;
 });
-
 */
 console.log('Running in '+(process.env.NODE_ENV || 'development')+' mode @ '+siteConf.uri);
