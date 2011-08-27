@@ -14,7 +14,7 @@
 	<ul>
 		<% for (var i in decks) { %>
 		  <li class="deck-preview">
-		    <h4><a href="/app/<%= decks[i]._id%>"><%= decks[i].title %></a></h4>
+		    <h4><a href="/deck/edit/<%= decks[i]._id%>"><%= decks[i].title %></a></h4>
 		    <p>Slides: <%= decks[i].slides? decks[i].slides.length : 0 %></p>
 		  </li>
 		<% } %>
