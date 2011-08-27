@@ -5,7 +5,8 @@ var models = require("../models/slideshow.js");
             models.Slide.find({}, function(err, slides) {
                 if (!err) {
                     res.render("slideshow", {
-                        slides : slides
+                        slides : slides,
+                        layout: "presentation-layout.ejs"
                     });
                 }
                 else {
@@ -22,7 +23,7 @@ var models = require("../models/slideshow.js");
            console.log(err); 
         });
 
-        res.send("HELLO");
+        res.send(slide);
     });
 };
 
