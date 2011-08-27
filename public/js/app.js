@@ -110,9 +110,13 @@ var slides = {
 	add: function() {
 		$.post('/slide/create', { deckid : deck.data._id, content: "Enter Content" },  function(data) {
 			var newslide = data;
+			log("HERE", newslide, newslide.content);
             slides.collection.push(newslide);
+			log("HERE", newslide, newslide.content);
             slides.remap();
+			log("HERE", newslide, newslide.content);
             slides.activate(newslide);
+			log("HERE", newslide, newslide.content);
 		});
 	},
 	sync: function() {
