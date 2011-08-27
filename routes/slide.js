@@ -1,5 +1,5 @@
 var fs = require("fs");
-var models = require("../models");
+var deckRepo = require("../models/deck");
 
 module.exports = function(app){
     app.all("/slideshow", function(req, res) {
@@ -18,20 +18,30 @@ module.exports = function(app){
 
     app.all("/slide/create", function(req, res) {
         var content = req.param("content", "welcome to slideshow.js!");
-        var deckid = req.param("deckid", null);
+        var deckid = req.param("deckid", "4e591512259871c70e000001");
         var sort = req.param("sort", 0);
 
-        models.Deck.find({}, function(err, decks) {
-            var deck = decks[0];
-            var slide = new models.Slide();
-            slide.sort = sort;
-            slide.content = content;
-            slide.save(function(err) {
-                console.log(deck.slides);
-                deck.slides.push(slide);
-                console.log(deck.slides);
-                deck.save();
-                res.send(slide);
+        var slide = {
+            sort: sort,
+            content: content
+        };
+
+        deckRepo.model.find({ _id: deckid }, function(err, deck) {
+            if (!deck) {
+                throw "HEY";
+            }
+            deck.slides.push(slide);
+            deck.save(function(err) {
+                if (err) {
+                    throw err;
+                }
+                else {
+                    console.log(deck);
+                    deckRepo.model.find({}, function(err, decks) {
+                        console.log(decks);
+                    });
+                    res.send(deck);
+                }
             });
         });
     });

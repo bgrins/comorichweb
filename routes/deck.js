@@ -1,26 +1,21 @@
 var fs = require("fs");
-var models = require("../models");
+var deck_repo = require("../models/deck");
 
 module.exports = function(app){
     app.get("/deck/create", function(req, res) {
         var title = req.param("title", "Deck");
-        var deck = new models.Deck();
+        var deck = new deck_repo.model;
         deck.title = title;
-        deck.slies = [];
+        deck.slides.push({
+content: "TESTING HERE HERE HIII ",
+sort: 0
+        });
         deck.save(function() {
             res.send(deck);
         });
     });
 
     app.get("deck/update", function(req, res) {
-        var id = req.param("_id", null);
-        models.Deck.getById(function() {
-            var deck = {};
-            return deck;
-        });
     });
-
-
-
 };
 
