@@ -20,5 +20,9 @@ var deck_repo = require("../models/deck.js");
         var content = req.param("content", "welcome to slideshow.js!");
         res.render("templateeditor");
     });
+
+    app.get('/your-slides', function(req, res){
+      res.render('your-slides');
+    });
 };
 
