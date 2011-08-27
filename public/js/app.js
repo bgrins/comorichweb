@@ -51,8 +51,17 @@ var slides = {
 	obj: { },
 	init: function() {
 
+
+	
 		$("#add").button().click(function() {
 			slides.add();
+		});
+		
+		$("#remove").button({
+            icons: { primary: "ui-icon-close" },
+            text: false
+        }).click(function() {
+			slides.remove();
 		});
 		
 		$("#slides-collection").delegate("li", "click", function() {
@@ -110,6 +119,9 @@ var slides = {
 			slides.obj[slides.collection[i]._id] = slides.collection[i];
 		}
 	},
+	remove: function() {
+	
+	},
 	add: function() {
 		/*$.post('/slide/create', function(data) {
 			log(data);
@@ -130,6 +142,7 @@ var slides = {
 var deck = {
 	data: { title: 'Untitled' },
 	init: function() {
+	
 		$("#rename").button({
             icons: { primary: "ui-icon-locked" },
             text: false
