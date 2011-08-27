@@ -11,14 +11,9 @@ body {
 img {
 	-ms-interpolation-mode:bicubic;
 }
-h1{
-  font-size: 3em;
-}
 
-
-
-
-#site-top h1 { color: white; text-decoration: none; }
+#site-top h1 { color: white; text-decoration: none; font-size: 2em; margin:2px 0; padding: 2px 0; }
+#site-top h1 a, #site-top h1 a:visited { color: white; text-decoration:none; }
 #site-top ul li{
   font-size: 2em;
   display: inline;
@@ -61,20 +56,18 @@ h1{
 .editor.active { outline: solid 4px orange; }
 
 
-
 #login {
   float: right;
-  height: 50px;
   background: #333; 
+  padding: 2px 0;
+  margin-bottom:5px;
 }
-#login .logout{
-	display:inline-block; 
-}
+#login .logout{ display:inline-block; margin-left:3px;  }
 .service {
 	position: relative;
 	right: 15px;
-  top: 15px;
-	background: #fff;
+	top: 15px;
+	background: rgba(255, 255, 255, .6);
 	border-radius: 20px;
 	padding: 2px;
 	box-shadow: 0 0 5px #000;
