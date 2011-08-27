@@ -6,6 +6,12 @@ var general = {
 		$("#tabs").tabs();
 		slides.collection = _LOADED_SLIDES || [];
 		deck.data = _LOADED_DECK || { };
+		
+		
+		$("#save").button({icons: { primary: "ui-icon-check" } }).click(function() {
+			general.save();
+		});
+		
 	},
 	resize: function() {
 		var fullHeight = $(window).height();
@@ -14,6 +20,26 @@ var general = {
 		
 		var collection = $("#slides-collection");
 		collection.height(fullHeight - collection.offset().top);
+	},
+	saving: false,
+	save: function() {
+		general.saving = true;
+		/*
+		$("#save").addClass("ui-state-disabled");
+		$.ajax({
+			url:  '/slide/update', 
+			method: 'post',
+			data: {
+				slides: slides.collection
+			},
+			success: function() {
+				log("updated", arguments);
+			},
+			complete: function() {
+				general.saving = false;
+				$("#save").removeClass("ui-state-disabled");
+			}
+		});*/
 	}
 };
 
@@ -21,7 +47,7 @@ var slides = {
 	collection: [],
 	active: {},
 	nextSort: 0,
-	template: _.template("<% _.each(slides, function(s, i) { %> <li id='slide_<%= s.id %>' data-id='<%= s.id %>'><%= s.content %></li> <% }); %> </li>"),
+	template: _.template("<% _.each(slides, function(s, i) { %> <li id='slide_<%= s._id %>' data-id='<%= s._id %>'><%= s.content %></li> <% }); %> </li>"),
 	obj: { },
 	init: function() {
 
@@ -36,6 +62,7 @@ var slides = {
 		
 		viewsource.onchange = function(val) {
 			slides.active.content = val;
+			slides.active.isDirty = true;
 			slides.redraw();
 			
 		};
@@ -43,8 +70,13 @@ var slides = {
 		if (slides.collection.length == 0) {
 			slides.add();
 		}
+		else {
+			slides.activate(slides.collection.sort(slides.orderSort)[0])
+		}
 		
+		slides.remap();
 		slides.redraw();
+		
 	},
 	activate: function(slide) {
 		slides.active = slide;
@@ -59,7 +91,6 @@ var slides = {
 			html(slides.template({ slides: slides.collection.sort(slides.orderSort) })).
 			sortable("destroy").sortable({
 				stop: function() {
-					log("stop");
 					var allslides = $("#slides-collection li");
 					allslides.each(function(i) {
 						slides.obj[$(this).data("id")].sort = i;
@@ -70,16 +101,24 @@ var slides = {
 			});
 			
 		$("#slides-collection li.active").removeClass("active");
-		$("#slide_" + slides.active.id).addClass("active");
+		$("#slide_" + slides.active._id).addClass("active");
 	
 	},
-	add: function() {
-		var newslide = { content: 'slide content', id: (new Date().getTime()), sort: slides.nextSort++ }
-		slides.collection.push(newslide);
+	remap: function() {
 		slides.obj = { };
 		for (var i = 0; i < slides.collection.length; i++) {
-			slides.obj[slides.collection[i].id] = slides.collection[i];
+			slides.obj[slides.collection[i]._id] = slides.collection[i];
 		}
+	},
+	add: function() {
+		$.post('/slide/create', function(data) {
+			log(data);
+			
+		});
+		
+		var newslide = { content: 'slide content', id: (new Date().getTime()), sort: slides.nextSort++ }
+		slides.collection.push(newslide);
+		slides.remap();
 		slides.activate(newslide);
 	},
 	sync: function() {
@@ -100,8 +139,6 @@ var deck = {
 		});
 		deck.render();
 		
-		
-		$("#save").button({icons: { primary: "ui-icon-check" } });
 
 	},
 	render: function() {
