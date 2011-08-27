@@ -8,5 +8,9 @@ module.exports = function(app){
             title: "this is a slideshow"
        }); 
     });
+
+    app.post("/slide/add", function(req, res) {
+            req.param("content", "welcome to slideshow.js!");
+    }):
 }
 
