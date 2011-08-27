@@ -23,6 +23,8 @@ img {
         left: 0;
         right: 0;
     }
+
+
 #slides { background: #ddd; position:relative; }
 #slides-collection {  height: 400px; overflow-y:scroll; margin:0; padding:0; }
 #slides-collection li { width: 180px; margin:10px auto; padding:0; background: green; height:50px; overflow:hidden; }
