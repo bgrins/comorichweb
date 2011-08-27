@@ -1,22 +1,25 @@
 var fs = require("fs");
 var models = require("../models/slideshow.js");
-
-module.exports = function(app){
-    app.all("/slideshow", function(req, res) {
-       res.render("slideshow", {
-            slides: models.Slide.find({})
+    module.exports = function(app){
+        app.all("/slideshow", function(req, res) {
+            models.Slide.find({}, function(err, slides) {
+                if (!err) {
+                    res.render("slideshow", {
+                        slides : slides
+                    });
+                }
         }); 
     });
 
-    app.all("/slide/add", function(req, res) {
+    app.get("/slide/add", function(req, res) {
         var content = req.param("content", "welcome to slideshow.js!");
         var slide = new models.Slide();
         slide.content = content;
-        slide.save();
-        res.render("slideshow", {
-            layout: "presentation-layout.ejs",
-            title: "this is a slideshow"
-        }); 
+        slide.save(function(err) {
+           console.log(err); 
+        });
+
+        res.send("HELLO");
     });
-}
+};
 
