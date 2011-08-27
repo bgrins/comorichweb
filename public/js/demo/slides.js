@@ -601,7 +601,9 @@ function handleDomLoaded() {
 
 function initialize() {
   var socket = io.connect();
-  socket.on('next', nextSlide);
+  socket.on('next', function(){
+    nextSlide();
+  });
   socket.on('prev', prevSlide);
   
   socket.emit('deck-identify', {id:$('body').data('id')});
