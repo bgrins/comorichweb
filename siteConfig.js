@@ -4,30 +4,27 @@ var settings = {
 	, 'uri': 'http://localhost:8080' // Without trailing /
 
 	// You can add multiple recipiants for notifo notifications
-	, 'notifoAuth': null /*[
+	, 'notifoAuth':
 		{
-			'username': ''
-			, 'secret': ''
+			'username': 'comorichweb'
+			, 'secret': 'xca6fdaefbda59e27c5223c1aa0e9c27e11dd8eea'
 		}
-	]*/
 
-	/*
 	// Enter API keys to enable auth services, remove entire object if they aren't used.
 	, 'external': {
 		'facebook': {
-			appId: '123983866527489',
-			appSecret: '6edf1327ege27bbba2e239f73cd866c4'
+			appId: '199842220079212',
+			appSecret: '3c65d84b0793accabb2dc35015d1a067'
 		}
 		, 'twitter': {
-			consumerKey: 'eA54JQ6rtdZE7nqaRa6Oa',
-			consumerSecret: '6u2makgFdf4F6EauP7osa54L34SouU6eLgaadTD435Rw'
+			consumerKey: 'tlTIDx8CjClK4aBBOEVuA',
+			consumerSecret: 'H5mVWHkrZgkVDnohZrqKgro4w8uLgS9atuZo4Nh1g'
 		}
 		, 'github': {
-			appId: '1444g6a7d26a3f716b47',
-			appSecret: 'e84f13367f328da4b8c96a4f74gfe7e421b6a206'
+			appId: 'cf3f3e6a96feb580afbc',
+			appSecret: '2157d161835ef3ba8fab9d6678f185abfbf6dc46'
 		}
 	}
-	*/
 	, 'debug': (process.env.NODE_ENV !== 'production')
 };
 
@@ -35,6 +32,6 @@ if (process.env.NODE_ENV == 'production') {
 	settings.uri = 'http://comorichweb.no.de';
 	settings.port = process.env.PORT || 80; // Joyent SmartMachine uses process.env.PORT
 
-	//settings.airbrakeApiKey = '0190e64f92da110c69673b244c862709'; // Error logging, Get free API key from https://airbrakeapp.com/account/new/Free
+	settings.airbrakeApiKey = '1f998a909e55dd24087b78886302ee25d36bc41e'; // Error logging, Get free API key from https://airbrakeapp.com/account/new/Free
 }
 module.exports = settings;
