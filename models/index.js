@@ -1,7 +1,6 @@
 var mongoose = require('mongoose');
 mongoose.connect('localhost', 'sample-app');
 var fs = require('fs');
-var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 var GridStore = require('mongodb').GridStore;
 

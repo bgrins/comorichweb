@@ -3,9 +3,12 @@ var general = {
 	init: function() {
 		$(window).bind("resize", general.resize);
 		general.resize();
+		
+		$("#tabs").tabs();
 	},
 	resize: function() {
-		$("#slides").height($(document).height())
+		var slides = $("#slides");
+		slides.height($(document).height() - slides.offset().top)
 	}
 };
 
