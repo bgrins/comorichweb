@@ -75,6 +75,7 @@ var template = {
 		}).first().click();
 		
 		$("#template-controls-container").draggable({
+			containment: "body",
 			handle: ".ui-widget-header"
 		});
 		
