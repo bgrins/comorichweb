@@ -2,10 +2,10 @@ var mongoose = require('mongoose');
 
 var _db = null;
 module.exports = {
-    init: function(host, name) {
+    init: function(url) {
         if (!module.exports._db){
-            console.log('connecting to MONGO via ' + host + " " + name);
-            module.exports._db = mongoose.connect(host, name);
+            console.log('connecting to MONGO via ' + url);
+            module.exports._db = mongoose.connect(url);
 
         }
 
