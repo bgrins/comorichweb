@@ -1,17 +1,18 @@
 var fs = require("fs");
-var models = require("../models/slideshow.js");
-    module.exports = function(app){
-        app.all("/slideshow", function(req, res) {
-            models.Slide.find({}, function(err, slides) {
-                if (!err) {
-                    res.render("slideshow", {
-                        slides : slides,
-                        layout: "presentation-layout.ejs"
-                    });
-                }
-                else {
-                    res.send("ERR");
-                }
+var models = require("../models");
+
+module.exports = function(app){
+    app.all("/slideshow", function(req, res) {
+        models.Slide.find({}, function(err, slides) {
+            if (!err) {
+                res.render("slideshow", {
+                    slides : slides,
+                    layout: "presentation-layout.ejs"
+                });
+            }
+            else {
+                res.send("ERR");
+            }
         }); 
     });
 
