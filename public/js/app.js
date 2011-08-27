@@ -111,12 +111,12 @@ var slides = {
 		}
 	},
 	add: function() {
-		$.post('/slide/create', function(data) {
+		/*$.post('/slide/create', function(data) {
 			log(data);
 			
-		});
+		});*/
 		
-		var newslide = { content: 'slide content', id: (new Date().getTime()), sort: slides.nextSort++ }
+		var newslide = { content: 'slide content', _id: (new Date().getTime()), sort: slides.nextSort++ }
 		slides.collection.push(newslide);
 		slides.remap();
 		slides.activate(newslide);
