@@ -32,10 +32,6 @@ module.exports = function(app){
                     throw err;
                 }
                 else {
-                    console.log(deck);
-                    deckRepo.model.find({}, function(err, decks) {
-                        console.log(decks);
-                    });
                     res.send(deck);
                 }
             });
@@ -43,11 +39,19 @@ module.exports = function(app){
     });
 
     app.all("/slide/update", function(req, res) {
-       var slides = req.param("slides", null);
-       var id = req.param("_id", null);
-        
-       if (id ) {
-       }
+        var deckid = req.param("deckid", null);
+        var slides = req.param("slides", null);
+
+        deckRepo.model.findById(deckid, function(err, deck) {
+            slides.forEach(function(slide) {
+                deck.slides.forEach(function(dbslide) {
+                    if (slide._id == dbslide._id) {
+                        dbslide.content = slide.content;
+                        dbslide.sort = slide.sort;
+                    }
+                });
+            });
+        });
     });
 
     app.all("/slide/delete", function(req, res) {
