@@ -4,10 +4,12 @@ module.exports = function(app){
         res.render('index');
     });
 
-    fs.readdirSync(__dirname).forEach(function(file) {
+    fs.readdir(__dirname, function(err, files){
+      files.forEach(function(file) {
         if (file == "index.js") return;
         var name = file.substr(0, file.indexOf('.'));
         require('./' + name)(app);
+      });
     });
 };
 
