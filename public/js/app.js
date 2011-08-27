@@ -5,10 +5,16 @@ var general = {
 		general.resize();
 		
 		$("#tabs").tabs();
+		
+		
 	},
 	resize: function() {
+		var fullHeight = $(window).height();
 		var slides = $("#slides");
-		slides.height($(document).height() - slides.offset().top)
+		slides.height(fullHeight - slides.offset().top);
+		
+		var collection = $("#slides-collection");
+		collection.height(fullHeight - collection.offset().top);
 	}
 };
 
@@ -17,11 +23,8 @@ var slides = {
 	template: _.template("<% _.each(slides, function(s, i) { %> <li data-id='<%= s.id %>'><%= s.content %></li> <% }); %> </li>"),
 	init: function() {
 
-		$("#add").click(function() {
+		$("#add").button().click(function() {
 			slides.add();
-		});
-		$("#sync").click(function() {
-			slides.sync();
 		});
 		
 		$("#slides-collection").delegate("li", "click", function() {
@@ -37,9 +40,7 @@ var slides = {
 			slides.active.content = val;
 			slides.redraw();
 		};
-		
-		$("#top button").button();
-	
+			
 		if (slides.collection.length == 0) {
 			slides.add();
 		}	
@@ -65,6 +66,28 @@ var slides = {
 	}
 	
 };
+
+var deck = {
+	init: function() {
+		$("#rename").button({
+            icons: { primary: "ui-icon-locked" },
+            text: false
+        }).click(function() {
+			deck.title = prompt("Enter a title", deck.title + "") || deck.title;
+			deck.render();
+		});
+		deck.render();
+		
+		
+		$("#save").button({icons: { primary: "ui-icon-check" } });
+
+	},
+	render: function() {
+		$("#title h3").text(deck.title);
+	},
+	title: 'Untitled'
+};
+
 
 var viewsource = {
 	editor: null,
@@ -92,5 +115,5 @@ $(function() {
 	general.init();
 	viewsource.init();
 	slides.init();
-	
+	deck.init();	
 });
