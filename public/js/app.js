@@ -183,9 +183,15 @@ var viewsource = {
 	}
 };
 
-$(function() {
+
+var app = {
+	init: function() {
 	general.init();
 	viewsource.init();
 	slides.init();
 	deck.init();
-});
+	
+	
+	
+	}
+};
