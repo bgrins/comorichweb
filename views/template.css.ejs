@@ -1,0 +1,97 @@
+.deck-container {
+	font-family: "Gill Sans", "Gill Sans MT", Calibri, sans-serif;
+	font-size:1.25em;
+	color:#aaa;
+	background:@containerBackgroundColor;
+	
+	.slide {
+		background:#000;
+	}
+
+    <% for (i = 0; i < tags.length; i++) { %>
+        <% var tag = tags[i] %>
+        <%= tag.name %> {
+            <% if (tag.font) { %>
+                font-family: <%- tag.font %>;
+            <% } %>
+            <% if (tag.color) { %>
+                color: <%- tag.color %>;
+            <% } %>
+            <% if (tag.size) { %>
+                font-size: <%- tag.size %>;
+            <% } %>
+            <% if (tag.margin) { %>
+                margin: <%- tag.margin %>;
+            <% } %>
+            <% if (tag.fontWeight) { %>
+                font-weight: <%- tag.fontWeight %>;
+            <% } %>
+            <% if (tag.border) { %>
+                border: <%- tag.border %>;
+            <% } %>
+            <% if (tag.borderRadius) { %>
+                border-radius: <%- tag.borderRadius %>;
+            <% } %>
+        }
+    <% } %>
+	
+	a {
+		&, &:hover, &:focus, &:active, &:visited {
+			color:#f0a;
+			text-decoration:none;
+		}
+		
+		&:hover, &:focus {
+			text-decoration:underline;
+		}
+	}
+	
+	.deck-prev-link, .deck-next-link {
+		background:#f0a;
+		text-shadow:0 0 3px #fff;
+		
+		&, &:hover, &:focus, &:active, &:visited {
+			color:#fff;
+		}
+		
+		&:hover, &:focus {
+			text-decoration:none;
+			
+			.boxshadow & {
+				-webkit-box-shadow:0 0 20px #f0a, 0 0 5px #fff;
+				-moz-box-shadow:0 0 20px #f0a, 0 0 5px #fff;
+				box-shadow:0 0 20px #f0a, 0 0 5px #fff;
+			}
+		}
+	}
+	
+	.deck-status {
+		font-size:0.6666em;
+	}
+	
+	.goto-form {
+		background:#000;
+		border:1px solid #f0a;
+		
+		label {
+			color:#fff;
+		}
+	}
+	
+	&.deck-menu {
+		.slide {
+			background:#333;
+		}
+		
+		.deck-current {
+			background:#444;
+			
+			.boxshadow & {
+				background:#000;
+				-webkit-box-shadow:0 0 20px #f0a, 0 0 5px #fff;
+				-moz-box-shadow:0 0 20px #f0a, 0 0 5px #fff;
+				box-shadow:0 0 20px #f0a, 0 0 5px #fff;
+			}
+		}
+	}
+}
