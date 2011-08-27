@@ -9,6 +9,10 @@ var schema = new mongoose.Schema({
         slides: [slide_repo.schema]
 });
 
+schema.statics.findByUser = function(user, cb){
+  console.log(user.id);
+  model.find({'author.id':user.id}, cb);
+};
 var model = mongoose.model("Deck", schema);
  
 module.exports = {
