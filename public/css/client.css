@@ -11,43 +11,26 @@ body {
 img {
 	-ms-interpolation-mode:bicubic;
 }
-h1{
-  font-size: 3em;
-}
-#login {
-  width: 200px;
-  float: right;
-  height: 50px;
-}
-#login .logout{
-  float: right;
-  margin-right: 20px;
-}
-.service {
-	position: relative;
-	right: 15px;
-  top: 15px;
-	background: #fff;
-	border-radius: 20px;
-	padding: 2px;
-	box-shadow: 0 0 5px #000;
-}
-#topnav {
-  width: 100%;
-  text-align: center;
-}
-#topnav ul li{
+
+#site-top h1 { color: white; text-decoration: none; font-size: 2em; margin:2px 0; padding: 2px 0; }
+#site-top h1 a, #site-top h1 a:visited { color: white; text-decoration:none; }
+#site-top ul li{
   font-size: 2em;
   display: inline;
   list-style-type: none;
   padding-right: 20px;
 }
-#header{
-  height: 200px;
-  border: 2px solid #000;
+#site-container{
+  border-left: 2px solid #ddd;
+  margin:0 auto;
+  width: 98%;
+  padding: 6px 4px;
+  border-top:none;
 }
+#site-container #links ul { margin:0 20px; padding:0; }
+#site-top #links ul li {  }
 
-#top {background:#300; color:#ddd; padding:5px 10px; padding-bottom: 2px; border-bottom: 3px solid #844; } 
+#top, #site-top { background:#300; color:#ddd; padding:5px 10px; padding-bottom: 2px; border-bottom: 3px solid #844; } 
 #slides-wrapper { position:relative;  }
 #slides-content {  margin:0 10px; position:relative; margin-top:20px; }
 #title { float:left; }
@@ -78,30 +61,31 @@ h1{
 .editor.active { outline: solid 4px orange; }
 
 
+#login {
+  float: right;
+  background: #333; 
+  padding: 2px 0;
+  margin-bottom:5px;
+}
+#login .logout{ display:inline-block; margin-left:3px;  }
+.service {
+	position: relative;
+	right: 15px;
+	top: 15px;
+	background: rgba(255, 255, 255, .6);
+	border-radius: 20px;
+	padding: 2px;
+	box-shadow: 0 0 5px #000;
+}
 .logins {
-	position: fixed;
-	top: 35px;
-	right: 60px;
-	gradient: #2b2b2b_#010101;
-	border-radius: 5px;
-	border: 1px solid #000;
+	float:right;
+	background:green;
+	
 	padding: 5px 5px;
 	margin: 0 0 5px;
 }
-.logins li {
-	padding: 4px 10px;
-	border-bottom: 1px solid #eee;
-}
-.logins li:last-child {
-	border-bottom: 0;
-}
-.logins img {
-	margin: 0 7px 0 0;
-	position: relative;
-	top: 3px;
-	width: 16px;
-	height: 16px;
-}
+.logins li { float:left; list-style-type:none; }
+
 .logins a {
 	color: #000;
 }

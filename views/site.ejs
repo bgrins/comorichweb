@@ -17,34 +17,37 @@
 </head>
 <body class='site'>
 
+  <div id="site-top" class="clearfix">
+	<div id="title"><h1><a href='/'>Slide Spot</a></h1></div>
+	
+	<div id="login">
+			<% if(!session.auth) {%>
+	      <p>Login Using:</p>
+	      <ul>
+				<li class="facebook"><a href="/auth/facebook"><img src="//facebook.com/favicon.ico" alt="">Facebook</a></li>
+				<li class="twitter"><a href="/auth/twitter"><img src="//twitter.com/favicon.ico" alt="">Twitter</a></li>
+				<li class="github"><a href="/auth/github"><img src="//github.com/favicon.ico" alt="">Github</a></li>
+	      </ul>
+			<% } else { %>
+	      <img class="avatar" height='32' src="<%= ((session.auth && session.user.image) ? session.user.image : '/img/default.png') %>">
+	      <img class="service" height='12' src="<%= (session.auth && session.auth.github) ? '//github.com/favicon.ico' : '' %>
+	      <%= (session.auth && session.auth.twitter) ? '//twitter.com/favicon.ico' : '' %>
+	      <%= (session.auth && session.auth.facebook) ? '//facebook.com/favicon.ico' : '' %>"/>
+	      
+	      <%= (session.auth) ? session.user.name : "" %>
+				<div class="logout"><a href="/logout">Logout</a></div>
+			<% } %>
+			
+			
+	</div>
+	
 
-  <nav id="topnav">
-    <ul>
-      <li><a href="/dashboard">Your Slideshows</a></li>
-      <li><a href="/how-it-works">How It Works</a></li>
-      <li><a href="/demo">Demo</a></li>
-   <ul>
-  </nav>
+  </div>
   
-  
-<div id="login">
-		<% if(!session.auth) {%>
-      <p>Login Using:</p>
-      <ul>
-			<li class="facebook"><a href="/auth/facebook"><img src="//facebook.com/favicon.ico" alt="">Facebook</a></li>
-			<li class="twitter"><a href="/auth/twitter"><img src="//twitter.com/favicon.ico" alt="">Twitter</a></li>
-			<li class="github"><a href="/auth/github"><img src="//github.com/favicon.ico" alt="">Github</a></li>
-      </ul>
-		<% } else { %>
-      <img class="avatar" src="<%= ((session.auth && session.user.image) ? session.user.image : '/img/default.png') %>">
-      <img class="service" src="<%= (session.auth && session.auth.github) ? '//github.com/favicon.ico' : '' %>
-      <%= (session.auth && session.auth.twitter) ? '//twitter.com/favicon.ico' : '' %>
-      <%= (session.auth && session.auth.facebook) ? '//facebook.com/favicon.ico' : '' %>"/>
-			<div class="logout"><a href="/logout">Logout</a></div>
-		<% } %>
-</div>
 
 
+<div id='site-container'>
 	<%- body %>
+</div>
 </body>
 </html>
