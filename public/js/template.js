@@ -51,6 +51,7 @@ var template = {
 		}
 	},
 	init: function() {
+		var container = $("#template-controls");
 		for (var i = 0; i < template.fields.length; i++) {
 			var type = template.fields[i].type;
 			var name = template.fields[i].name;
@@ -63,12 +64,12 @@ var template = {
 			}
 			
 			if (type == 'slider') {
-				$("<li>" + name + "<div data-field='"+i+"'></div></li>").appendTo("#slides-global").find("div").slider($.extend({},template.sliderOptions, { min: field.min || 0, max: field.max || 40 }
+				$("<li>" + name + "<br /><div class='control-container'><div class='control' data-field='"+i+"'></div></div></li>").appendTo(container).find(".control").slider($.extend({},template.sliderOptions, { min: field.min || 0, max: field.max || 40 }
 				
 				));
 			}
 			else if (type == 'color') {
-				$("<li>" + name + "<div data-field='"+i+"' class='colorselector-container'></div></li>").appendTo("#slides-global").find("div").ColorPicker(template.colorpickerOptions);
+				$("<li>" + name + "<br /><div class='control-container'><div data-field='"+i+"' class='control colorselector-container'></div></div></li>").appendTo(container).find(".control").ColorPicker(template.colorpickerOptions);
 			}
 		}
 		

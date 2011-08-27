@@ -31,6 +31,10 @@ img {
 #slides-collection li.active { outline: solid 2px orange; }
 
 
+#template-controls { margin:0; padding:0; }
+#template-controls li { color: #666; margin:0; padding:10px; list-style-type:none;}
+#template-controls .container {  width: 80%; }
+
 .logins {
 	position: fixed;
 	top: 35px;
