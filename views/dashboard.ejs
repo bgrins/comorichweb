@@ -1,4 +1,3 @@
-<h1>Dashboard</h1>
 
 <style>
     h3 a { color: black; text-decoration: none; }
@@ -6,29 +5,13 @@
     h3 a:hover { text-decoration: underline; }
 </style>
 
-<% if (session.auth) {%>
-  <h1><%= session.user.name %>'s Slideshows</h1>
+<h2><%= session.user.name %>'s Slideshows</h2>
   
 <div class="deck-list">
     <div>
         <a class="create-button" href="/deck/create">Create a deck</a>
     </div>
-	<ul>
-		<% for (var i in decks) { %>
-		  <li class="deck-preview">
-		    <h4><a href="/app/<%= decks[i]._id%>"><%= decks[i].title %></a></h4>
-		    <p>Slides: <%= decks[i].slides? decks[i].slides.length : 0 %></p>
-		  </li>
-		<% } %>
+	<ul class='decks clearfix'>
+	<%- partial('deckthumb', decks) %>
 	</ul>
 </div>
-<% } else { %>
-      <p>Please Login:</p>
-      <ul>
-			<li class="facebook"><a href="/auth/facebook"><img src="//facebook.com/favicon.ico" alt="">Facebook</a></li>
-			<li class="twitter"><a href="/auth/twitter"><img src="//twitter.com/favicon.ico" alt="">Twitter</a></li>
-			<li class="github"><a href="/auth/github"><img src="//github.com/favicon.ico" alt="">Github</a></li>
-      </ul>
-<% } %>
-
-

@@ -9,13 +9,46 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 	<link rel="stylesheet" href="/css/reset.css" type="text/css">
 	<link rel="stylesheet" href="/css/client.css" type="text/css">
-	<title>Slidespot: The Spot for Slides</title>
+	<title>SlideSpot: The Spot for Slides</title>
 	
 	<script src="/js/util.js" type="text/javascript"></script>
 	<script src="/js/jquery-1.6.1.js" type="text/javascript"></script>
 
 </head>
 <body class='site'>
+
+  <div id="site-top" class="clearfix">
+	<div id="title"><h1><a href='/'>SlideSpot</a></h1></div>
+	
+	<div id="login" class="clearfix">
+			<% if(!session.auth) {%>
+	      <span class='using'>Login Using:</span>
+	      <ul>
+				<li class="facebook"><a href="/auth/facebook"><img src="//facebook.com/favicon.ico" alt="">Facebook</a></li>
+				<li class="twitter"><a href="/auth/twitter"><img src="//twitter.com/favicon.ico" alt="">Twitter</a></li>
+				<li class="github"><a href="/auth/github"><img src="//github.com/favicon.ico" alt="">Github</a></li>
+	      </ul>
+		  <% } else { %>
+	      	
+	      	<img class="avatar" height='32' src="<%= ((session.auth && session.user.image) ? session.user.image : '/img/default.png') %>">
+	      	<img class="service" height='12' src="<%= (session.auth && session.auth.github) ? '//github.com/favicon.ico' : '' %>
+	      <%= (session.auth && session.auth.twitter) ? '//twitter.com/favicon.ico' : '' %>
+	      <%= (session.auth && session.auth.facebook) ? '//facebook.com/favicon.ico' : '' %>" />
+	      
+	      	<a href="/dashboard"><%= session.user.name %></a>
+	      
+	      	<div class="logout"><a href="/logout">Logout</a></div>
+	      
+	      <% } %>			
+	</div>
+	
+
+  </div>
+  
+
+
+<div id='site-container'>
 	<%- body %>
+</div>
 </body>
 </html>

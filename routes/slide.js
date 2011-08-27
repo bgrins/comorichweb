@@ -16,7 +16,6 @@ module.exports = function(app){
             });
         });
     });
-
     app.get("/deck/exportview/:id.html", function(req, res) {
         var id = req.params.id;
         deckRepo.model.findById(id, function(err, deck) {
@@ -125,10 +124,11 @@ module.exports = function(app){
                         dbslide.sort = slide.sort;
                     }
                 });
-
-                deck.save(function(err) {
-                    res.send(deck);
-                });;
+				
+            });
+            
+            deck.save(function(err) {
+                res.send(deck);
             });
 
         });

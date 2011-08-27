@@ -2,11 +2,11 @@ var mongoose = require('mongoose');
 
 var _db = null;
 module.exports = {
-    init: function(server, dbname) {
+    init: function(host, name) {
         if (!module.exports._db){
-            var path = 'mongodb://' + server + '/' + dbname;
-            console.log('connecting to MONGO via ' + path);
-            module.exports._db = mongoose.connect(path);
+            console.log('connecting to MONGO via ' + host + " " + name);
+            module.exports._db = mongoose.connect(host, name);
+
         }
 
         return module.exports._db;        

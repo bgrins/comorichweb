@@ -15,10 +15,10 @@ var settings = {
         'name': 'sample-app'
     }, 
 
-    'zipExec': __dirname + "/zip.sh"
+    'zipExec': __dirname + "/zip.sh",
 
 	// Enter API keys to enable auth services, remove entire object if they aren't used.
-, 'external': {
+    'external': {
 		'facebook': {
 			appId: '199842220079212',
 			appSecret: '3c65d84b0793accabb2dc35015d1a067'
@@ -38,7 +38,7 @@ var settings = {
 if (process.env.NODE_ENV == 'production') {
 	settings.uri = 'http://comorichweb.no.de';
 	settings.port = process.env.PORT || 80; // Joyent SmartMachine uses process.env.PORT
-
+  settings.db.url = 'mongodb://test:test@staff.mongohq.com:10035/comorichweb';
 	settings.airbrakeApiKey = 'f66c6b1d6342a9ff31c4bf8ab7e73fa2'; // Error logging, Get free API key from https://airbrakeapp.com/account/new/Free
 }
 module.exports = settings;
