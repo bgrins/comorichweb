@@ -16,10 +16,11 @@ var general = {
 	resize: function() {
 		var fullHeight = $(window).height();
 		var slides = $("#slides-content");
-		slides.height(fullHeight - slides.offset().top);
+		var m = parseInt(slides.css("margin-bottom"));
+		slides.height(fullHeight - slides.offset().top - m);
 		
 		var collection = $("#slides-collection");
-		collection.height(fullHeight - collection.offset().top);
+		collection.height(fullHeight - collection.offset().top - m);
 	},
 	saving: false,
 	save: function() {
