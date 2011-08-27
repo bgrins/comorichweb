@@ -1,6 +1,22 @@
-<a href="/deck/create">add</a>
-	   
-<% for(var i in decks) { %> 
-    <% var deck = decks[i]; %>
-    <a href="/app/<%= deck._id %>"><%= deck.title %></a>
-<% } %>
+<h1>Create</h1>
+
+<style>
+    h3 a { color: black; text-decoration: none; }
+    h3 a:visited { color: black; }
+    h3 a:hover { text-decoration: underline; }
+
+
+</style>
+
+<div class="deck-list">
+    <div>
+        <a class="create-button" href="/deck/create">Add Presentation</a>
+    </div>
+           
+    <% for(var i in decks) { %> 
+        <% var deck = decks[i]; %>
+        <div>
+            <h3><a href="/app/<%= deck._id %>"><%= deck.title %></a></h3>
+        </div>
+    <% } %>
+</div>
