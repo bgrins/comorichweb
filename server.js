@@ -29,9 +29,9 @@ var sessionStore = new RedisStore;
 var app = module.exports = express.createServer();
 
 app.listen(siteConf.port, null);
-/*
 // Setup socket.io server
 var socketIo = new require('./lib/socket-io-server.js')(app, sessionStore);
+/*
 var authentication = new require('./lib/authentication.js')(app, siteConf);
 // Setup groups for CSS / JS assets
 var assetsSettings = {
@@ -185,5 +185,5 @@ app.all('*', function(req, res){
 	throw new NotFound;
 });
 
-console.log('Running in '+(process.env.NODE_ENV || 'development')+' mode @ '+siteConf.uri);
 */
+console.log('Running in '+(process.env.NODE_ENV || 'development')+' mode @ '+siteConf.uri);
