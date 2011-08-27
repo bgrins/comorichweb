@@ -1,7 +1,10 @@
 var fs = require("fs");
+var Deck = require("../models/deck.js").model;
 module.exports = function(app){
     app.all('/', function(req, res) {
-        res.render('index', {layout: "site.ejs"});
+        Deck.find({}, function(err, decks){
+          res.render('index', {layout: "site.ejs", decks:decks });
+        });
     });
 
     fs.readdir(__dirname, function(err, files){

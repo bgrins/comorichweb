@@ -9,6 +9,10 @@
 
 
 <section id="header">
-  <h1>Slidespot</h1>
-  <p>The spot for slides.</p>
+  <h1>See the slideshows others are creating:</h1>
+  <ul>
+    <% decks.forEach(function(deck){ %>
+      <li><a href="/deck/<%=deck._id%>"><%= deck.title %></a> by <%= deck.author? deck.author.name  : 'Unknown'%></li>
+    <% }); %>
+  </ul>
 </section>
