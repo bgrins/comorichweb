@@ -602,6 +602,7 @@ function handleDomLoaded() {
 function initialize() {
   var socket = io.connect();
   socket.on('next', function(){
+    console.log('got it');
     nextSlide();
   });
   socket.on('prev', prevSlide);
