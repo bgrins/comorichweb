@@ -5,10 +5,21 @@
   font-size: 500%;
 }
 #title * { float:left; }
-#site-top { background:#300; color:#ddd; padding:5px 10px; padding-bottom: 2px; border-bottom: 3px solid #844; } 
+#site-top { color:#fdd; padding:5px 10px; padding-bottom: 2px; border-bottom: 3px solid #333; } 
 #site-top .wrapper { width: 1022px; margin: auto; }
 #site-top h1 { color: white; text-decoration: none; font-size: 2em; margin:0; padding: 0; margin-bottom:2px; }
 #site-top h1 a, #site-top h1 a:visited { color: white; text-decoration:none; }
+#site-top {
+background: rgb(125,126,125);
+background: -moz-linear-gradient(top, rgba(125,126,125,1) 0%, rgba(14,14,14,1) 100%);
+background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(125,126,125,1)), color-stop(100%,rgba(14,14,14,1)));
+background: -webkit-linear-gradient(top, rgba(125,126,125,1) 0%,rgba(14,14,14,1) 100%);
+background: -o-linear-gradient(top, rgba(125,126,125,1) 0%,rgba(14,14,14,1) 100%);
+background: -ms-linear-gradient(top, rgba(125,126,125,1) 0%,rgba(14,14,14,1) 100%);
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#7d7e7d', endColorstr='#0e0e0e',GradientType=0 );
+background: linear-gradient(top, rgba(125,126,125,1) 0%,rgba(14,14,14,1) 100%);
+}
+
 
 #site-top.small h1 { font-size:1.1em; }
 #site-top.small img { display:none; }
@@ -290,7 +301,7 @@ http://www.freecsstemplates.org
 Released for free under a Creative Commons Attribution 2.5 License
 
 */
-body { margin: 0; padding: 0; background: #FFFFFF url(../img/img02.gif) repeat; font-family: Arial, Helvetica, sans-serif; font-size: 14px; color: #402C16; } 
+body { margin: 0; padding: 0; background: #fdd url(../img/hatch-light.png) repeat; color: #402C16; } 
 h1, h2, h3 { margin: 0; padding: 0; font-weight: normal;} 
 h1 { font-size: 2em; } 
 h2 { font-size: 2.4em; } 
@@ -304,7 +315,7 @@ img.border { border: 6px solid #EEE7DF; }
 img.alignleft { float: left; margin-right: 25px; }
  img.alignright { float: right; }
 img.aligncenter { margin: 0px auto; }
-#wrapper { margin: 0 auto; padding: 0; background: url(../img/img03.gif) no-repeat center top; }
+#wrapper { margin: 0 auto; padding: 0; }
 
 /* Header */
 #header-wrapper { height: 240px; }
@@ -333,7 +344,7 @@ img.aligncenter { margin: 0px auto; }
 #menu .current_page_item a { } 
 #menu a:hover { text-decoration: none; }
 /* Page */
-#page { width: 1022px; margin: 0 auto; padding: 0; border-top: 1px solid #D0D0D0; } 
+#page { width: 1022px; margin: 0 auto; padding: 0; border-top: 1px solid #D0D0D0; background:rgba(255, 255, 255, .7); } 
 #page-bgtop { } 
 #page-bgbtm { margin: 0px; } 
 /* Content */
