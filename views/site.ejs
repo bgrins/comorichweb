@@ -19,6 +19,7 @@
 <body class='site'>
 
   <div id="site-top" class="clearfix">
+    <div class="wrapper">
 	<div id="title"><h1><a href='/'>SlideSpot</a></h1></div>
 
 			<% if(!session.user) {%>
@@ -48,14 +49,24 @@
 	</ul>
 	</div>
 	      <% } %>	
+    </div>
 	
 
   </div>
   
 
-
-<div id='site-container'>
-	<%- body %>
+<div id="wrapper">
+    <div id="page">
+        <div id="page-bgtop">
+            <div id="page-bgbtm">
+                <div id="content">
+                    <div id='site-container'>
+                        <%- body %>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 </body>
 </html>

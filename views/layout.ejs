@@ -34,6 +34,9 @@
 <body>
 
   <div id="site-top" class="clearfix">
+  
+    <div class="wrapper">
+    
 	<div id="title"><h1><a href='/'>SlideSpot</a></h1></div>
 
 			<% if(!session.user) {%>
@@ -43,6 +46,7 @@
 				<li class="facebook"><a href="/auth/facebook"><img src="//facebook.com/favicon.ico" alt="">Facebook</a></li>
 				<li class="twitter"><a href="/auth/twitter"><img src="//twitter.com/favicon.ico" alt="">Twitter</a></li>
 				<li class="github"><a href="/auth/github"><img src="//github.com/favicon.ico" alt="">Github</a></li>
+
 	      </ul>		
 	</div>
 		  <% } else { %>
@@ -54,6 +58,19 @@
 	      	<% } %>
 	      	<%= session.user.name %>
 	      	<span class='expand'>&#x25BC;</span>
+	      </ul>
+			<% } else { %>
+	      <img class="avatar" height='32' src="<%= ((session.auth && session.user.image) ? session.user.image : '/img/default.png') %>">
+	      <img class="service" height='12' src="<%= (session.auth && session.auth.github) ? '//github.com/favicon.ico' : '' %>
+	      <%= (session.auth && session.auth.twitter) ? '//twitter.com/favicon.ico' : '' %>
+	      <%= (session.auth && session.auth.facebook) ? '//facebook.com/favicon.ico' : '' %>"/>
+	      
+	      <%= (session.auth) ? session.user.name : "" %>
+				<div class="logout"><a href="/logout">Logout</a></div>
+			<% } %>
+			
+			</div>
+			
 	</div>
 	<div class='expanded'>
 	<div class='tb'></div>
@@ -68,9 +85,11 @@
   </div>
   
 
+<div class="body-wrapper">
+
 	<%- body %>
 	<% if (locals.dummyHelperHtml) {%><%- dummyHelperHtml%><% } %>
 	
-	
+</div>
 </body>
 </html>
