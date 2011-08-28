@@ -1,0 +1,17 @@
+<form method="post" action="/profile/edit">
+  <dl>
+    <dt>Email</dt>
+    <dd>
+      <input type="text" name="currentUser[email]" value="<%= currentUser.email %>"/>
+    </dd>
+    <dt>Bio</dt>
+    <dd>
+      <input type="text" name="currentUser[bio]" value="<%= currentUser.bio %>"/>
+    </dd>
+    <dt>Web</dt>
+    <dd>
+      <input type="text" name="currentUser[web]" value="<%= currentUser.web %>"/>
+    </dd>
+  </dl>
+  <input type="submit" value="Save"/>
+</form>
