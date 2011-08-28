@@ -7,5 +7,6 @@
 <a href="/deck/<%=deckthumb._id%>">Preview</a> 
 <% if (session.auth && session.user && deckthumb.author && session.user.id == deckthumb.author.id) { %>
 <a href="/deck/edit/<%=deckthumb._id%>">Edit</a>
+<a href="/deck/export/<%=deckthumb._id%>">Export to Html</a>
 <% } %>
 </li>
