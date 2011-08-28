@@ -98,6 +98,7 @@ if (window.parent != window && window.parent.template && window.parent.template)
 }
   $(function() {
       var socket = io.connect();
+      socket.emit('deck-identify', {id:$('body').data('id')});
       socket.on('next', function(){
 	$.deck('next');
       });
