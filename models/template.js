@@ -6,10 +6,10 @@ var tagSchema = new mongoose.Schema({
     color: String,
     size: String,
     margin: String,
-    fontWeight: String,
+    fontweight: String,
     border: String,
-    borderRadius: String,
-    textShadow: String
+    borderradius: String,
+    textshadow: String
 })
 
 var schema = new mongoose.Schema({

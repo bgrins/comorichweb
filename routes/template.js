@@ -25,6 +25,18 @@ module.exports = function(app){
         }
     });
 
+    app.get("/template/default/:id", function(req, res) {
+        var a = themes[req.params.id];
+        if (a) {
+            res.header("Content-Type", "text/css");
+            console.log(a);
+            res.render("template.css.ejs", { tags:  a , layout: false });
+        }
+        else {
+            res.send("404", 404);
+        }
+    });
+
     app.post("/template/:id", function(req, res) {
         var id = req.param.id;
         var tags = req.param("tags", []);
