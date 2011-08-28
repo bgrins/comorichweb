@@ -151,6 +151,7 @@ var deck = {
         }).click(function() {
 			deck.data.title = prompt("Enter a title", deck.data.title + "") || deck.data.title;
 			deck.render();
+			general.save();
 		});
 		
 		deck.render();
