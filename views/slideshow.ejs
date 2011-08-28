@@ -1,4 +1,15 @@
 <link rel="stylesheet" type="text/css" href="/<%= deck._id %>/template.css" /> 
+<script type="text/javascript">
+  $(function() {
+      var socket = io.connect();
+      socket.on('next', function(){
+	$.deck('next');
+      });
+      socket.on('prev', function() {
+	$.deck('prev');
+    });
+</script>
+
 <% title = deck.title %>
 
 <% 

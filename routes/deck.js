@@ -16,7 +16,7 @@ module.exports = function(app){
 
       app.get('/deck/remote/:id', function(req, res){
 	deck_repo.model.findById(req.param("id"), function(err, deck) {
-	  res.render("remote", { deck: deck });
+	  res.render("remote", { deck: deck, layout: false });
 	});
       });
     
