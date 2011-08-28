@@ -1,6 +1,6 @@
 
   <div id="site-top" class="clearfix">
-    <div class="wrapper">
+    <div class="wrapper clearfix">
 	<div id="title"><h1><a href='/'>SlideSpot</a></h1></div>
 
 			<% if(!session.user) {%>
@@ -13,6 +13,8 @@
 	      </ul>		
 	</div>
 		  <% } else { %>
+		  
+		  
 	<div id="login" class="clearfix out">
 	      	
 	      	<img class="avatar" height='16' src="<%= session.userIcon %>">
@@ -31,6 +33,7 @@
 		</ul>
 	</div>
 	      <% } %>	
+	<iframe src="http://nodeknockout.com/iframe/comorichweb" frameborder=0 scrolling=no allowtransparency=true width=115 height=25></iframe>
     </div>
 	
 
