@@ -1,3 +1,18 @@
 <link rel="stylesheet" type="text/css" href="/<%= deck._id %>/template.css" /> 
 
-<%- partial('slide', deck.slides) %>
+<% 
+	var slides = [];
+	if (slideID) {
+		for (var i = 0; i < deck.slides.length; i++) {
+			if (deck.slides[i]._id == slideID) {
+				slides = [deck.slides[i]];
+			}
+		}
+	}
+	
+	if (!slides.length) {
+		slides = deck.slides;
+	}
+%>
+
+<%- partial('slide', slides) %>
