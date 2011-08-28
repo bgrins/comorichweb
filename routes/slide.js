@@ -77,6 +77,23 @@ module.exports = function(app){
         });
     });
 
+    app.get("/slide/preview/:id", function(req, res) {
+        var id = req.params.id;
+        
+        slideRepo.model.findById(id, function(err, slide) {
+        	if (err || !slide) {
+        		res.send("404");
+        		return;
+        	}
+        	
+            res.render("slideshow", {
+                deck: slide.deck,
+                layout: "presentation-layout.ejs",
+                ignoreSlides: true
+            });
+        });
+            
+    });
     app.post("/slide/get", function(req, res) {
 
 

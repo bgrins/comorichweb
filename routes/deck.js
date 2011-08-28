@@ -97,16 +97,17 @@ module.exports = function(app){
     });
 
 
-    
-    app.get("/deck/:id", function(req, res) {
+    app.all("/deck/:id", function(req, res) {
         var id = req.params.id;
-
-        deckRepo.model.findById(id, function(err, deck) {
+        var slideID = req.param("slideid", false);
+        var deck = deck_repo.model.findById(id, function(err, deck) {
             res.render("slideshow", {
-                slides: deck.slides,
-                layout: "presentation-layout.ejs"
+                deck: deck,
+                layout: "presentation-layout.ejs",
+                slideID: slideID
             });
         });
     });
+    
 };
 
