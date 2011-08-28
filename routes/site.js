@@ -4,7 +4,6 @@ var User = require("../models/user.js").model;
 var emitter = new(require('events').EventEmitter);
 
 module.exports = function(app){
-    
     app.get('/profile/edit', function(req, res){
       var user = Object.freeze(req.session.user);
       res.render('edit-profile', {currentUser:user});
@@ -17,7 +16,6 @@ module.exports = function(app){
               decks: decks
               , layout: "site.ejs"
               , followers: people
-
             });
           });
         });
