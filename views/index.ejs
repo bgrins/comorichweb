@@ -2,17 +2,19 @@
     <div class="title">
         <h2><span>Welcome to SlideSpot</span></h2>
     </div>
-    <p style="padding: 8px 0">
+    <p style="padding: 4px 0">
         SlideSpot is a presentation builder that uses <a href="http://imakewebthings.github.com/deck.js/">deck.js</a> to create modern HTML Presentations
     </p>
 
 
+<% if (!session.auth) { %>
     Login using one of these services to get started: 
   <ul>
         <li class="facebook"><a href="/auth/facebook"><img src="//facebook.com/favicon.ico" alt="">Facebook</a></li>
         <li class="twitter"><a href="/auth/twitter"><img src="//twitter.com/favicon.ico" alt="">Twitter</a></li>
         <li class="github"><a href="/auth/github"><img src="//github.com/favicon.ico" alt="">Github</a></li>
   </ul>		
+<% } %>
 </div>
 
 <div class="post">
