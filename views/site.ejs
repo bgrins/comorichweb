@@ -24,9 +24,9 @@
 			<% if(!session.auth) {%>
 	      <span class='using'>Login Using:</span>
 	      <ul>
-				<li class="facebook"><a href="/auth/facebook"><img src="//facebook.com/favicon.ico" alt="">Facebook</a></li>
-				<li class="twitter"><a href="/auth/twitter"><img src="//twitter.com/favicon.ico" alt="">Twitter</a></li>
-				<li class="github"><a href="/auth/github"><img src="//github.com/favicon.ico" alt="">Github</a></li>
+            <li class="facebook"><a href="/auth/facebook"><img src="//facebook.com/favicon.ico" alt="">Facebook</a></li>
+            <li class="twitter"><a href="/auth/twitter"><img src="//twitter.com/favicon.ico" alt="">Twitter</a></li>
+            <li class="github"><a href="/auth/github"><img src="//github.com/favicon.ico" alt="">Github</a></li>
 	      </ul>
 		  <% } else { %>
 	      	
@@ -45,9 +45,20 @@
   </div>
   
 
-
-<div id='site-container'>
-	<%- body %>
+<div id="wrapper">
+    <div id="page">
+        <div id="page-bgtop">
+            <div id="page-bgbtm">
+                <div id="content">
+                    <div class="post">
+                        <div id='site-container'>
+                            <%- body %>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 </body>
 </html>
