@@ -4,6 +4,7 @@
   text-align: center;
   font-size: 500%;
 }
+#title { cursor: pointer;}
 #title * { float:left; }
 #site-top { font-family: Tahoma; color:#fdd; padding:5px 10px; padding-bottom: 2px; border-bottom: 3px solid #333; } 
 #site-top .wrapper { width: 1022px; margin: auto; position:relative; }
@@ -47,8 +48,8 @@ background: linear-gradient(top, rgba(125,126,125,1) 0%,rgba(14,14,14,1) 100%);
 #login .username { position: relative; top: 2px; }
 .expand { font-size:10px; display:inline-block;cursor:pointer; padding:2px; }
 .expand:hover { }
-.expanded { font-family: Tahoma; display:none; position:absolute; border:solid 1px #333; width:175px; top: 35px; right:0; background:#000; padding:4px; border-radius:5px; text-align:right; z-index:10;}
-.expanded .tb { position:absolute; top:-4px; height:8px; left:-1px; width: 185px; background-color: #333;}
+.expanded { font-family: Tahoma; display:none; position:absolute; border:solid 1px #333; width:149px; top: 30px; right:0; background:#000; padding:4px; border-radius:5px; text-align:right; z-index:10;}
+.expanded .tb { position:absolute; top:-4px; height:8px; left:-1px; width: 159px; background-color: #333;}
 .expanded li { list-style: none; margin:6px 0; padding:0; float:none; }
 .expanded li a, .expanded li a:visited { color: white; text-transform: uppercase; text-decoration: none; padding:6px 0; }
 .expanded li a:hover { text-decoration: underline;}
