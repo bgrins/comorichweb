@@ -6,7 +6,7 @@
 }
 #title * { float:left; }
 #site-top { color:#fdd; padding:5px 10px; padding-bottom: 2px; border-bottom: 3px solid #333; } 
-#site-top .wrapper { width: 1022px; margin: auto; }
+#site-top .wrapper { width: 1022px; margin: auto; position:relative; }
 #site-top h1 { color: white; text-decoration: none; font-size: 2em; margin:0; padding: 0; margin-bottom:2px; }
 #site-top h1 a, #site-top h1 a:visited { color: white; text-decoration:none; }
 #site-top {
