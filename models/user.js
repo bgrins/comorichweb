@@ -4,12 +4,12 @@ var Deck = require('./deck').model,
     Mixed = mongoose.SchemaTypes.Mixed;
 
 var UserSchema = new mongoose.Schema({
-  id: String
-  , name: String
-  , image: String
-  , email: String
-  , bio: String
-  , web: String
+  id: {type: String, default: '', unique: true}
+  , name: {type:String, default: ''}
+  , image: {type:String, default: ''}
+  , email: {type:String, default: ''}
+  , bio: {type:String, default: ''}
+  , web: {type:String, default: ''}
   , following: [UserSchema]  
   , followers: [UserSchema]  
 });
