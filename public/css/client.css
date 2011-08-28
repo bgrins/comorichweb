@@ -6,6 +6,7 @@
 }
 #title * { float:left; }
 #site-top { background:#300; color:#ddd; padding:5px 10px; padding-bottom: 2px; border-bottom: 3px solid #844; } 
+#site-top .wrapper { width: 1022px; margin: auto; }
 #site-top h1 { color: white; text-decoration: none; font-size: 2em; margin:0; padding: 0; margin-bottom:2px; }
 #site-top h1 a, #site-top h1 a:visited { color: white; text-decoration:none; }
 
@@ -268,7 +269,7 @@ Released for free under a Creative Commons Attribution 2.5 License
 
 */
 body { margin: 0; padding: 0; background: #FFFFFF url(../img/img02.gif) repeat; font-family: Arial, Helvetica, sans-serif; font-size: 14px; color: #402C16; } 
-h1, h2, h3 { margin: 0; padding: 0; font-weight: normal; color: #2E9F13; } 
+h1, h2, h3 { margin: 0; padding: 0; font-weight: normal;} 
 h1 { font-size: 2em; } 
 h2 { font-size: 2.4em; } 
 h3 { font-size: 1.6em; }
@@ -382,5 +383,6 @@ img.aligncenter { margin: 0px auto; }
    border-top-color: #1b435e;
    background: #1b435e;
 }
-.
+div.body-wrapper { width:1022px; margin:auto; padding-top: 18px;  }
+
 
