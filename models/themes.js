@@ -1,10 +1,14 @@
 module.exports = [
     [
-        { name:" h2",
-                color: "blue",
-                fontsize: "1.9em",
+        { 
+        name:" h2",
+        color: "#f9f",
                 textdecoration: "underline"
-            }
+        },
+        {
+        name: "body",
+        background: "#366"
+        }
     ],
     [ {
         name: "body",
@@ -361,7 +365,7 @@ module.exports = [
     
     [ {
         name: "body",
-        background: " #339 "
+        background: "#339"
     }, {
     	name: "h2",
     	color: "#ddf"
