@@ -67,7 +67,6 @@ background: linear-gradient(top, rgba(125,126,125,1) 0%,rgba(14,14,14,1) 100%);
 
 
 #site-container{
-  
   padding: 0px 24px;
   border-top:none;
 }
@@ -417,7 +416,7 @@ img.aligncenter { margin: 0px auto; }
    border-top-color: #1b435e;
    background: #1b435e;
 }
-div.body-wrapper { width:1022px; margin:auto; padding-top: 18px;  }
 
+div.body-wrapper { width:1022px; margin:auto;}
 
 
