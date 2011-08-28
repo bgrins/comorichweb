@@ -69,8 +69,9 @@
 <script>
 $.deck('.slide', {	});
 
-if (window.parent != window && window.parent.template && window.parent.template.deckChange) {
-	var deckChange = window.parent.template.deckChange;
+if (window.parent != window && window.parent.template && window.parent.template) {
+	var deckChange = window.parent.template.deckChange || function() { };
+	
 	$(document).bind("deck.change", function(e, from , to) {
 		deckChange(to);
 	});
