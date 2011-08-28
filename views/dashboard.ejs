@@ -7,9 +7,9 @@
 
 <h2><%= session.user.name %></h2>
 <a href="/profile/edit">Edit Your Profile</a>
-<img class="avatar" height='64' width="64" src="<%= session.user.image %>">
 <ul>
   <li>Bio: <%= session.user.bio %></li>
+  <li>Email: <%= session.user.email %></li>
   <li>Website: <%= session.user.web %></li>
 </ul>
 
