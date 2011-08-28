@@ -191,12 +191,12 @@ function NotFound(msg){
 
 app.all('*', function(req, res, next) {
 	var s = req.session;
-	if (s.auth) {
+	if (s.auth && s.user) {
 		if (s.auth.github) { s.serviceIcon = "//github.com/favicon.ico"; }
 		if (s.auth.twitter) { s.serviceIcon = "//twitter.com/favicon.ico"; }
 		if (s.auth.facebook) { s.serviceIcon = "//facebook.com/favicon.ico"; }
 		
-        if (s.user && s.user.image) {
+        if (s.user) {
             s.userIcon = s.user.image || '/img/default.png';
         }
 	}
