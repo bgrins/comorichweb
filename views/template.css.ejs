@@ -3,44 +3,51 @@
 
 <% for (i = 0; i < tags.length; i++) { %>
     <% var tag = tags[i]; %>
-    <% var basetags = [ "background",  "color", "position", "width", "height", "margin", "position", "border" ]; %>
+    <% var basetags = [ "background",  "color", "position", "padding", "width", "height", "margin", "position", "border" ]; %>
     <% if (tag.name == "body") { %>
         .deck-container { 
     <% } else { %> 
-        .deck-container <%= tag.name %> {
+        .csstransforms .deck-container <%= tag.name %>, .deck-container <%= tag.name %> {
     <% } %>
 
     <% for (j = 0; j < basetags.length; j++) { %>
         <% var basetag = basetags[j]; %>
         <% if (tag[basetag]) { %>
-            <%- basetag %>: <%- tag[basetag] %>;
+            <%= basetag %>: <%= tag[basetag] %>;
         <% } %>
     <% } %>
+    <% if (tag.backgroundcolor) { %>
+        background-color: <%= tag.backgroundcolor %>;
+    <% } %>
     <% if (tag.bordercolor) { %>
-        border-color: <%- tag.bordercolor %>;
+        border-color: <%= tag.bordercolor %>;
+    <% } %>
+    <% if (tag.borderwidth) { %>
+        border-style: <%= tag.borderstyle || "solid" %>;
+        border-width: <%= tag.borderwidth %>;
     <% } %>
     <% if (tag.borderradius) { %>
-        -webkit-border-radius: <%- tag.borderradius %>;
-        -moz-border-radius: <%- tag.borderradius %>;
-        border-radius: <%- tag.borderradius %>;
+        -webkit-border-radius: <%= tag.borderradius %>;
+        -moz-border-radius: <%= tag.borderradius %>;
+        border-radius: <%= tag.borderradius %>;
     <% } %>
     <% if (tag.borderbottom) { %>
-        border-bottom: <%- tag.borderbottom %>;
+        border-bottom: <%= tag.borderbottom %>;
     <% } %>
     <% if (tag.lineheight) { %>
-        line-height: <%- tag.lineheight %>;
+        line-height: <%= tag.lineheight %>;
     <% } %>
     <% if (tag.font) { %>
-        font-family: <%- tag.fontfamily %>;
+        font-family: <%= tag.fontfamily %>;
     <% } %>
     <% if (tag.fontsize) { %>
-        font-size: <%- tag.fontsize %>;
+        font-size: <%= tag.fontsize %>;
     <% } %>
     <% if (tag.fontWeight) { %>
-        font-weight: <%- tag.fontWeight %>;
+        font-weight: <%= tag.fontWeight %>;
     <% } %>
     <% if (tag.borderRadius) { %>
-        border-radius: <%- tag.borderRadius %>;
+        border-radius: <%= tag.borderRadius %>;
     <% } %>
 }
 <% } %>
