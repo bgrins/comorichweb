@@ -1,8 +1,8 @@
-<div class="post" style="padding-top: 0;">
+<div class="post" style="padding: 0; margin:0;">
     <div class="title">
         <h2><span>Welcome to SlideSpot</span></h2>
     </div>
-    <p style="padding: 4px 0">
+    <p class='desc'>
         SlideSpot is a presentation builder that uses <a href="http://imakewebthings.github.com/deck.js/">deck.js</a> to create modern HTML Presentations
     </p>
 
@@ -19,13 +19,14 @@
 
 <div class="post">
 <% if (session.auth) { %>
-    <a class="button" href="/deck/create">Create Slideshow</a>
     <a href="http://comorichweb.no.de/deck/4e5abbc80b92383b730000c9">View the Tutorial</a>
     or
-    <a href="/dashboard">View Your Slideshows (beta)</a>
+    <a href="/dashboard">View Your Slideshows (beta)</a><br /><br />
+   
+    <a class="button" href="/deck/create">Create Slideshow</a>
 <% } %>
 
-<h2 class="title"><span>Popular Slideshows</span></h2> 
+<h2 class="title"><span>New Slideshows</span></h2> 
 <ul class='decks clearfix'>
 <%- partial('deckthumb', decks) %>
 </ul>

@@ -114,7 +114,8 @@ body.edittemplate #template-controls-container { display:block; }
 #template-controls .control-container.picker {  float:right; }
 #template-controls .control-name { vertical-align: middle; }
 
-.decks li {float:left; width: 100px; height: 100px; margin:10px; list-style-type: none; }
+.decks li {float:left; width: 120px; height: 140px; margin:10px; list-style-type: none; background: #333; color: white; border-radius: 10px; padding: 6px; }
+.decks li a { color: #99f; }
 .deckpreview .deck-title { font-weight:bold; font-size: 12px; }
 .decks li h4 { margin: 4px 0; padding: 2px; }
 .author { font-size: .8em; color: #999; }
@@ -361,7 +362,7 @@ img.aligncenter { margin: 0px auto; }
 /* Content */
  #content { float: left; width: 1022px;  }
 .post {  padding: 8px 0; } 
-.post .title { margin-top:20px; padding-top: 5px; letter-spacing: -1px; border-top: 1px solid #D0D0D0; padding-bottom:10px; } 
+.post .title { margin-top:20px; padding-top: 5px; letter-spacing: -1px; border-top: 1px solid #D0D0D0; padding-bottom:2px; } 
 
 
 .post .title a, .post .title span { color: #1A1A1A; border: none; }
@@ -394,8 +395,9 @@ img.aligncenter { margin: 0px auto; }
 #footer a { color: #676767; }
 
 
-
+.desc {padding: 4px 0; color: #999; padding:0; margin:0; }
 .button {
+display:inline-block;
    border-top: 1px solid #96d1f8;
    background: #65a9d7;
    background: -webkit-gradient(linear, left top, left bottom, from(#3e779d), to(#65a9d7));
@@ -413,7 +415,7 @@ img.aligncenter { margin: 0px auto; }
    text-shadow: rgba(0,0,0,.4) 0 1px 0;
    color: #eee;
    font-size: 1.5em;
-   font-family: Georgia, serif;
+   font-family: Verdana, Tahoma;
    text-decoration: none;
    vertical-align: middle;
    }
