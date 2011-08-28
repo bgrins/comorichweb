@@ -41,7 +41,6 @@ module.exports = function(app){
         var dirname = __dirname + "/../";
         var fd = fs.readFileSync(dirname + "/views/template.css.ejs", "utf8");
         res.send(fd);
-        //res.send(fd);
     });
 
     app.post("/template/:id", function(req, res) {

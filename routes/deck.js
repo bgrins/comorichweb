@@ -3,19 +3,20 @@ var deck_repo = require("../models/deck");
 var siteConf = require('../lib/getConfig');
 var sys = require("sys");
 var exec = require("child_process").exec;
+var themes = require("../models/themes");
 
 module.exports = function(app){
     app.get("/deck/create", function(req, res) {
         var dirname = __dirname + "/../";
         var fd = fs.readFileSync(dirname + "/views/template.css.ejs", "utf8");
-        res.render("createdeck_updated", { layout: "layout.ejs", ejs: fd });
+        res.render("createdeck_updated", { layout: "layout.ejs", ejs: fd, templates: themes });
     });
     
     app.post("/deck/create", function(req, res) {
         var title = req.param("title", "Deck");
         var deck = new deck_repo.model;
         deck.title = title;
-        deck.author = req.session.user
+        deck.author = req.session.user;
         deck.save(function(err, deck) {
             res.redirect("/deck/edit/" + deck._id);
         });

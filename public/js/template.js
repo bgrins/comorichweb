@@ -1,5 +1,3 @@
-var CSS_SKELETOR = [{
-}];
 
 var template = {
 	resize: function() {
@@ -7,6 +5,7 @@ var template = {
 		var m = 30;
 		frame.height($(window).height() - frame.offset().top - m)
 	},
+	tags: [],
 	fields: [
 		{ prop: 'backgroundcolor', name: 'Background', type: 'color'},
 		{ prop: 'color', name: 'Color', type: 'color'}, 
@@ -18,6 +17,7 @@ var template = {
 	],
 	EJS: false,
 	activeselector: null,
+	loadedTemplates: [],
 	redraw: function() {
 		log("REDRAW", template.tags);
 		if (template.EJS) {
@@ -87,13 +87,19 @@ var template = {
 	onFrameLoaded: function(styleTag) {
 		template.styleTag = styleTag;
 	},
+	onTemplateClicked: function(i) {
+		if (template.loadedTemplates[i]) {
+			template.tags = template.loadedTemplates[i].slice(0);
+			template.redraw();
+		}
+		log("HER", i, template.loadedTemplates[i])
+	},
 	init: function() {
 		var container = $("#template-controls");
 		
-		template.tags = CSS_SKELETOR;
-				
 		log("Here", $("#deck-create"), $("#deck-create").length)
 		
+		template.loadedTemplates = LOADED_TEMPLATES;
 		
 		$("#deck-create").button();
 		

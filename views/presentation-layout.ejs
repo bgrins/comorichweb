@@ -74,6 +74,7 @@ if (window.parent != window && window.parent.template && window.parent.template)
 	var deckChange = window.parent.template.deckChange || function() { };
 	var onEditorClicked = window.parent.template.onEditorClicked || function() { };
 	var onFrameLoaded = window.parent.template.onFrameLoaded || function() { };
+	var onTemplateClicked = window.parent.template.onTemplateClicked || function() { };
 	
 	$(document).bind("deck.change", function(e, from , to) {
 		if (to == 1) {
@@ -86,6 +87,10 @@ if (window.parent != window && window.parent.template && window.parent.template)
 		$(".editor.active").removeClass("active");
 		$(this).addClass('active');
 		onEditorClicked($(this).data("selector"));
+	});
+	
+	$("#themes li").each(function(i) {$(this).data("ind", i);}).click(function() {
+		onTemplateClicked($(this).data("ind"));
 	});
 	
 	onFrameLoaded($("#customstyles")[0]);
