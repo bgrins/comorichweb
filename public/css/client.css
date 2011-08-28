@@ -1,16 +1,3 @@
-html {
-	gradient: #222_#000;
-	height: 100%;
-}
-body {
-	color: #000;
-	margin: 0;
-	font: 12px 'helvetica neue', helvetica, arial, sans-serif;
-	text-rendering: optimizeLegibility;
-}
-img {
-	-ms-interpolation-mode:bicubic;
-}
 
 #create {
   display: block;
@@ -54,6 +41,7 @@ img {
 #title h3, #deck-title h3 { margin:0; padding:0; float:left; font-size:24px; font-weight: lighter; padding-right:10px;  }
 #buttons, #deck-buttons { float:right; }
 
+#controls-wrapper { padding: 2px; }
 
 
 #slide-single { position:absolute; left: 160px; right:0; top:0; bottom:0;  }

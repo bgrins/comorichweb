@@ -3,7 +3,6 @@ var deckRepo = require("../models/deck");
 var slideRepo = require("../models/slide");
 
 module.exports = function(app){
-
     app.post("/slide/create", function(req, res) {
         var content = req.param("content", "welcome to slideshow.js!");
         var deckid = req.param("deckid", "4e591512259871c70e000001");

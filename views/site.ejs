@@ -28,17 +28,17 @@
 				<li class="twitter"><a href="/auth/twitter"><img src="//twitter.com/favicon.ico" alt="">Twitter</a></li>
 				<li class="github"><a href="/auth/github"><img src="//github.com/favicon.ico" alt="">Github</a></li>
 	      </ul>
-			<% } else { %>
-	      <img class="avatar" height='32' src="<%= ((session.auth && session.user.image) ? session.user.image : '/img/default.png') %>">
-	      <img class="service" height='12' src="<%= (session.auth && session.auth.github) ? '//github.com/favicon.ico' : '' %>
-	      <%= (session.auth && session.auth.twitter) ? '//twitter.com/favicon.ico' : '' %>
-	      <%= (session.auth && session.auth.facebook) ? '//facebook.com/favicon.ico' : '' %>"/>
+		  <% } else { %>
+	      	
+	      	<a href="/dashboard"><img class="avatar" height='32' src="<%= session.userIcon %>"></a>
+	      	<% if (session.serviceIcon) { %>
+	      		<img class="service" height='12' src="<%= session.serviceIcon %>" />
+	      	<% } %>
+	      	<a href="/dashboard"><%= session.user.name %></a>
 	      
-	      <%= (session.auth) ? session.user.name : "" %>
-				<div class="logout"><a href="/logout">Logout</a></div>
-			<% } %>
-			
-			
+	      	<div class="logout"><a href="/logout">Logout</a></div>
+	      
+	      <% } %>			
 	</div>
 	
 

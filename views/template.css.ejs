@@ -1,0 +1,40 @@
+.deck-container {
+	font-family: "Gill Sans", "Gill Sans MT", Calibri, sans-serif;
+	font-size:1.25em;
+	color:#aaa;
+	background:@containerBackgroundColor;
+}
+	
+.deck-container .slide {
+    background:#000;
+}
+.deck-container .slide a, .deck-container .slide a:visited, .deck-container .slide a:active { color: #f0a; text-decoration: none; }
+
+.deck-container .slide a:hover, .deck-container .slide a:focus { text-decoration: underline; }
+
+    <% for (i = 0; i < tags.length; i++) { %>
+        <% var tag = tags[i] %>
+.deck-container .slide <%= tag.name %> {
+    <% if (tag.font) { %>
+        font-family: <%- tag.font %>;
+    <% } %>
+    <% if (tag.color) { %>
+        color: <%- tag.color %>;
+    <% } %>
+    <% if (tag.size) { %>
+        font-size: <%- tag.size %>;
+    <% } %>
+    <% if (tag.margin) { %>
+        margin: <%- tag.margin %>;
+    <% } %>
+    <% if (tag.fontWeight) { %>
+        font-weight: <%- tag.fontWeight %>;
+    <% } %>
+    <% if (tag.border) { %>
+        border: <%- tag.border %>;
+    <% } %>
+    <% if (tag.borderRadius) { %>
+        border-radius: <%- tag.borderRadius %>;
+    <% } %>
+}
+    <% } %>

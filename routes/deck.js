@@ -1,8 +1,10 @@
 var fs = require("fs");
 var deck_repo = require("../models/deck");
+var siteConf = require('../lib/getConfig');
+var sys = require("sys");
+var exec = require("child_process").exec;
 
 module.exports = function(app){
-
     app.get("/deck/create", function(req, res) {
         res.render("createdeck", { layout: "layout.ejs" });
     });
@@ -22,7 +24,7 @@ module.exports = function(app){
 
         var deck = deck_repo.model.findById(id, function(err, deck) {
             res.render("slideshow", {
-                slides: deck.slides,
+                deck: deck,
                 layout: "presentation-layout.ejs"
             });
         });
@@ -47,6 +49,57 @@ module.exports = function(app){
     	    	res.render("editdeck", { deck : deck });
     	    }
     	});
+    });
+    
+    app.get("/deck/exportview/:id.html", function(req, res) {
+        var id = req.params.id;
+        deck_repo.model.findById(id, function(err, deck) {
+            res.render("slideshow", {
+                slides: deck.slides,
+                layout: "presentation-layout.ejs"
+            });
+        });
+    });
+
+    app.get("/deck/export/:id", function(req, res) {
+        var id = req.params.id;
+        var uid = new Date().getTime();
+        var dir = siteConf.tempDir + uid;
+        var url = siteConf.uri + "/deck/exportview/" + id + ".html";
+        var zipfile = siteConf.tempDir + uid + ".zip";
+        var cmd = "bash " +siteConf.zipExec;
+
+        exec(cmd + " " + dir + " " + url + " " + zipfile, function(err, stdout, stderr) {
+            console.log(stdout);
+            fd = fs.openSync(zipfile, "r");
+            size = fs.fstatSync(fd).size;
+            res.writeHead(200, {
+                "Content-Length": size,
+                "Content-Type": "application/octet-stream",
+                "Content-Disposition": "attachment; filename=deck.zip"
+            });
+            res._send('');
+            fs.sendfile(req.connection.fd, fd, 0, size, function(err, n) {
+                if (err) {
+                    throw err;
+                }   
+
+                res.end();
+            });
+        });
+    });
+
+
+    
+    app.get("/deck/:id", function(req, res) {
+        var id = req.params.id;
+
+        deckRepo.model.findById(id, function(err, deck) {
+            res.render("slideshow", {
+                slides: deck.slides,
+                layout: "presentation-layout.ejs"
+            });
+        });
     });
 };
 

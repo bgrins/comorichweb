@@ -41,12 +41,15 @@ var authentication = new require('./lib/authentication.js')(app, siteConf);
 var assetsSettings = {
 	'js': {
 		'route': /\/static\/js\/[a-z0-9]+\/.*\.js/
-		, 'path': './public/js/'
+error: Your local changes to the following files would be overwritten by merge:
+, 'path': './public/js/'
 		,
         'dataType': 'javascript'
 		, 'files': [
 			'http://code.jquery.com/jquery-latest.js'
-			, siteConf.uri+'/socket.io/socket.io.js' // special case since the socket.io module serves its own js
+			r siteConf.uri+'/socket.io/socket.io.js' // special case since the socket.io module serves its own js
+r: Your local changes to the following files would be overwritten by merge:
+
 			, 'jquery.client.js'
 		]
 		, 'debug': true
@@ -186,6 +189,18 @@ function NotFound(msg){
 	Error.captureStackTrace(this, arguments.callee);
 }
 
+app.all('*', function(req, res, next) {
+	var s = req.session;
+	if (s.auth && s.user) {
+		if (s.auth.github) { s.serviceIcon = "//github.com/favicon.ico"; }
+		if (s.auth.twitter) { s.serviceIcon = "//twitter.com/favicon.ico"; }
+		if (s.auth.facebook) { s.serviceIcon = "//facebook.com/favicon.ico"; }
+		
+        s.userIcon = s.user.image || '/img/default.png';
+	}
+	
+	next();
+});
 require("./routes")(app);
 
 // Initiate this after all other routing is done, otherwise wildcard will go crazy.
