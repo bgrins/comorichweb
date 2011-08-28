@@ -74,6 +74,7 @@ var slides = {
 	},
 	activate: function(slide) {
 		slides.active = slide;
+        general.save();
 		$("#right").addClass("editing");
 		viewsource.set(slide.content);
 	},
@@ -105,7 +106,17 @@ var slides = {
 		}
 	},
 	remove: function() {
-	
+        $.post("/slide/delete", { deckid : deck.data._id, slideid : slides.active._id }, function(data){
+            var idx = slides.collection.indexOf(slides.active);
+            slides.collection = _.reject(slides.collection, function(slide) {
+                return slide._id == slides.active._id;
+            });
+
+            idx = (idx > slides.collection.length - 1) ? slides.collection.length - 1 : idx;
+
+            slides.activate(slides.collection[idx]);
+            slides.redraw();
+        });
 	},
 	add: function() {
 		$.post('/slide/create', { deckid : deck.data._id, content: "Enter Content" },  function(data) {

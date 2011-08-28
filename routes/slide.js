@@ -1,6 +1,7 @@
 var fs = require("fs");
 var deckRepo = require("../models/deck");
 var slideRepo = require("../models/slide");
+var _ = require("underscore");
 
 module.exports = function(app){
     app.post("/slide/create", function(req, res) {
@@ -48,9 +49,32 @@ module.exports = function(app){
         });
     });
 
-    app.post("/slide/delete", function(req, res) {
+    app.all("/slide/delete", function(req, res) {
+        var deckid = req.param("deckid", null);
+        var slideid = req.param("slideid", null);
 
+	console.log(req.session.user);
+	console.log(deckid);
+	console.log(slideid);
 
+    	if(!req.session.user || !deckid || !slideid) {
+            res.send("401", 401);
+    		return;
+    	}
+    	deckRepo.model.findById(deckid, function(err, deck) {
+    		if (!deck || !deck.author || deck.author.id != req.session.user.id) {
+                res.send("401", 401);
+    		}
+    		else {
+                deck.slides = _.reject(deck.slides, function(slide) {
+                    return slide._id == slideid;
+                });
+
+                deck.save(function() {
+                    res.send("200", 200);
+                });
+    	    }
+        });
     });
 
     app.post("/slide/get", function(req, res) {
