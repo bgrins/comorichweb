@@ -139,11 +139,24 @@ var template = {
 			}
 		}
 		
+		
 		template.redraw();
 		
 		$(window).resize(template.resize);
 		template.resize();
 		
 		
+		window.tags = ["hi", "there"];
+		
+		
+
+
+        
+        this.template = template;
+        
+        
+        var animals = {animals: ['sloth', 'bear', 'monkey']};
+        var ejs = "<ul><%= animals.length %> </ul>";
+        var e = new EJS({text: ejs});
 	}
 };
