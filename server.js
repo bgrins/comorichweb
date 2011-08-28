@@ -169,8 +169,8 @@ app.dynamicHelpers({
 	}
 });
 
-// Error handling
 /*
+// Error handling
 app.error(function(err, req, res, next){
 	// Log the error to Airbreak if available, good for backtracking.
 	console.log(err);
