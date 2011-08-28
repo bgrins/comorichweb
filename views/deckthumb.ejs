@@ -1,18 +1,10 @@
 	  
 <li class='deckpreview'>
-  <a href="/deck/embed/<%=deckthumb._id%>">Preview</a> 
-    <iframe src="/deck/<%= deckthumb._id %>" scrolling="no" style="width:486px; height: 200px; 
-    zoom: .50;
-position:relative;
-top: -60px;
-    -webkit-transform: scale(.50); 
-    -webkit-transform-origin: 0.0; 
-    -moz-transform: scale(.45); 
-    -moz-transform-origin: scale(0.0); 
-    -moz-transform: -45%;"></iframe>
-  <a href="/deck/embed/<%=deckthumb._id%>">Embed</a> 
-  <a href="/deck/export/<%=deckthumb._id%>">Export</a>
-  <a href="/deck/<%=deckthumb._id%>">Preview</a>
+    <span class="title"><%= deckthumb.title %></span><br>
+  <a href="/deck/embed/<%=deckthumb._id%>">Preview</a> <br />
+  <a href="/deck/embed/<%=deckthumb._id%>">Embed</a> <br >
+  <a href="/deck/export/<%=deckthumb._id%>">Export</a><br>
+  <a href="/deck/<%=deckthumb._id%>">Preview</a><br>
   <% if (session.auth && session.user && deckthumb.author && session.user.id == deckthumb.author.id) { %>
   <a href="/deck/edit/<%=deckthumb._id%>">Edit</a>
   <% } %>
