@@ -19,6 +19,7 @@
 	<script src="/js/jquery-ui-1.8.16.js" type="text/javascript"></script>
 	
 	
+	<script src="/js/site.js" type="text/javascript"></script>
 	<script src="/js/ace/ace.js" type="text/javascript"></script>
 	<script src="/js/colorpicker.js" type="text/javascript"></script>
 	<script src="/js/ace/mode-html.js" type="text/javascript"></script>
@@ -32,30 +33,40 @@
 </head>
 <body>
 
-  <div id="site-top" class="clearfix small">
+  <div id="site-top" class="clearfix">
 	<div id="title"><h1><a href='/'>SlideSpot</a></h1></div>
-	
-	<div id="login" class="clearfix">
-			<% if(!session.auth) {%>
-	      <span class='using'>Login Using:</span>
+
+			<% if(!session.user) {%>
+	<div id="login" class="clearfix in">
+	      <span class='using'>Login:</span>
 	      <ul>
 				<li class="facebook"><a href="/auth/facebook"><img src="//facebook.com/favicon.ico" alt="">Facebook</a></li>
 				<li class="twitter"><a href="/auth/twitter"><img src="//twitter.com/favicon.ico" alt="">Twitter</a></li>
 				<li class="github"><a href="/auth/github"><img src="//github.com/favicon.ico" alt="">Github</a></li>
-	      </ul>
-			<% } else { %>
-	      <img class="avatar" height='32' src="<%= ((session.auth && session.user.image) ? session.user.image : '/img/default.png') %>">
-	      <img class="service" height='12' src="<%= (session.auth && session.auth.github) ? '//github.com/favicon.ico' : '' %>
-	      <%= (session.auth && session.auth.twitter) ? '//twitter.com/favicon.ico' : '' %>
-	      <%= (session.auth && session.auth.facebook) ? '//facebook.com/favicon.ico' : '' %>"/>
-	      
-	      <%= (session.auth) ? session.user.name : "" %>
-				<div class="logout"><a href="/logout">Logout</a></div>
-			<% } %>
-			
-			
+	      </ul>		
 	</div>
-</div>
+		  <% } else { %>
+	<div id="login" class="clearfix out">
+	      	
+	      	<img class="avatar" height='16' src="<%= session.userIcon %>">
+	      	<% if (session.serviceIcon) { %>
+	      		<img class="service" height='12' src="<%= session.serviceIcon %>" />
+	      	<% } %>
+	      	<%= session.user.name %>
+	      	<span class='expand'>&#x25BC;</span>
+	</div>
+	<div class='expanded'>
+	<div class='tb'></div>
+	<ul>
+	<li><a href="/dashboard">My Dashboard</a></li>
+	<li class="logout"><a href="/logout">Logout</a></li>
+	</ul>
+	</div>
+	      <% } %>	
+	
+
+  </div>
+  
 
 	<%- body %>
 	<% if (locals.dummyHelperHtml) {%><%- dummyHelperHtml%><% } %>

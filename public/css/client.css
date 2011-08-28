@@ -15,15 +15,37 @@
 #site-top #links ul li {  }
 
 #login {
+  font-family: Tahoma; 
   float: right;
-  background: #333; 
-  padding: 2px 0;
+  background: #666; 
+  border:solid 1px #333;
   margin-bottom:5px;
+  padding:4px;
+  border-radius: 5px;
+  position:relative;
+  padding-bottom:10px;
 }
+
+#login.in { background-color: #333; border: solid 2px white; padding:2px; }
+#login.out { width:150px; }
+#login.out:hover, #login.out.open {background: #999; cursor:pointer;}
+#login.out:hover .expand, #login.out.open .expand {color: #333; }
+.expand { font-size:10px; display:inline-block;cursor:pointer; padding:2px; }
+.expand:hover { }
+.expanded { font-family: Tahoma; display:none; position:absolute; border:solid 1px #333; width:150px; top: 35px; right:10px; background:#000; padding:4px; border-radius:5px; text-align:right; z-index:10;}
+.expanded .tb { position:absolute; top:-4px; height:8px; left:-1px; width: 160px; background-color: #333;}
+.expanded li { list-style: none; margin:6px 0; padding:0; float:none; }
+.expanded li a, .expanded li a:visited { color: white; text-transform: uppercase; text-decoration: none; padding:6px 0; }
+.expanded li a:hover { text-decoration: underline;}
+.expanded ul { margin:0; padding:0; margin-top:5px; }
+.expanded.show { display:block; }
+
 #login .using { float:left; margin-right:10px;  }
 #login li { float:left; list-style-type:none; padding-right: 10px; }
-#login a, #login a:visited { color:white; }
-#login ul { float:right; margin:0; padding:0; }
+#login a, #login a:visited { color:white; text-decoration: none; padding-left:2px; }
+#login a:hover { text-decoration: underline; }
+#login a img { padding-right:2px; }
+#login ul { float:right; margin:0; padding:0;  }
 #login .logout{ display:inline-block; margin-left:3px;  }
 
 
@@ -71,10 +93,9 @@
 .decks li {float:left; width: 100px; height: 100px; margin:10px; border: 1px solid; list-style-type: none; }
 .decks li h4 { margin: 4px 0; padding: 2px; }
 .author { font-size: .8em; color: #999; }
+
+.avatar { position:relative;}
 .service {
-	position: relative;
-	right: 15px;
-	top: 15px;
 	background: rgba(255, 255, 255, .6);
 	border-radius: 20px;
 	padding: 2px;
