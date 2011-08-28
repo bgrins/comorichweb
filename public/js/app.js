@@ -15,7 +15,7 @@ var general = {
 	resize: function() {
 		var fullHeight = $(window).height();
 		var slides = $("#slides-content");
-		var m = parseInt(slides.css("margin-bottom"));
+		var m = parseInt(slides.css("margin-bottom")) + 10;
 		slides.height(fullHeight - slides.offset().top - m);
 		
 		var collection = $("#slides-collection");
