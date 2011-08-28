@@ -340,5 +340,37 @@ module.exports = [
                 color: "green",
                 fontsize: "1.9em"
             }
-    ]
+    ],
+    
+    [ {
+        name: "body",
+        background: " green "
+    }, {
+    	name: "h2",
+    	color: "red"
+    } ],
+    
+    [ {
+        name: "body",
+        background: " red "
+    }, {
+    	name: "h2",
+    	color: "white"
+    } ],
+    
+    [ {
+        name: "body",
+        background: " blue "
+    }, {
+    	name: "h2",
+    	color: "orange"
+    } ],
+    
+    [ {
+        name: "body",
+        background: " purple "
+    }, {
+    	name: "h2",
+    	color: "white"
+    } ]
 ];
