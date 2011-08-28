@@ -2,8 +2,7 @@ var fs = require("fs");
 var Deck = require("../models/deck.js").model;
 module.exports = function(app){
     app.get('/', function(req, res) {
-        var q = Deck.find({}.limit(7));
-        q.execFind(function(err, result){
+        Deck.find({}, { limit: 5 }, function(err, result) {
             res.render('index', {layout: "site.ejs", decks:result });
         });
     });
