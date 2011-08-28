@@ -5,8 +5,15 @@
     h3 a:hover { text-decoration: underline; }
 </style>
 
+<h2><%= session.user.name %></h2>
+<a href="/profile/edit">Edit Your Profile</a>
+<img class="avatar" height='64' width="64" src="<%= session.user.image %>">
+<ul>
+  <li>Bio: <%= session.user.bio %></li>
+  <li>Website: <%= session.user.web %></li>
+</ul>
+
 <h2><%= session.user.name %>'s Slideshows</h2>
-  
 <div class="deck-list">
     <div>
         <a class="create-button" href="/deck/create">Create a deck</a>

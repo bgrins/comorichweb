@@ -1,19 +1,20 @@
 var fs = require("fs");
 var Deck = require("../models/deck.js").model;
 var User = require("../models/user.js");
+var emitter = new(require('events').EventEmitter);
 
-    module.exports = function(app){
+module.exports = function(app){
     
-    app.get('/profile', function(req, res){
+    app.get('/profile/edit', function(req, res){
       var user = Object.freeze(req.session.user);
-      res.render('profile', {currentUser:user});
+      res.render('edit-profile', {currentUser:user});
     });
-    app.post('/profile', function(req, res){
+    app.post('/profile/edit', function(req, res){
       var user = req.param('currentUser');
-      req.user.email = user.email;
-      req.user.web = user.web;
-      req.user.bio = user.bio;
-      req.user.save()
+      req.session.user.email = user.email;
+      req.session.user.bio = user.bio;
+      req.session.user.web = user.web;
+      new User.model(req.session.user).save()
       res.redirect('/dashboard');
     });
     app.get("/dashboard", function(req, res) {
