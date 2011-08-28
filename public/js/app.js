@@ -149,7 +149,9 @@ var slides = {
         });
 	},
 	add: function() {
-		$.post('/slide/create', { deckid : deck.data._id, content: "<h2>Slide Title</h2>" },  function(data) {
+		var content = (slides.collection.length > 0) ? "<h2>Slide Title</h2>"  : "<h1>" + deck.data.title + "</h1>";
+		
+		$.post('/slide/create', { deckid : deck.data._id, content:content },  function(data) {
 			var newslide = data;
             slides.collection.push(newslide);
             slides.remap();
