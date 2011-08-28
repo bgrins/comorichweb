@@ -3,6 +3,11 @@ var deck_repo = require("../models/deck");
 var slide_repo = require("../models/slide");
 
 module.exports = function(app){
+
+    app.get("/template/create", function(req, res) {
+    	res.render("templatecreate", { layout: "presentation-layout" });
+    });
+
     app.get("/:id/template.css", function(req, res) {
         var id = req.params.id;
 

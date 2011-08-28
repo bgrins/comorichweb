@@ -1,0 +1,65 @@
+<style>
+body .deck-container .deck-prev-link, body .deck-container .deck-next-link {
+  display:block;
+  position: absolute;
+  z-index: 3;
+  top: 50%;
+  width: 60px;
+  height: 32px;
+  margin-top: -16px;
+  font-size: 16px;
+  font-weight: bold;
+  line-height: 32px;
+  vertical-align: middle;
+  text-align: center;
+  text-decoration: none;
+  color: #fff;
+  background: #888;
+}
+body .deck-container:hover .deck-prev-link, body .deck-container:hover .deck-next-link {
+  display: block;
+}
+
+body .deck-container .deck-prev-link.deck-nav-disabled,
+body .deck-container .deck-next-link.deck-nav-disabled
+{ display:none; }
+.deck-container > .slide > .slide-nofill { margin:0 auto; width: 80%; text-align:center; }
+
+#themes { width: 600px; margin:0; padding:0; }
+#themes li { float:left; width: 180px; margin: 10px; height:120px; padding:0; background:#335; list-style-type:none; border-radius: 5px;   }
+#themes li:hover { outline: solid 2px orange;}
+</style>
+	   <div class="slide" id="choosetheme">
+            <div class='slide-nofill'>
+            	<h2>Choose a theme</h2><hr />
+            	<h3>You can always change this later</h3>
+            	<ul id='themes'>
+            		<li>1</li>
+            		<li>2</li>
+            		<li>3</li>
+            		<li>4</li>
+            		<li>5</li>
+            		<li>6</li>
+            	</ul>
+            </div>
+        </div>
+        <div class="slide" id="changetheme" style='overflow-y:scroll;'>
+            <div class='slide-inner'>
+				<div class='editor1' data-selector='h1'><h1 style='position:inherit'>Slide Title</h1></div>	
+				<div class='editor1' data-selector='h2'><h2>Subtitle</h2></div>	
+				<div class='editor1' data-selector='h3'><h3>Third Title</h3></div>	
+				<div class='editor1' data-selector='pre'><pre>Preformatted text</pre></div>	
+				<div class='editor1' data-selector='pre'><pre>Preformatted text</pre></div>	
+				<div class='editor1' data-selector='pre'><pre>Preformatted text</pre></div>	
+				<div class='editor1' data-selector='code'><code>Code sample</code></div>	
+				<div class='editor1' data-selector='cite'><cite>Citation</cite></div>	
+            	
+            </div>
+            
+			<a href="#" class="deck-next-link" title="Next">FINISH</a>
+
+        </div>
+        
+      
+	<a href="#" class="deck-prev-link" title="Previous">PREV</a>
+	<a href="#" class="deck-next-link" title="Next">NEXT</a>

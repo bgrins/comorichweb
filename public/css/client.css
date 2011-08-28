@@ -72,7 +72,7 @@ background: linear-gradient(top, rgba(125,126,125,1) 0%,rgba(14,14,14,1) 100%);
 }
 #site-container #links ul { margin:0 20px; padding:0; }
 #slides-wrapper { position:relative;  }
-#slides-content {  margin:0 10px; position:relative; margin-top:20px; }
+#slides-content {  position:relative; margin-top:4px; border-radius: 5px; background: rgba(255, 255, 255, .8); }
 #title, #deck-title { float:left; }
 #title h3, #deck-title h3 { margin:0; padding:0; float:left; font-size:24px; font-weight: lighter; padding-right:10px;  }
 #buttons, #deck-buttons { float:right; }
@@ -85,14 +85,15 @@ background: linear-gradient(top, rgba(125,126,125,1) 0%,rgba(14,14,14,1) 100%);
 #slide-source { top:0; }
 #slide-design iframe { width:100%; border: solid 2px #333; height: 400px; } 
 
-#slides-global { float:left; width: 150px; border:solid 3px; }
+#slides-global { float:left; width: 150px;}
 #slides-collection { height: 400px; overflow-y:scroll; margin:0; padding:0; background: #ddd; }
 #slides-commands { margin-top:3px; border-bottom:1px solid #eee; background: #eee; padding:3px 10px; }
 #slides-collection li { width: 90px; height:90px; margin:10px auto; padding:0; background: #88d;  overflow:hidden; }
 #slides-collection li.active { outline: solid 2px orange; }
 
 
-#template-controls-container { position:absolute; height:400px; width: 150px; border:solid 3px #111; background: #777; color: #eee; z-index: 101;  }
+#template-controls-container { position:absolute; height:400px; width: 150px; border:solid 3px #111; background: #777; color: #eee; z-index: 101;  top:10px; left:10px; }
+
 #template-controls-container.ui-draggable-dragging { opacity:.6; }
 #template-controls { margin:0; padding:0; }
 #template-controls li { margin:0; padding:10px; list-style-type:none;}

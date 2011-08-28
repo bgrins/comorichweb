@@ -1,56 +1,13 @@
 
 <style>
-#themes { width: 600px; margin:0; padding:0; }
-#themes li { float:left; width: 180px; margin: 10px; height:120px; padding:0; background:#335; list-style-type:none; border-radius: 5px;   }
-#themes li:hover { outline: solid 2px orange;}
 
-body .deck-container .deck-prev-link, body .deck-container .deck-next-link {
-  display:block;
-  position: absolute;
-  z-index: 3;
-  top: 50%;
-  width: 60px;
-  height: 32px;
-  margin-top: -16px;
-  font-size: 16px;
-  font-weight: bold;
-  line-height: 32px;
-  vertical-align: middle;
-  text-align: center;
-  text-decoration: none;
-  color: #fff;
-  background: #888;
-}
-body .deck-container:hover .deck-prev-link, body .deck-container:hover .deck-next-link {
-  display: block;
-}
-
-body .deck-container .deck-prev-link.deck-nav-disabled,
-body .deck-container .deck-next-link.deck-nav-disabled
-{ display:none; }
 
 #create-toolbar { padding: 10px; width: 860px; margin:0 auto; border-bottom: solid 2px #333;  }
 #create-toolbar #deck-title { width: 145px; padding-left: 5px; }
 #create-toolbar h2 {float:left; }
 #create-toolbar .step { display:inline-block; width: 16px; height: 16px; font-size:12px; color: white; font-family: Tahoma; border-radius: 15px; background: #669; padding:10px; text-align:center; font-weight:bold;  }
 .c { position:absolute; top:60px; bottom:0; left:0; right:0; }
-.deck-container > .slide > .slide-nofill { margin:0 auto; width: 80%; text-align:center; }
 </style>
-	<!-- Core and extension CSS files -->
-	<link rel="stylesheet" href="/css/deck.core.css">
-	<link rel="stylesheet" href="/css/common.css">
-	<link rel="stylesheet" href="/extensions/goto/deck.goto.css">
-	<link rel="stylesheet" href="/extensions/menu/deck.menu.css">
-	<link rel="stylesheet" href="/extensions/navigation/deck.navigation.css">
-	<link rel="stylesheet" href="/extensions/status/deck.status.css">
-	<link rel="stylesheet" href="/extensions/hash/deck.hash.css">
-	
-	<!-- Theme CSS files (menu swaps these out) -->
-	<link rel="stylesheet" id="style-theme-link" href="/themes/style/web-2.0.css">
-	<link rel="stylesheet" id="transition-theme-link" href="/themes/transition/horizontal-slide.css">
-	
-	<!-- Custom CSS just for this page -->
-	<script src="/js/modernizr.custom.js"></script>
 	
 	<div id='create-toolbar' class='clearfix'>
 		<form method="post">
@@ -70,94 +27,20 @@ body .deck-container .deck-next-link.deck-nav-disabled
 		</table>
 		</form>
 	</div>
-	<div class='c' style='top:133px;'>
 	
-	<div class='deck-container' >
+	<iframe src='/template/create' width='1022' height="100" id="preview-frame">
 	
-        <div class="slide" id="choosetheme">
-            <div class='slide-nofill'>
-            	<h2>Choose a theme</h2><hr />
-            	<h3>You can always change this later</h3>
-            	<ul id='themes'>
-            		<li>1</li>
-            		<li>2</li>
-            		<li>3</li>
-            		<li>4</li>
-            		<li>5</li>
-            		<li>6</li>
-            	</ul>
-            </div>
-        </div>
-        <div class="slide" id="changetheme" style='overflow-y:scroll;'>
-            <div class='slide-inner'>
-				<div class='editor1' data-selector='h1'><h1 style='position:inherit'>Slide Title</h1></div>	
-				<div class='editor1' data-selector='h2'><h2>Subtitle</h2></div>	
-				<div class='editor1' data-selector='h3'><h3>Third Title</h3></div>	
-				<div class='editor1' data-selector='pre'><pre>Preformatted text</pre></div>	
-				<div class='editor1' data-selector='pre'><pre>Preformatted text</pre></div>	
-				<div class='editor1' data-selector='pre'><pre>Preformatted text</pre></div>	
-				<div class='editor1' data-selector='code'><code>Code sample</code></div>	
-				<div class='editor1' data-selector='cite'><cite>Citation</cite></div>	
-            	
-            </div>
-            
-			<a href="#" class="deck-next-link" title="Next">FINISH</a>
-
-        </div>
-        
-      
-	<a href="#" class="deck-prev-link" title="Previous">PREV</a>
-	<a href="#" class="deck-next-link" title="Next">NEXT</a>
-
-	</div>
-
-
-<div id='slides-wrapper' style='display:none'>
-	<div id='controls-wrapper'>
-		<form method="post">
-		    <input type="text" name="title" value="Deck name" />
-		    <input type="submit" value="Add" />
-		</form>
-	</div>
-	<div id='slides-content'>
-		
+	</iframe>
+	
 		<div id='template-controls-container'>
 			<div class="ui-widget-header ui-corner-all ui-helper-clearfix">Controls</div>
 			<ul id='template-controls'></ul>
 		</div>
 		
-		<div id='slide-single' class='clearfix'>
 		
-
-
-		<div class='editor' data-selector='h1'><h1>H1</h1></div>	
-		<div class='editor' data-selector='h2'><h2>H2</h2></div>	
-		<div class='editor' data-selector='h3'><h3>H3</h3></div>	
-		<div class='editor' data-selector='pre'><pre>Preformatted text</pre></div>	
-		<div class='editor' data-selector='code'><code>Code sample</code></div>	
-		<div class='editor' data-selector='cite'><cite>Citation</cite></div>	
-		
-		</div>
-		
-	</div>
-</div>
-
 </div>
 
 <style id='styles'></style>
 
 <script>$(template.init);</script>
 
-
-<!-- Deck Core and extensions -->
-<script src="/js/deck.core.js"></script>
-<script src="/extensions/menu/deck.menu.js"></script>
-<script src="/extensions/goto/deck.goto.js"></script>
-<script src="/extensions/status/deck.status.js"></script>
-<script src="/extensions/navigation/deck.navigation.js"></script>
-<script src="/extensions/hash/deck.hash.js"></script>
-<script>
-$(function() {$.deck('.slide', {
-
-});});
-</script>
