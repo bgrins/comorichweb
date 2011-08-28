@@ -114,7 +114,8 @@ body.edittemplate #template-controls-container { display:block; }
 #template-controls .control-container.picker {  float:right; }
 #template-controls .control-name { vertical-align: middle; }
 
-.decks li {float:left; width: 100px; height: 100px; margin:10px; border: 1px solid; list-style-type: none; }
+.decks li {float:left; width: 100px; height: 100px; margin:10px; list-style-type: none; }
+.deckpreview .title { font-weight:bold; font-size: 12px; }
 .decks li h4 { margin: 4px 0; padding: 2px; }
 .author { font-size: .8em; color: #999; }
 
@@ -360,7 +361,7 @@ img.aligncenter { margin: 0px auto; }
 /* Content */
  #content { float: left; width: 1022px;  }
 .post {  padding-top: 20px; padding-bottom: 10px; } 
-.post .title { padding-top: 10px; letter-spacing: -1px; border-top: 1px solid #D0D0D0; } 
+.post .title { padding-top: 25px; letter-spacing: -1px; border-top: 1px solid #D0D0D0; padding-bottom:10px; } 
 
 
 .post .title a, .post .title span { color: #1A1A1A; border: none; }
