@@ -36,6 +36,13 @@ module.exports = function(app){
             res.send("404", 404);
         }
     });
+    
+    app.get("/template/ejsmarkup.ejs", function(req, res) {
+        var dirname = __dirname + "/../";
+        var fd = fs.readFileSync(dirname + "/views/template.css.ejs", "utf8");
+        res.send(fd);
+        //res.send(fd);
+    });
 
     app.post("/template/:id", function(req, res) {
         var id = req.param.id;
