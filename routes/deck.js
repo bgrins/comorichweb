@@ -99,6 +99,9 @@ module.exports = function(app){
     });
 
 
+    app.all("/deck/embed/:id", function(req, res) {
+      res.render('slideshow-with-comments', {id:req.param('id')});
+    });
     app.all("/deck/:id", function(req, res) {
         var id = req.params.id;
         var slideID = req.param("slideid", false);

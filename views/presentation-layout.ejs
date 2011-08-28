@@ -72,11 +72,23 @@ $.deck('.slide', {	});
 
 if (window.parent != window && window.parent.template && window.parent.template) {
 	var deckChange = window.parent.template.deckChange || function() { };
+	var onEditorClicked = window.parent.template.onEditorClicked || function() { };
 	
 	$(document).bind("deck.change", function(e, from , to) {
+		if (to == 1) {
+			$("#editorh1").click();
+		}
 		deckChange(to);
 	});
+	
+	$(".editor").click(function() {
+		$(".editor.active").removeClass("active");
+		$(this).addClass('active');
+		onEditorClicked($(this).data("selector"));
+	});
 }
+
+
 </script>
 
 </body>

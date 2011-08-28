@@ -4,10 +4,22 @@ var User = require("../models/user.js").model;
 var emitter = new(require('events').EventEmitter);
 
 module.exports = function(app){
-    
     app.get('/profile/edit', function(req, res){
       var user = Object.freeze(req.session.user);
       res.render('edit-profile', {currentUser:user});
+    });
+    app.get('/profile/view/:id', function(req, res){
+      User.findOne({id:req.param('id')}, function(err, dude){
+        User.find({}, function(err, people){
+          Deck.findByUser(dude, function(err, decks) {
+            res.render("dashboard", { 
+              decks: decks
+              , layout: "site.ejs"
+              , followers: people
+            });
+          });
+        });
+      });
     });
     app.post('/profile/edit', function(req, res){
       var user = req.param('currentUser');
@@ -36,6 +48,9 @@ module.exports = function(app){
       });
     });
     app.get('/wtf', function(req, res){
+      User.find({}, ['id', 'name', 'image'], function(err, people){
+        res.render('wtf', {folks: people});
+      });
     });     
     app.get("/template", function(req, res) {
         var content = req.param("content", "welcome to slideshow.js!");
