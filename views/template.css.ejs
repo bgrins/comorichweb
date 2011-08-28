@@ -13,34 +13,34 @@
     <% for (j = 0; j < basetags.length; j++) { %>
         <% var basetag = basetags[j]; %>
         <% if (tag[basetag]) { %>
-            <%- basetag %>: <%- tag[basetag] %>;
+            <%= basetag %>: <%= tag[basetag] %>;
         <% } %>
     <% } %>
     <% if (tag.bordercolor) { %>
-        border-color: <%- tag.bordercolor %>;
+        border-color: <%= tag.bordercolor %>;
     <% } %>
     <% if (tag.borderradius) { %>
-        -webkit-border-radius: <%- tag.borderradius %>;
-        -moz-border-radius: <%- tag.borderradius %>;
-        border-radius: <%- tag.borderradius %>;
+        -webkit-border-radius: <%= tag.borderradius %>;
+        -moz-border-radius: <%= tag.borderradius %>;
+        border-radius: <%= tag.borderradius %>;
     <% } %>
     <% if (tag.borderbottom) { %>
-        border-bottom: <%- tag.borderbottom %>;
+        border-bottom: <%= tag.borderbottom %>;
     <% } %>
     <% if (tag.lineheight) { %>
-        line-height: <%- tag.lineheight %>;
+        line-height: <%= tag.lineheight %>;
     <% } %>
     <% if (tag.font) { %>
-        font-family: <%- tag.fontfamily %>;
+        font-family: <%= tag.fontfamily %>;
     <% } %>
     <% if (tag.fontsize) { %>
-        font-size: <%- tag.fontsize %>;
+        font-size: <%= tag.fontsize %>;
     <% } %>
     <% if (tag.fontWeight) { %>
-        font-weight: <%- tag.fontWeight %>;
+        font-weight: <%= tag.fontWeight %>;
     <% } %>
     <% if (tag.borderRadius) { %>
-        border-radius: <%- tag.borderRadius %>;
+        border-radius: <%= tag.borderRadius %>;
     <% } %>
 }
 <% } %>
