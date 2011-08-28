@@ -1,7 +1,4 @@
 var CSS_SKELETOR = [{
-	name: 'h1',
-	color: 'red',
-	bordercolor: 'red'
 }];
 
 var template = {
@@ -19,27 +16,14 @@ var template = {
 		{ prop: 'padding', name: 'Padding', type:'slider', min: 0, max: 20, 'unit': '%' },
 		{ prop: 'fontsize', name: 'Font Size', type:'slider', min: 50, max: 800, 'unit': 'em', 'divide': 100 },
 	],
+	EJS: false,
 	activeselector: null,
 	redraw: function() {
 		log("REDRAW", template.tags);
-		
-		
-		//$("#styles").html(ejs.render('template.css.ejs', tags));
-		
-		
-		/*
-		var parser = new(less.Parser)({ });
-		var variables = [];
-		for (var i in template.selectorFields) {
-			variables.push("@" + i + ": " + template.selectorFields[i] + ";");
+		if (template.EJS) {
+			$(template.styleTag).html(template.EJS.render({tags: template.tags}));
+			log("RENDERIGN", $(template.styleTag).html(), template.tags);
 		}
-		
-		log(JSON.stringify(template.selectorFields));
-		var fullCSS = variables.join('\n') + CSS_SKELETOR;
-		
-		parser.parse(fullCSS, function (e, tree) {
-			$("#styles").html(tree.toCSS());
-		});*/
 	},
 	colorpickerOptions: {
 		onSubmit: function(hsb, hex, rgb, el) {
@@ -64,8 +48,8 @@ var template = {
 	},
 	getActiveTag: function() {
 		for (var i = 0, j = template.tags.length; i < j; i++) {
-			if (true || template.activeselector == template.tags[i].name) {
-				log("matched");
+			if (template.activeselector == template.tags[i].name) {
+				log("matched", template.activeselector);
 				return template.tags[i];
 			}
 		}
@@ -96,6 +80,12 @@ var template = {
 	},
 	onEditorClicked: function(selector) {
 		template.activeselector = selector;
+		if (!template.tags[selector]) {
+			template.tags.push({ name: selector });
+		}
+	},
+	onFrameLoaded: function(styleTag) {
+		template.styleTag = styleTag;
 	},
 	init: function() {
 		var container = $("#template-controls");
@@ -148,7 +138,6 @@ var template = {
 		
 
         template.EJS = new EJS({text: $("#horribleejs").html()});
-        log(template.EJS.render({tags: template.tags}));
         
 	}
 };
