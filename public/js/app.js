@@ -21,6 +21,9 @@ var general = {
 		var collection = $("#slides-collection");
 		collection.height(fullHeight - collection.offset().top - m);
 	},
+	getPreviewURL: function(deckid, slideid) {
+		return "/deck/" + deckid + "?slideid=" + slideid;
+	},
 	saving: false,
 	save: function() {
 		general.saving = true;
@@ -81,6 +84,8 @@ var slides = {
         general.save();
 		$("#right").addClass("editing");
 		viewsource.set(slide.content);
+		
+		$("#iDesign").attr("src", general.getPreviewURL(deck.data._id , slide._id));
 	},
 	orderSort: function(a, b) {
 		return a.sort - b.sort;
