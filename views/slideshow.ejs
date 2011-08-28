@@ -2,7 +2,7 @@
 
 <% 
 	var slides = [];
-	if (slideID) {
+	if (typeof slideID != "undefined") {
 		for (var i = 0; i < deck.slides.length; i++) {
 			if (deck.slides[i]._id == slideID) {
 				slides = [deck.slides[i]];

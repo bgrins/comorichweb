@@ -35,7 +35,7 @@
 <div class="deck-container">
 <%- body %>
 
-<% if (!slideID) { %> 
+<% if (typeof slideID != "undefined") { %> 
 
 <a href="#" class="deck-prev-link" title="Previous">&#8592;</a>
 <a href="#" class="deck-next-link" title="Next">&#8594;</a>
@@ -68,6 +68,13 @@
 <script src="/extensions/hash/deck.hash.js"></script>
 <script>
 $.deck('.slide', {	});
+
+if (window.parent != window && window.parent.template && window.parent.template.deckChange) {
+	var deckChange = window.parent.template.deckChange;
+	$(document).bind("deck.change", function(e, from , to) {
+		deckChange(to);
+	});
+}
 </script>
 
 </body>
