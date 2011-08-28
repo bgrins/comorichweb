@@ -1,9 +1,21 @@
 
 var general = {
+	TAB_VIEWSOURCE: 0,
+	TAB_PREVIEW: 1,
 	init: function() {
 		$(window).bind("resize", general.resize);
 		general.resize();
-		$("#tabs").tabs();
+		$("#tabs").tabs({
+			show: function(e, ui) {
+				if (ui.index == general.TAB_PREVIEW) {
+					general.save();
+				}
+				
+				log("TABS")
+				
+				viewsource.resize();
+			}
+		});
 		slides.collection = _LOADED_SLIDES || [];
 		deck.data = _LOADED_DECK || { };
 		
@@ -15,11 +27,21 @@ var general = {
 	resize: function() {
 		var fullHeight = $(window).height();
 		var slides = $("#slides-content");
+		var iframe = $("#iDesign");
 		var m = parseInt(slides.css("margin-bottom")) + 10;
-		slides.height(fullHeight - slides.offset().top - m);
+		
+		var slidesheight = fullHeight - slides.offset().top - m;
+		slides.height(slidesheight);
+		
+		iframe.height(slidesheight - 25);
 		
 		var collection = $("#slides-collection");
 		collection.height(fullHeight - collection.offset().top - m);
+	},
+	getPreviewURL: function() {
+		var deckid = deck.data._id;
+		var slideid = slides.active._id
+		return "/deck/" + deckid + "?slideid=" + slideid;
 	},
 	saving: false,
 	save: function() {
@@ -27,6 +49,8 @@ var general = {
 		$("#save").addClass("ui-state-disabled");
         $.post('/slide/update', { deckid: deck.data._id, slides: slides.collection }, function() {
             log('updated', arguments);
+			$("#iDesign").attr("src", general.getPreviewURL());
+			$("#save").removeClass("ui-state-disabled");
         });
 
         $.post("/deck/update", { deckid : deck.data._id, title: deck.data.title }, function() {
@@ -81,6 +105,8 @@ var slides = {
         general.save();
 		$("#right").addClass("editing");
 		viewsource.set(slide.content);
+		
+		$("#iDesign").attr("src", general.getPreviewURL());
 	},
 	orderSort: function(a, b) {
 		return a.sort - b.sort;
@@ -146,6 +172,7 @@ var deck = {
         }).click(function() {
 			deck.data.title = prompt("Enter a title", deck.data.title + "") || deck.data.title;
 			deck.render();
+			general.save();
 		});
 		
 		deck.render();
@@ -159,6 +186,11 @@ var deck = {
 
 var viewsource = {
 	editor: null,
+	resize: function() {
+		if (viewsource.editor) {
+			viewsource.editor.resize();
+		}
+	},
 	init: function() {
 		viewsource.editor = ace.edit("slide-source");
     	viewsource.editor.setTheme("ace/theme/textmate");

@@ -19,33 +19,18 @@ module.exports = function(app){
         });
     });
     
-    app.all("/deck/:id", function(req, res) {
-        var id = req.params.id;
-
-        var deck = deck_repo.model.findById(id, function(err, deck) {
-            res.render("slideshow", {
-                deck: deck,
-                layout: "presentation-layout.ejs"
-            });
-        });
-    });
-    
-
-    app.post("deck/update", function(req, res) {
-        var id = req.params("id", null);
-        var name = req.params("name", null);
-        var title = req.params("title", null);
+    app.post("/deck/update", function(req, res) {
+        var id = req.param("deckid", null);
+        var name = req.param("name", null);
+        var title = req.param("title", null);
 
     	if(!req.session.user || !id) {
-            res.send("401", 401);
+            res.send("4011211", 401);
     		return;
     	}
-        var id = req.params("deckid", null);
-        var name = req.params("name", null);
-        var title = req.params("title", null);
         var deck = deck_repo.model.findById(id, function(err, deck) {
     		if (!deck || !deck.author || deck.author.id != req.session.user.id) {
-                res.send("401", 401);
+                res.send("401sadflkasjdfasldfj", 401);
     		}
             else {
                 deck.name = name || deck.name;
@@ -112,16 +97,21 @@ module.exports = function(app){
     });
 
 
-    
-    app.get("/deck/:id", function(req, res) {
+    app.all("/deck/:id", function(req, res) {
         var id = req.params.id;
-
-        deckRepo.model.findById(id, function(err, deck) {
+        var slideID = req.param("slideid", false);
+        var deck = deck_repo.model.findById(id, function(err, deck) {
+        	if (err || !deck) {
+    			res.render('errors/404', 404);
+    			return;
+        	}
             res.render("slideshow", {
-                slides: deck.slides,
-                layout: "presentation-layout.ejs"
+                deck: deck,
+                layout: "presentation-layout.ejs",
+                slideID: slideID
             });
         });
     });
+    
 };
 

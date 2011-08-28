@@ -4,6 +4,7 @@
   text-align: center;
   font-size: 500%;
 }
+#title { cursor: pointer;}
 #title * { float:left; }
 #site-top { font-family: Tahoma; color:#fdd; padding:5px 10px; padding-bottom: 2px; border-bottom: 3px solid #333; } 
 #site-top .wrapper { width: 1022px; margin: auto; position:relative; }
@@ -47,8 +48,8 @@ background: linear-gradient(top, rgba(125,126,125,1) 0%,rgba(14,14,14,1) 100%);
 #login .username { position: relative; top: 2px; }
 .expand { font-size:10px; display:inline-block;cursor:pointer; padding:2px; }
 .expand:hover { }
-.expanded { font-family: Tahoma; display:none; position:absolute; border:solid 1px #333; width:175px; top: 35px; right:0; background:#000; padding:4px; border-radius:5px; text-align:right; z-index:10;}
-.expanded .tb { position:absolute; top:-4px; height:8px; left:-1px; width: 185px; background-color: #333;}
+.expanded { font-family: Tahoma; display:none; position:absolute; border:solid 1px #333; width:149px; top: 30px; right:0; background:#000; padding:4px; border-radius:5px; text-align:right; z-index:10;}
+.expanded .tb { position:absolute; top:-4px; height:8px; left:-1px; width: 159px; background-color: #333;}
 .expanded li { list-style: none; margin:6px 0; padding:0; float:none; }
 .expanded li a, .expanded li a:visited { color: white; text-transform: uppercase; text-decoration: none; padding:6px 0; }
 .expanded li a:hover { text-decoration: underline;}
@@ -66,6 +67,7 @@ background: linear-gradient(top, rgba(125,126,125,1) 0%,rgba(14,14,14,1) 100%);
 #login img { padding-right: 2px; padding-bottom: 2px; }
 
 
+
 #site-container{
   padding: 0px 24px;
   border-top:none;
@@ -81,24 +83,36 @@ background: linear-gradient(top, rgba(125,126,125,1) 0%,rgba(14,14,14,1) 100%);
 
 
 #slide-single { position:absolute; left: 160px; right:0; top:0; bottom:0;  }
-#slide-source-wrapper, #slider-source-design, #slide-source, #slide-design { margin: 0; position: absolute; top: 30px; bottom: 0; left: 0; right: 0; }
+#slide-source-wrapper, #slider-source-design, #slide-source, #slide-design { margin: 0; position: absolute; top: 30px; bottom: 0; left: 0; right: 0; padding:0; margin:0; }
 #slide-source { top:0; }
 #slide-design iframe { width:100%; border: solid 2px #333; height: 400px; } 
 
 #slides-global { float:left; width: 150px;}
 #slides-collection { height: 400px; overflow-y:scroll; margin:0; padding:0; background: #ddd; }
 #slides-commands { margin-top:3px; border-bottom:1px solid #eee; background: #eee; padding:3px 10px; }
-#slides-collection li { width: 90px; height:90px; margin:10px auto; padding:0; background: #88d;  overflow:hidden; }
+#slides-collection li { width: 90px; height:90px; margin:10px auto; padding:0; background: #88d;  overflow:hidden; cursor:pointer; }
 #slides-collection li.active { outline: solid 2px orange; }
 
 
-#template-controls-container { position:absolute; height:400px; width: 150px; border:solid 3px #111; background: #777; color: #eee; z-index: 101;  top:10px; left:10px; }
+/*
+Create page
+*/
 
+#create-toolbar { padding: 10px; width: 860px; margin:0 auto; }
+#create-toolbar #deck-title { width: 145px; padding-left: 5px; }
+#create-toolbar h2 {float:left; }
+#create-toolbar .step { display:inline-block; width: 16px; height: 16px; font-size:12px; color: white; font-family: Tahoma; border-radius: 15px; background: #669; padding:10px; text-align:center; font-weight:bold;  }
+.c { position:absolute; top:60px; bottom:0; left:0; right:0; }
+
+
+body.edittemplate #template-controls-container { display:block; }
+#template-controls-container { display:none; position:absolute; height:300px; width: 150px; border:solid 3px #111; background: #777; color: #eee; z-index: 101;  top:10px; left:10px; font-size:.8em; }
 #template-controls-container.ui-draggable-dragging { opacity:.6; }
 #template-controls { margin:0; padding:0; }
-#template-controls li { margin:0; padding:10px; list-style-type:none;}
-#template-controls .container {  width: 80%; }
-
+#template-controls li { margin:0; padding:2px; list-style-type:none;}
+#template-controls .control-container.slider {  width: 80%; margin:0 auto; }
+#template-controls .control-container.picker {  float:right; }
+#template-controls .control-name { vertical-align: middle; }
 
 .editor { float:left; width: 400px; min-height: 100px; margin:10px; vertical-align: top; }
 .editor:hover { outline: dashed 4px orange; }

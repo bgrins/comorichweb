@@ -1,6 +1,7 @@
 var fs = require("fs");
 var deck_repo = require("../models/deck");
 var slide_repo = require("../models/slide");
+var themes = require("../models/themes");
 
 module.exports = function(app){
 

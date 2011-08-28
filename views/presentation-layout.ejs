@@ -35,6 +35,7 @@
 <div class="deck-container">
 <%- body %>
 
+<% if (typeof slideID != "undefined") { %> 
 
 <a href="#" class="deck-prev-link" title="Previous">&#8592;</a>
 <a href="#" class="deck-next-link" title="Next">&#8594;</a>
@@ -53,8 +54,9 @@
 
 <a href="." title="Permalink to this slide" class="deck-permalink">#</a>
 
-</div>
+<% } %> 
 
+</div>
 
 <!-- Deck Core and extensions -->
 <script src="/js/jquery-1.6.1.js"></script>
@@ -66,6 +68,14 @@
 <script src="/extensions/hash/deck.hash.js"></script>
 <script>
 $.deck('.slide', {	});
+
+if (window.parent != window && window.parent.template && window.parent.template) {
+	var deckChange = window.parent.template.deckChange || function() { };
+	
+	$(document).bind("deck.change", function(e, from , to) {
+		deckChange(to);
+	});
+}
 </script>
 
 </body>

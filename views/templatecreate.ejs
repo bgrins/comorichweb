@@ -19,15 +19,16 @@ body .deck-container .deck-prev-link, body .deck-container .deck-next-link {
 body .deck-container:hover .deck-prev-link, body .deck-container:hover .deck-next-link {
   display: block;
 }
-
+html { overflow-y: hidden; }
+#changetheme, #choosetheme { overflow-y:auto; }
 body .deck-container .deck-prev-link.deck-nav-disabled,
 body .deck-container .deck-next-link.deck-nav-disabled
 { display:none; }
 .deck-container > .slide > .slide-nofill { margin:0 auto; width: 80%; text-align:center; }
-
 #themes { width: 600px; margin:0; padding:0; }
 #themes li { float:left; width: 180px; margin: 10px; height:120px; padding:0; background:#335; list-style-type:none; border-radius: 5px;   }
 #themes li:hover { outline: solid 2px orange;}
+body #instruct { background: #333; color: white; font-size: .9em; margin-top:5px; text-align:center; text-shadow:none;  }
 </style>
 	   <div class="slide" id="choosetheme">
             <div class='slide-nofill'>
@@ -43,13 +44,17 @@ body .deck-container .deck-next-link.deck-nav-disabled
             	</ul>
             </div>
         </div>
-        <div class="slide" id="changetheme" style='overflow-y:scroll;'>
+        <div class="slide" id="changetheme">
             <div class='slide-inner'>
-				<div class='editor1' data-selector='h1'><h1 style='position:inherit'>Slide Title</h1></div>	
+				<div class='editor1' data-selector='h1'><h1>Change Styles</h1></div>		
+            </div>
+				<p id="instruct">You can click on the title and change it's colors, borders, etc.  There are more on the next slide.  You can always just press 'Create' at any point if you are happy with it.</p>
+        </div>
+        <div class="slide" id="changetheme">
+            <div class='slide-inner'>
 				<div class='editor1' data-selector='h2'><h2>Subtitle</h2></div>	
 				<div class='editor1' data-selector='h3'><h3>Third Title</h3></div>	
-				<div class='editor1' data-selector='pre'><pre>Preformatted text</pre></div>	
-				<div class='editor1' data-selector='pre'><pre>Preformatted text</pre></div>	
+				<div class='editor1' data-selector='h4'><h4>Fourth Title</h4></div>	
 				<div class='editor1' data-selector='pre'><pre>Preformatted text</pre></div>	
 				<div class='editor1' data-selector='code'><code>Code sample</code></div>	
 				<div class='editor1' data-selector='cite'><cite>Citation</cite></div>	
