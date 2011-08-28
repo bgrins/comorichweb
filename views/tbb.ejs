@@ -1,0 +1,37 @@
+
+  <div id="site-top" class="clearfix">
+    <div class="wrapper">
+	<div id="title"><h1><a href='/'>SlideSpot</a></h1></div>
+
+			<% if(!session.user) {%>
+	<div id="login" class="clearfix in">
+	      <span class='using'>Login:</span>
+	      <ul>
+				<li class="facebook"><a href="/auth/facebook"><img src="//facebook.com/favicon.ico" alt="">Facebook</a></li>
+				<li class="twitter"><a href="/auth/twitter"><img src="//twitter.com/favicon.ico" alt="">Twitter</a></li>
+				<li class="github"><a href="/auth/github"><img src="//github.com/favicon.ico" alt="">Github</a></li>
+	      </ul>		
+	</div>
+		  <% } else { %>
+	<div id="login" class="clearfix out">
+	      	
+	      	<img class="avatar" height='16' src="<%= session.userIcon %>">
+	      	<% if (session.serviceIcon) { %>
+	      		<img class="service" height='12' src="<%= session.serviceIcon %>" />
+	      	<% } %>
+	      	<%= session.user.name %>
+	      	<span class='expand'>&#x25BC;</span>
+	</div>
+	
+	<div class='expanded'>
+		<div class='tb'></div>
+		<ul>
+		<li><a href="/dashboard">My Dashboard</a></li>
+		<li class="logout"><a href="/logout">Logout</a></li>
+		</ul>
+	</div>
+	      <% } %>	
+    </div>
+	
+
+  </div>
