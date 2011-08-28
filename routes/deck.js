@@ -64,8 +64,8 @@ module.exports = function(app){
         var id = req.params.id;
         deck_repo.model.findById(id, function(err, deck) {
             res.render("slideshow", {
-                slides: deck.slides,
-                layout: "presentation-layout.ejs"
+                deck: deck,
+                layout: "presentation-layout.ejs",
             });
         });
     });
