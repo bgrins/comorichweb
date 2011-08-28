@@ -196,7 +196,9 @@ app.all('*', function(req, res, next) {
 		if (s.auth.twitter) { s.serviceIcon = "//twitter.com/favicon.ico"; }
 		if (s.auth.facebook) { s.serviceIcon = "//facebook.com/favicon.ico"; }
 		
-		s.userIcon = s.user.image || '/img/default.png';
+        if (s.user && s.user.image) {
+            s.userIcon = s.user.image || '/img/default.png';
+        }
 	}
 	
 	next();
