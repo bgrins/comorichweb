@@ -10,7 +10,7 @@ top: -145px;
     -moz-transform-origin: scale(0.0); 
     -moz-transform: -45%;" />
 </li>
-<a href="/deck/<%=deckthumb._id%>">Preview</a> 
+<a href="/deck/embed/<%=deckthumb._id%>">Preview</a> 
 <% if (session.auth && session.user && deckthumb.author && session.user.id == deckthumb.author.id) { %>
 <a href="/deck/edit/<%=deckthumb._id%>">Edit</a>
 <a href="/deck/export/<%=deckthumb._id%>">Export to Html</a>
