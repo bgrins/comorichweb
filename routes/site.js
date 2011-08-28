@@ -35,7 +35,8 @@ module.exports = function(app){
         });
       });
     });
-        
+    app.get('/wtf', function(req, res){
+    });     
     app.get("/template", function(req, res) {
         var content = req.param("content", "welcome to slideshow.js!");
         res.render("templateeditor");

@@ -69,7 +69,14 @@ var template = {
 		}
 	},
 	deckChange: function(to) {
-		$("body").toggleClass("edittemplate", to == 1)
+		$("body").toggleClass("edittemplate", to >= 1);
+		
+		
+		var controls = $("#template-controls-container");
+		if (to >= 1 && !controls.data("moved")) {
+			controls.offset({top: 169, left: 183 });
+			controls.data("moved", true);
+		}
 	},
 	init: function() {
 		var container = $("#template-controls");
@@ -92,7 +99,10 @@ var template = {
 		
 		$("#template-controls-container").draggable({
 			containment: "body",
-			handle: ".ui-widget-header"
+			handle: ".ui-widget-header",
+			drag: function() {
+				$(this).data("moved", true);
+			}
 		});
 		
 		for (var i = 0; i < template.fields.length; i++) {
