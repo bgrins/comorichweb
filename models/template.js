@@ -2,7 +2,6 @@ var mongoose = require('mongoose');
 
 var tagSchema = new mongoose.Schema({
     name: String,
-    pseudoclass: String,
     font: String,
     color: String,
     size: String,
