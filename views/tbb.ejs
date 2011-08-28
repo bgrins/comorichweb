@@ -21,7 +21,9 @@
 	      	<% if (session.serviceIcon) { %>
 	      		<img class="service" height='12' src="<%= session.serviceIcon %>" />
 	      	<% } %>
-	      	<%= session.user.name %>
+            <span class="username">
+                <%= session.user.name %>
+            </span>
 	      	<span class='expand'>&#x25BC;</span>
 	</div>
 	
@@ -35,7 +37,7 @@
 		</ul>
 	</div>
 	      <% } %>	
-	<iframe src="http://nodeknockout.com/iframe/comorichweb" frameborder=0 scrolling=no allowtransparency=true width=115 height=25></iframe>
+	<iframe src="http://nodeknockout.com/iframe/comorichweb" frameborder=0 scrolling=no allowtransparency=true width=115 height=25 style="position: relative; top: 3px;"></iframe>
     </div>
 	
 
