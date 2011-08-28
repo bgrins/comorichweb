@@ -65,8 +65,7 @@ background: linear-gradient(top, rgba(125,126,125,1) 0%,rgba(14,14,14,1) 100%);
 #login img { padding-right: 2px; padding-bottom: 2px; }
 
 
-#site-container{
-  
+#site-container {
   padding: 6px 4px;
   border-top:none;
 }
@@ -416,7 +415,7 @@ img.aligncenter { margin: 0px auto; }
    border-top-color: #1b435e;
    background: #1b435e;
 }
-div.body-wrapper { width:1022px; margin:auto; padding-top: 18px;  }
 
+div.body-wrapper { width:1022px; margin:auto;}
 
 
