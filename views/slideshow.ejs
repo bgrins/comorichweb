@@ -1,11 +1,3 @@
 <link rel="stylesheet" type="text/css" href="/<%= deck._id %>/template.css" /> 
 
-<% deck.slides.forEach(function(slide) {  %>
-    <% if (slide._id) { %>
-        <div class="slide" id="<%= slide._id %>">
-            <div class='slide-inner'>
-                <%- slide.content %>
-            </div>
-        </div>
-    <% } %>
-<% }); %>
+<%- partial('slide', deck.slides) %>
