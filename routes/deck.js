@@ -18,12 +18,8 @@ module.exports = function(app){
         var title = req.param("title", "Deck");
         var template = [];
         
-        template = JSON.parse(req.param("template"));
         try { template = JSON.parse(req.param("template")); }
-        
-        
-        catch(e) { console.log("ERROR", e); }
-        console.log("TEMPLATE", template);
+        catch(e) { console.log("ERROR PARSING TEMPLATE", e); }
         
         
         var deck = new deck_repo.model;
