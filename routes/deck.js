@@ -6,7 +6,9 @@ var exec = require("child_process").exec;
 
 module.exports = function(app){
     app.get("/deck/create", function(req, res) {
-        res.render("createdeck_updated", { layout: "layout.ejs" });
+        var dirname = __dirname + "/../";
+        var fd = fs.readFileSync(dirname + "/views/template.css.ejs", "utf8");
+        res.render("createdeck_updated", { layout: "layout.ejs", ejs: fd });
     });
     
     app.post("/deck/create", function(req, res) {

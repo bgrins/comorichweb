@@ -1,40 +1,46 @@
-/*.deck-container {
-	font-family: "Gill Sans", "Gill Sans MT", Calibri, sans-serif;
-	font-size:1.25em;
-	color:#aaa;
-	background:@containerBackgroundColor;
-}
-	
-.deck-container .slide {
-    background:#000;
-}
-.deck-container .slide a, .deck-container .slide a:visited, .deck-container .slide a:active { color: #f0a; text-decoration: none; }
 
-.deck-container .slide a:hover, .deck-container .slide a:focus { text-decoration: underline; }
-*/
-    <% for (i = 0; i < tags.length; i++) { %>
-        <% var tag = tags[i] %>
-.deck-container .slide <%= tag.name %> {
+
+
+<% for (i = 0; i < tags.length; i++) { %>
+    <% var tag = tags[i]; %>
+    <% var basetags = [ "background",  "color", "position", "width", "height", "margin", "position", "border" ]; %>
+    <% if (tag.name == "body") { %>
+        .deck-container { 
+    <% } else { %> 
+        .deck-container <%= tag.name %> {
+    <% } %>
+
+    <% for (j = 0; j < basetags.length; j++) { %>
+        <% var basetag = basetags[j]; %>
+        <% if (tag[basetag]) { %>
+            <%- basetag %>: <%- tag[basetag] %>;
+        <% } %>
+    <% } %>
+    <% if (tag.bordercolor) { %>
+        border-color: <%- tag.bordercolor %>;
+    <% } %>
+    <% if (tag.borderradius) { %>
+        -webkit-border-radius: <%- tag.borderradius %>;
+        -moz-border-radius: <%- tag.borderradius %>;
+        border-radius: <%- tag.borderradius %>;
+    <% } %>
+    <% if (tag.borderbottom) { %>
+        border-bottom: <%- tag.borderbottom %>;
+    <% } %>
+    <% if (tag.lineheight) { %>
+        line-height: <%- tag.lineheight %>;
+    <% } %>
     <% if (tag.font) { %>
-        font-family: <%- tag.font %>;
+        font-family: <%- tag.fontfamily %>;
     <% } %>
-    <% if (tag.color) { %>
-        color: <%- tag.color %>;
-    <% } %>
-    <% if (tag.size) { %>
-        font-size: <%- tag.size %>;
-    <% } %>
-    <% if (tag.margin) { %>
-        margin: <%- tag.margin %>;
+    <% if (tag.fontsize) { %>
+        font-size: <%- tag.fontsize %>;
     <% } %>
     <% if (tag.fontWeight) { %>
         font-weight: <%- tag.fontWeight %>;
-    <% } %>
-    <% if (tag.border) { %>
-        border: <%- tag.border %>;
     <% } %>
     <% if (tag.borderRadius) { %>
         border-radius: <%- tag.borderRadius %>;
     <% } %>
 }
-    <% } %>
+<% } %>

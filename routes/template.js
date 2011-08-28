@@ -25,6 +25,25 @@ module.exports = function(app){
         }
     });
 
+    app.get("/template/default/:id", function(req, res) {
+        var a = themes[req.params.id];
+        if (a) {
+            res.header("Content-Type", "text/css");
+            console.log(a);
+            res.render("template.css.ejs", { tags:  a , layout: false });
+        }
+        else {
+            res.send("404", 404);
+        }
+    });
+    
+    app.get("/template/ejsmarkup.ejs", function(req, res) {
+        var dirname = __dirname + "/../";
+        var fd = fs.readFileSync(dirname + "/views/template.css.ejs", "utf8");
+        res.send(fd);
+        //res.send(fd);
+    });
+
     app.post("/template/:id", function(req, res) {
         var id = req.param.id;
         var tags = req.param("tags", []);
