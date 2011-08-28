@@ -64,7 +64,7 @@ body .deck-container .deck-next-link.deck-nav-disabled
 			
 			<td  width='33%'  align="center"><span class='step'>2</span> Edit your styles below &darr;</td>
 			
-			<td  width='33%'  align="right"><span class='step'>3</span> <input type="submit" value="Create" /></td>
+			<td  width='33%'  align="right"><span class='step'>3</span> <input type="submit" id="deck-create" value="Create" /></td>
 			
 			</tr>
 		</table>
@@ -146,11 +146,10 @@ body .deck-container .deck-next-link.deck-nav-disabled
 
 <style id='styles'></style>
 
-<script>/*$(template.init);*/</script>
+<script>$(template.init);</script>
 
 
 <!-- Deck Core and extensions -->
-<script src="/js/jquery-1.6.1.js"></script>
 <script src="/js/deck.core.js"></script>
 <script src="/extensions/menu/deck.menu.js"></script>
 <script src="/extensions/goto/deck.goto.js"></script>
