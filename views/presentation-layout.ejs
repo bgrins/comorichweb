@@ -96,6 +96,18 @@ if (window.parent != window && window.parent.template && window.parent.template)
 	
 	onFrameLoaded($("#customstyles")[0]);
 }
+<script type="text/javascript">
+  $(function() {
+      var socket = io.connect();
+      socket.on('next', function(){
+	$.deck('next');
+      });
+      socket.on('prev', function() {
+	$.deck('prev');
+      });
+    });
+</script>
+
 
 
 </script>

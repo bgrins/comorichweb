@@ -18,16 +18,3 @@
 %>
 
 <%- partial('slide', slides) %>
-
-
-<script type="text/javascript">
-  $(function() {
-      var socket = io.connect();
-      socket.on('next', function(){
-	$.deck('next');
-      });
-      socket.on('prev', function() {
-	$.deck('prev');
-      });
-    });
-</script>
