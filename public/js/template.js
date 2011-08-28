@@ -1,6 +1,7 @@
 var CSS_SKELETOR = [{
 	name: 'h1',
-	color: 'red'
+	color: 'red',
+	bordercolor: 'red'
 }];
 
 var template = {
@@ -145,18 +146,9 @@ var template = {
 		$(window).resize(template.resize);
 		template.resize();
 		
-		
-		window.tags = ["hi", "there"];
-		
-		
 
-
+        template.EJS = new EJS({text: $("#horribleejs").html()});
+        log(template.EJS.render({tags: template.tags}));
         
-        this.template = template;
-        
-        
-        var animals = {animals: ['sloth', 'bear', 'monkey']};
-        var ejs = "<ul><%= animals.length %> </ul>";
-        var e = new EJS({text: ejs});
 	}
 };
