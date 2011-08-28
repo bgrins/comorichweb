@@ -28,6 +28,10 @@ var general = {
         $.post('/slide/update', { deckid: deck.data._id, slides: slides.collection }, function() {
             log('updated', arguments);
         });
+
+        $.post("/deck/update", { deckid : deck.data._id, title: deck.data.title }, function() {
+            log("updated", arguments);
+        });
 	}
 };
 

@@ -1,14 +1,15 @@
 var fs = require("fs");
 var Deck = require("../models/deck.js").model;
+var User = require("../models/user.js");
 
     module.exports = function(app){
     
     app.get('/profile', function(req, res){
-      console.log(req.session.user);
-      res.render('profile', req.session.user);
+      var user = Object.freeze(req.session.user);
+      res.render('profile', {currentUser:user});
     });
     app.post('/profile', function(req, res){
-      var user = req.param('user');
+      var user = req.param('currentUser');
       req.user.email = user.email;
       req.user.web = user.web;
       req.user.bio = user.bio;
