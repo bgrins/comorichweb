@@ -123,7 +123,7 @@ var slides = {
         });
 	},
 	add: function() {
-		$.post('/slide/create', { deckid : deck.data._id, content: "Enter Content" },  function(data) {
+		$.post('/slide/create', { deckid : deck.data._id, content: "<h2>Slide Title</h2>" },  function(data) {
 			var newslide = data;
             slides.collection.push(newslide);
             slides.remap();

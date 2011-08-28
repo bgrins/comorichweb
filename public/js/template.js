@@ -8,6 +8,11 @@ var CSS_SKELETOR = 'h1 { padding: @h1Padding; border-radius: @h1BorderRadius; ba
 
 
 var template = {
+	resize: function() {
+		var frame = $("#preview-frame");
+		var m = 30;
+		frame.height($(window).height() - frame.offset().top - m)
+	},
 	fields: [
 		{ prop: 'BackgroundColor', name: 'Background', type: 'color'},
 		{ prop: 'Color', name: 'Color', type: 'color'}, 
@@ -117,6 +122,10 @@ var template = {
 		}
 		
 		template.redraw();
+		
+		$(window).resize(template.resize);
+		template.resize();
+		
 		
 	}
 };
