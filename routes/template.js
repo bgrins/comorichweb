@@ -17,7 +17,7 @@ module.exports = function(app){
                 if (deck) {
                     var template = deck.template;
                     res.header("Content-Type", "text/css");
-                    res.render("template.css.ejs", { tags: (template) ?  template.tags : [], layout: false });
+                    res.render("template.css.ejs", { tags: (template && template.tags) ?  template.tags : [], layout: false });
                 }
             });
         } else {

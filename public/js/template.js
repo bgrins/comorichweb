@@ -19,10 +19,11 @@ var template = {
 	activeselector: null,
 	loadedTemplates: [],
 	redraw: function() {
-		log("REDRAW", template.tags);
 		if (template.EJS) {
-			$(template.styleTag).html(template.EJS.render({tags: template.tags}));
-			log("RENDERIGN", $(template.styleTag).html(), template.tags);
+			var tags = template.tags;
+			log("HERE", JSON.stringify(template.tags))
+			$("#template").val(JSON.stringify({ tags: tags }));
+			$(template.styleTag).html(template.EJS.render({tags: tags}));
 		}
 	},
 	colorpickerOptions: {
@@ -49,7 +50,6 @@ var template = {
 	getActiveTag: function() {
 		for (var i = 0, j = template.tags.length; i < j; i++) {
 			if (template.activeselector == template.tags[i].name) {
-				log("matched", template.activeselector);
 				return template.tags[i];
 			}
 		}
@@ -92,13 +92,10 @@ var template = {
 			template.tags = template.loadedTemplates[i].slice(0);
 			template.redraw();
 		}
-		log("HER", i, template.loadedTemplates[i])
 	},
 	init: function() {
 		var container = $("#template-controls");
-		
-		log("Here", $("#deck-create"), $("#deck-create").length)
-		
+				
 		template.loadedTemplates = LOADED_TEMPLATES;
 		
 		$("#deck-create").button();

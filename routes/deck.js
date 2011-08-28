@@ -8,14 +8,27 @@ var themes = require("../models/themes");
 module.exports = function(app){
     app.get("/deck/create", function(req, res) {
         var dirname = __dirname + "/../";
+         
+        
         var fd = fs.readFileSync(dirname + "/views/template.css.ejs", "utf8");
         res.render("createdeck_updated", { layout: "layout.ejs", ejs: fd, templates: themes });
     });
     
     app.post("/deck/create", function(req, res) {
         var title = req.param("title", "Deck");
+        var template = [];
+        
+        template = JSON.parse(req.param("template"));
+        try { template = JSON.parse(req.param("template")); }
+        
+        
+        catch(e) { console.log("ERROR", e); }
+        console.log("TEMPLATE", template);
+        
+        
         var deck = new deck_repo.model;
         deck.title = title;
+        deck.template = { tags: template };
         deck.author = req.session.user;
         deck.save(function(err, deck) {
             res.redirect("/deck/edit/" + deck._id);
