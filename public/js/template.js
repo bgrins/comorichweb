@@ -68,6 +68,9 @@ var template = {
 			template.redraw();
 		}
 	},
+	deckChange: function(to) {
+		$("body").toggleClass("edittemplate", to == 1)
+	},
 	init: function() {
 		var container = $("#template-controls");
 		
@@ -113,11 +116,11 @@ var template = {
 				var opts = $.extend({ },template.sliderOptions, { min: field.min, max: field.max });
 				
 				
-				$("<li>" + name + "<br /><div class='control-container'><div class='control' data-field='"+i+"'></div></div></li>").
+				$("<li class='clearfix'><span class='control-name'>" + name + "</span><div class='control-container slider'><div class='control' data-field='"+i+"'></div></div></li>").
 					appendTo(container).find(".control").slider(opts);
 			}
 			else if (type == 'color') {
-				$("<li>" + name + "<br /><div class='control-container'><div data-field='"+i+"' class='control colorselector-container'></div></div></li>").appendTo(container).find(".control").ColorPicker(template.colorpickerOptions);
+				$("<li class='clearfix'><span class='control-name'>" + name + "</span><div class='control-container picker'><div data-field='"+i+"' class='control colorselector-container'></div></div></li>").appendTo(container).find(".control").ColorPicker(template.colorpickerOptions);
 			}
 		}
 		
