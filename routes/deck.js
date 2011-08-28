@@ -54,7 +54,7 @@ module.exports = function(app){
     
     app.get("/deck/exportview/:id.html", function(req, res) {
         var id = req.params.id;
-        deckRepo.model.findById(id, function(err, deck) {
+        deck_repo.model.findById(id, function(err, deck) {
             res.render("slideshow", {
                 slides: deck.slides,
                 layout: "presentation-layout.ejs"
