@@ -6,7 +6,7 @@ var exec = require("child_process").exec;
 
 module.exports = function(app){
     app.get("/deck/create", function(req, res) {
-        res.render("createdeck", { layout: "layout.ejs" });
+        res.render("createdeck_updated", { layout: "layout.ejs" });
     });
     
     app.post("/deck/create", function(req, res) {
@@ -31,7 +31,29 @@ module.exports = function(app){
     });
     
 
-    app.get("deck/update", function(req, res) {
+    app.post("deck/update", function(req, res) {
+        var id = req.params("id", null);
+        var name = req.params("name", null);
+        var title = req.params("title", null);
+
+    	if(!req.session.user || !id) {
+            res.send("401", 401);
+    		return;
+    	}
+        var id = req.params("deckid", null);
+        var name = req.params("name", null);
+        var title = req.params("title", null);
+        var deck = deck_repo.model.findById(id, function(err, deck) {
+    		if (!deck || !deck.author || deck.author.id != req.session.user.id) {
+                res.send("401", 401);
+    		}
+            else {
+                deck.name = name || deck.name;
+                deck.title = title || deck.title;
+                deck.save();
+                res.send(deck);
+            }
+        });
     });
     
     app.get("/deck/edit/:id", function(req, res) {

@@ -22,6 +22,8 @@ var template = {
 	selectorFields: { },
 	redraw: function() {
 		var colors = { }
+		
+		/*
 		var parser = new(less.Parser)({ });
 		var variables = [];
 		for (var i in template.selectorFields) {
@@ -33,7 +35,7 @@ var template = {
 		
 		parser.parse(fullCSS, function (e, tree) {
 			$("#styles").html(tree.toCSS());
-		});
+		});*/
 	},
 	colorpickerOptions: {
 		onSubmit: function(hsb, hex, rgb, el) {
@@ -73,6 +75,12 @@ var template = {
 			$(this).addClass('active');
 			template.activeselector = $(this).data("selector");
 		}).first().click();
+		
+		
+		log("Here", $("#deck-create"), $("#deck-create").length)
+		
+		
+		$("#deck-create").button();
 		
 		$("#template-controls-container").draggable({
 			containment: "body",
