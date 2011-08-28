@@ -16,6 +16,7 @@ module.exports = function(app){
             deck_repo.model.findById(id, function(req, deck) {
                 if (deck) {
                     var template = deck.template;
+                    console.log("HERE", template)
                     res.header("Content-Type", "text/css");
                     res.render("template.css.ejs", { tags: (template && template.tags) ?  template.tags : [], layout: false });
                 }

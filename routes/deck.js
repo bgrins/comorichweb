@@ -28,7 +28,7 @@ module.exports = function(app){
         
         var deck = new deck_repo.model;
         deck.title = title;
-        deck.template = { tags: template };
+        deck.template = template;
         deck.author = req.session.user;
         deck.save(function(err, deck) {
             res.redirect("/deck/edit/" + deck._id);
