@@ -13,6 +13,12 @@ module.exports = function(app){
         var fd = fs.readFileSync(dirname + "/views/template.css.ejs", "utf8");
         res.render("createdeck_updated", { layout: "layout.ejs", ejs: fd, templates: themes });
     });
+
+      app.get('/deck/remote/:id', function(req, res){
+	deck_repo.model.findById(req.param("id"), function(err, deck) {
+	  res.render("remote", { deck: deck });
+	});
+      });
     
     app.post("/deck/create", function(req, res) {
         var title = req.param("title", "Deck");
