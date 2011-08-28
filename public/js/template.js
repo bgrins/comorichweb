@@ -1,11 +1,7 @@
-var CSS_SKELETOR = 'h1 { padding: @h1Padding; border-radius: @h1BorderRadius; background-color: @h1BackgroundColor; color: @h1Color; border-color: @h1BorderColor; border-width: @h1BorderWidth; border-style: solid; font-size: @h1FontSize;  } ' + 
-'h2 { padding: @h2Padding; border-radius: @h2BorderRadius; background-color: @h2BackgroundColor; color: @h2Color; border-color: @h2BorderColor; border-width: @h2BorderWidth; border-style: solid; font-size: @h2FontSize;  } ' + 
-'h3 { padding: @h3Padding; border-radius: @h3BorderRadius; background-color: @h3BackgroundColor; color: @h3Color; border-color: @h3BorderColor; border-width: @h3BorderWidth; border-style: solid; font-size: @h3FontSize;  } ' +
-'pre { padding: @prePadding; border-radius: @preBorderRadius; background-color: @preBackgroundColor; color: @preColor; border-color: @preBorderColor; border-width: @preBorderWidth; border-style: solid; font-size: @preFontSize;  } ' +
-'code { padding: @codePadding; border-radius: @codeBorderRadius; background-color: @codeBackgroundColor; color: @codeColor; border-color: @codeBorderColor; border-width: @codeBorderWidth; border-style: solid; font-size: @codeFontSize;  } ' +
-'cite { padding: @citePadding; border-radius: @citeBorderRadius; background-color: @citeBackgroundColor; color: @citeColor; border-color: @citeBorderColor; border-width: @citeBorderWidth; border-style: solid; font-size: @citeFontSize;  } '
-;
-
+var CSS_SKELETOR = [{
+	name: 'h1',
+	color: 'red'
+}];
 
 var template = {
 	resize: function() {
@@ -14,19 +10,21 @@ var template = {
 		frame.height($(window).height() - frame.offset().top - m)
 	},
 	fields: [
-		{ prop: 'BackgroundColor', name: 'Background', type: 'color'},
-		{ prop: 'Color', name: 'Color', type: 'color'}, 
-		{ prop: 'BorderColor', name: 'Border Color', type: 'color'}, 
-		{ prop: 'BorderWidth', name: 'Border Width', type: 'slider'}, 
-		{ prop: 'BorderRadius', name: 'Rounded', type:'slider' },
-		{ prop: 'Padding', name: 'Padding', type:'slider', min: 0, max: 20, 'unit': '%' },
-		{ prop: 'FontSize', name: 'Font Size', type:'slider', min: 50, max: 800, 'unit': 'em', 'divide': 100 },
+		{ prop: 'backgroundcolor', name: 'Background', type: 'color'},
+		{ prop: 'color', name: 'Color', type: 'color'}, 
+		{ prop: 'bordercolor', name: 'Border Color', type: 'color'}, 
+		{ prop: 'borderwidth', name: 'Border Width', type: 'slider'}, 
+		{ prop: 'borderradius', name: 'Rounded', type:'slider' },
+		{ prop: 'padding', name: 'Padding', type:'slider', min: 0, max: 20, 'unit': '%' },
+		{ prop: 'fontsize', name: 'Font Size', type:'slider', min: 50, max: 800, 'unit': 'em', 'divide': 100 },
 	],
 	activeselector: null,
-	selectors: [],
-	selectorFields: { },
 	redraw: function() {
-		var colors = { }
+		log("REDRAW", template.tags);
+		
+		
+		//$("#styles").html(ejs.render('template.css.ejs', tags));
+		
 		
 		/*
 		var parser = new(less.Parser)({ });
@@ -47,16 +45,28 @@ var template = {
 			$(el).ColorPickerHide();
 		},
 		onChange: function(hsb, hex, rgb, el) {
-			log("CHANGE", arguments, this)
 			$(el).data("val", hex).css("background-color", '#' + hex);
 			
 			var fieldInd = parseInt($(el).data("field"));
 			var field = template.fields[fieldInd];
-			template.selectorFields[template.activeselector + "" + field.prop] = '#' + hex;
+			
+			var activeTag = template.getActiveTag();
+			if (activeTag) {
+				activeTag[field.prop] = '#' + hex;
+			}
+			
 			template.redraw();
 		},
 		onBeforeShow: function () {
 			$(this).ColorPickerSetColor($(this).data("val") || '000');
+		}
+	},
+	getActiveTag: function() {
+		for (var i = 0, j = template.tags.length; i < j; i++) {
+			if (true || template.activeselector == template.tags[i].name) {
+				log("matched");
+				return template.tags[i];
+			}
 		}
 	},
 	sliderOptions: {
@@ -64,7 +74,12 @@ var template = {
 			var fieldInd = parseInt($(e.target).data("field"));
 			var field = template.fields[fieldInd];
 			
-			template.selectorFields[template.activeselector + "" + field.prop] = (ui.value / field.divide) + field.unit;
+			
+			var activeTag = template.getActiveTag();
+			if (activeTag) {
+				activeTag[field.prop] = (ui.value / field.divide) + field.unit;
+			}
+			
 			template.redraw();
 		}
 	},
@@ -78,20 +93,14 @@ var template = {
 			controls.data("moved", true);
 		}
 	},
+	onEditorClicked: function(selector) {
+		template.activeselector = selector;
+	},
 	init: function() {
 		var container = $("#template-controls");
 		
-		template.selectors = $(".editor").map(function() {
-			return $(this).data("selector");
-		}).toArray();
-		
-		$(".editor").click(function() {
-			$(".editor.active").removeClass("active");
-			$(this).addClass('active');
-			template.activeselector = $(this).data("selector");
-		}).first().click();
-		
-		
+		template.tags = CSS_SKELETOR;
+				
 		log("Here", $("#deck-create"), $("#deck-create").length)
 		
 		
@@ -117,10 +126,6 @@ var template = {
 			var type = field.type;
 			var name = field.name;
 			var prop = field.prop;
-			
-			for (var j = 0; j < template.selectors.length; j++) {
-				template.selectorFields[template.selectors[j] + '' + prop] = 'inherit';
-			}
 			
 			if (type == 'slider') {
 				var opts = $.extend({ },template.sliderOptions, { min: field.min, max: field.max });

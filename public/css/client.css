@@ -114,11 +114,6 @@ body.edittemplate #template-controls-container { display:block; }
 #template-controls .control-container.picker {  float:right; }
 #template-controls .control-name { vertical-align: middle; }
 
-.editor { float:left; width: 400px; min-height: 100px; margin:10px; vertical-align: top; }
-.editor:hover { outline: dashed 4px orange; }
-.editor.active { outline: solid 4px orange; }
-
-
 .decks li {float:left; width: 100px; height: 100px; margin:10px; border: 1px solid; list-style-type: none; }
 .decks li h4 { margin: 4px 0; padding: 2px; }
 .author { font-size: .8em; color: #999; }
