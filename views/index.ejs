@@ -7,18 +7,20 @@
     </p>
 
 
+<% if (!session.auth) { %>
     Login using one of these services to get started: 
   <ul>
         <li class="facebook"><a href="/auth/facebook"><img src="//facebook.com/favicon.ico" alt="">Facebook</a></li>
         <li class="twitter"><a href="/auth/twitter"><img src="//twitter.com/favicon.ico" alt="">Twitter</a></li>
         <li class="github"><a href="/auth/github"><img src="//github.com/favicon.ico" alt="">Github</a></li>
   </ul>		
+<% } %>
 </div>
 
 <div class="post">
 <% if (session.auth) { %>
     <a class="button" href="/deck/create">Create Slideshow</a>
-    <a href="http://comorichweb.no.de/deck/4e5abbc80b92383b730000c9">view the tutorial</a>
+    <a href="http://comorichweb.no.de/deck/4e5abbc80b92383b730000c9">View the Tutorial</a>
     or
     <a href="/dashboard">View Your Slideshows (beta)</a>
 <% } %>
