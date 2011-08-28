@@ -1,6 +1,6 @@
 var settings = {
 	'sessionSecret': 'sessionSecret',
-    'port': 3000,
+    'port': 8080,
     'uri': 'http://localhost:8080', // Without trailing /
     'tempDir': "/tmp/", // with trailing /
 
