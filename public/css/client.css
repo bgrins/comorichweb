@@ -20,7 +20,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#7d7e7d', end
 background: linear-gradient(top, rgba(125,126,125,1) 0%,rgba(14,14,14,1) 100%);
 }
 
-
+#site-top iframe { float:right; }
 #site-top.small h1 { font-size:1.1em; }
 #site-top.small img { display:none; }
 
