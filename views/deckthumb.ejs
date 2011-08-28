@@ -1,19 +1,11 @@
 	  
 <li class='deckpreview'>
   <div>
-    <iframe src="/deck/<%= deckthumb._id %>" scrolling="no" style="width:486px; height: 500px; 
-    zoom: .45;
-position:relative;
-top: -145px;
-    -webkit-transform: scale(.45); 
-    -webkit-transform-origin: 0.0; 
-    -moz-transform: scale(.45); 
-    -moz-transform-origin: scale(0.0); 
-    -moz-transform: -45%;"></iframe>
+    <iframe src="/deck/<%= deckthumb._id %>" scrolling="no" style="width:200px; height: 200px;" />
   </div>
   <a href="/deck/embed/<%=deckthumb._id%>">Preview</a> 
+  <a href="/deck/export/<%=deckthumb._id%>">Export to Html</a>
   <% if (session.auth && session.user && deckthumb.author && session.user.id == deckthumb.author.id) { %>
   <a href="/deck/edit/<%=deckthumb._id%>">Edit</a>
-  <a href="/deck/export/<%=deckthumb._id%>">Export to Html</a>
   <% } %>
 </li>
