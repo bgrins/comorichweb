@@ -4,6 +4,7 @@ var Deck = require("../models/deck.js").model;
     module.exports = function(app){
     
     app.get('/profile', function(req, res){
+      console.log(req.session.user);
       res.render('profile', req.session.user);
     });
     app.post('/profile', function(req, res){

@@ -4,7 +4,7 @@ var Deck = require('./deck').model,
     Mixed = mongoose.SchemaTypes.Mixed;
 
 var UserSchema = new mongoose.Schema({
-  id: String
+  id: {type: String, unique: true}
   , name: String
   , image: String
   , email: String
