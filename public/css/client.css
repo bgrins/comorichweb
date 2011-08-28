@@ -115,7 +115,7 @@ body.edittemplate #template-controls-container { display:block; }
 #template-controls .control-name { vertical-align: middle; }
 
 .decks li {float:left; width: 100px; height: 100px; margin:10px; list-style-type: none; }
-.deckpreview .title { font-weight:bold; font-size: 12px; }
+.deckpreview .deck-title { font-weight:bold; font-size: 12px; }
 .decks li h4 { margin: 4px 0; padding: 2px; }
 .author { font-size: .8em; color: #999; }
 
