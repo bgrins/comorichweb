@@ -101,6 +101,10 @@ module.exports = function(app){
         var id = req.params.id;
         var slideID = req.param("slideid", false);
         var deck = deck_repo.model.findById(id, function(err, deck) {
+        	if (err || !deck) {
+    			res.render('errors/404', 404);
+    			return;
+        	}
             res.render("slideshow", {
                 deck: deck,
                 layout: "presentation-layout.ejs",

@@ -3,7 +3,11 @@ var general = {
 	init: function() {
 		$(window).bind("resize", general.resize);
 		general.resize();
-		$("#tabs").tabs();
+		$("#tabs").tabs({
+			show: function() {
+				general.save();
+			}
+		});
 		slides.collection = _LOADED_SLIDES || [];
 		deck.data = _LOADED_DECK || { };
 		
@@ -21,7 +25,9 @@ var general = {
 		var collection = $("#slides-collection");
 		collection.height(fullHeight - collection.offset().top - m);
 	},
-	getPreviewURL: function(deckid, slideid) {
+	getPreviewURL: function() {
+		var deckid = deck.data._id;
+		var slideid = slides.active._id
 		return "/deck/" + deckid + "?slideid=" + slideid;
 	},
 	saving: false,
@@ -30,6 +36,7 @@ var general = {
 		$("#save").addClass("ui-state-disabled");
         $.post('/slide/update', { deckid: deck.data._id, slides: slides.collection }, function() {
             log('updated', arguments);
+			$("#iDesign").attr("src", general.getPreviewURL());
         });
 
         $.post("/deck/update", { deckid : deck.data._id, title: deck.data.title }, function() {
@@ -85,7 +92,7 @@ var slides = {
 		$("#right").addClass("editing");
 		viewsource.set(slide.content);
 		
-		$("#iDesign").attr("src", general.getPreviewURL(deck.data._id , slide._id));
+		$("#iDesign").attr("src", general.getPreviewURL());
 	},
 	orderSort: function(a, b) {
 		return a.sort - b.sort;
