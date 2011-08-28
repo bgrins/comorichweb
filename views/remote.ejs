@@ -1,0 +1,20 @@
+<html>
+  <head>
+    <title>Presentation</title>
+
+    <meta charset='utf-8'>
+    <script src="/js/demo/jquery-1.6.1.min.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
+  </head>
+  
+  <style>
+    a { display: inline-block; border: 1px solid black; width: 100px; height: 100px; }
+  </style>
+  <body data-id="<%= deck._id %>">
+    <h1><%= deck.title %></h1>
+    <script src="/js/remote.js"></script>
+
+    <a href="#" id="prev">Previous</a>
+    <a href="#" id="next">Next</a>
+  </body>
+</html>
