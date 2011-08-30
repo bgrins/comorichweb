@@ -35,8 +35,8 @@ var settings = {
 };
 
 if (process.env.NODE_ENV == 'production') {
-	settings.uri = 'http://comorichweb.no.de';
-	settings.port = process.env.PORT || 80; // Joyent SmartMachine uses process.env.PORT
+	settings.uri = 'http://slidespot.aaronm67.com';
+	settings.port = 83; // Joyent SmartMachine uses process.env.PORT
   	settings.db.url = 'mongodb://test:test@staff.mongohq.com:10035/comorichweb';
 	settings.airbrakeApiKey = 'f66c6b1d6342a9ff31c4bf8ab7e73fa2'; // Error logging, Get free API key from https://airbrakeapp.com/account/new/Free
 }
